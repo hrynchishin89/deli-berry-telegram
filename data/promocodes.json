@@ -1,0 +1,27 @@
+[
+  {
+    "code": "BERRY5",
+    "type": "percent",
+    "value": 5,
+    "label": "Скидка 5% на первый тестовый заказ",
+    "enabled": true,
+    "minTotal": 0
+  },
+  {
+    "code": "PICKUP5",
+    "type": "percent",
+    "value": 5,
+    "label": "Скидка 5% на самовывоз",
+    "enabled": true,
+    "deliveryType": "pickup",
+    "minTotal": 0
+  },
+  {
+    "code": "DUBAI10",
+    "type": "amount",
+    "value": 100,
+    "label": "-100 ₽ при заказе с дубайским шоколадом",
+    "enabled": true,
+    "minTotal": 1000
+  }
+]

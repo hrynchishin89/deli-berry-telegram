@@ -1,0 +1,2 @@
+PIN для setup.html и админки:
+DB-J15U2NRH

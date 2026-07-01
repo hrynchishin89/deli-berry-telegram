@@ -1,0 +1,14 @@
+# Deli Berry — переменные для Render/Railway
+# ВАЖНО: токен не храню в архиве. Вставьте токен от BotFather только в секретные переменные хостинга.
+
+BOT_TOKEN=ВСТАВЬТЕ_ТОКЕН_ОТ_BOTFATHER
+WEBAPP_URL=https://ВАШ-АДРЕС-ПРИЛОЖЕНИЯ.onrender.com
+PUBLIC_URL=https://ВАШ-АДРЕС-ПРИЛОЖЕНИЯ.onrender.com
+MANAGER_CHAT_ID=
+MANAGER_PUBLIC_URL=
+ADMIN_PIN=ПРИДУМАЙТЕ_PIN
+REQUIRE_TELEGRAM_AUTH=false
+GOOGLE_SHEETS_WEBHOOK_URL=
+SETUP_TELEGRAM_ON_START=true
+PORT=3000
+NODE_ENV=production

@@ -1,0 +1,35 @@
+{
+  "name": "deli-berry-telegram-ready",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Telegram Mini App + bot + order backend for Deli Berry, preconfigured package",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "wizard": "node scripts/wizard.js",
+    "telegram:setup": "node scripts/setup-telegram.js",
+    "test:order": "node scripts/test-order.js",
+    "check": "node --check src/server.js && node --check src/telegramBot.js && node --check src/startupCheck.js && node --check src/store/jsonStore.js && node --check src/security/telegramAuth.js && node --check src/integrations/googleSheets.js && node --check src/telegram/formatters.js && node --check scripts/setup-telegram.js && node --check scripts/setup-telegram-basic.js && node --check scripts/verify-telegram.js && node --check scripts/check-env.js && node --check scripts/validate-env.js && node --check scripts/validate-telegram.js && node --check scripts/preflight.js && node --check scripts/secret-scan.js && node --check scripts/wizard.js && node --check scripts/test-order.js && node --check webapp/app.js && node --check webapp/admin.js && node --check webapp/setup.js && node --check scripts/create-env.js",
+    "env:check": "node scripts/check-env.js",
+    "live": "npm run check && npm start",
+    "telegram:validate": "node scripts/validate-telegram.js",
+    "secret:scan": "node scripts/secret-scan.js",
+    "ready:check": "npm run check && npm run secret:scan",
+    "preflight": "node scripts/preflight.js",
+    "setup:all": "node scripts/preflight.js && node scripts/setup-telegram.js",
+    "setup:local": "node scripts/wizard.js",
+    "telegram:verify": "node scripts/verify-telegram.js",
+    "telegram:setup-basic": "node scripts/setup-telegram-basic.js",
+    "ready": "npm run check",
+    "create:env": "node scripts/create-env.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0"
+  }
+}

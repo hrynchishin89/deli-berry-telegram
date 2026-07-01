@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Deli Berry — заказ</title>
+  <meta name="description" content="Клубника в шоколаде, сладкие подарки и десерты Deli Berry">
+  <meta name="theme-color" content="#4a2418">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js?62"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/logo.svg" alt="Deli Berry" class="brand-logo">
+        <div>
+          <div class="brand-title">Deli Berry</div>
+          <div class="brand-subtitle">ягоды • шоколад • подарки</div>
+        </div>
+      </div>
+      <button class="cart-pill" id="cart-pill" type="button">🛒 <span id="cart-count">0</span></button>
+    </header>
+
+    <main>
+      <section class="hero card soft-card">
+        <div class="hero-copy">
+          <span class="eyebrow">Telegram Mini App</span>
+          <h1>Соберите сладкий подарок за пару касаний</h1>
+          <p>Выберите точку, добавьте клубнику в шоколаде, дубайский шоколад или напитки — менеджер подтвердит наличие и время.</p>
+          <div class="hero-actions">
+            <button class="primary" type="button" data-scroll="catalog">Сделать заказ</button>
+            <button class="ghost" type="button" data-scroll="points">Выбрать точку</button>
+          </div>
+        </div>
+        <div class="berry-plate" aria-hidden="true">
+          <span>🍓</span><span>🍫</span><span>✨</span>
+        </div>
+      </section>
+
+      <section class="notice" id="notice">
+        ⚠️ Цены и наличие в MVP подтверждаются менеджером после заявки.
+      </section>
+
+      <section id="points" class="section">
+        <div class="section-head">
+          <h2>Точка</h2>
+          <span>выберите, откуда заказ</span>
+        </div>
+        <div class="point-grid" id="point-grid"></div>
+      </section>
+
+      <section id="catalog" class="section">
+        <div class="section-head">
+          <h2>Каталог</h2>
+          <span id="items-total-label">загрузка…</span>
+        </div>
+        <div class="search-row">
+          <input id="search" type="search" placeholder="Поиск: клубника, дубайский, смузи…" autocomplete="off">
+        </div>
+        <div class="category-strip" id="category-strip"></div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section class="section contacts card">
+        <h2>Контакты и условия</h2>
+        <p><b>Самовывоз:</b> Дыбенко 7/1 или Ржавки, с20.</p>
+        <p><b>Доставка:</b> адрес, стоимость и время подтверждает менеджер.</p>
+        <p><b>Оплата:</b> в MVP после подтверждения заказа менеджером.</p>
+        <div class="legal-links">
+          <a href="/legal/privacy.html" target="_blank" rel="noopener">Политика / согласие</a>
+          <a href="/legal/terms.html" target="_blank" rel="noopener">Условия заказа</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-cart></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div>
+          <h2>Корзина</h2>
+          <span id="cart-summary">Пока пусто</span>
+        </div>
+        <button class="icon-btn" type="button" data-close-cart>×</button>
+      </div>
+      <div class="cart-list" id="cart-list"></div>
+      <div class="promo-row">
+        <input id="promo-code" placeholder="Промокод: BERRY5">
+        <button class="ghost" type="button" id="apply-promo">Применить</button>
+      </div>
+      <div class="total-box">
+        <span>Итого ориентировочно</span>
+        <b id="cart-total">0 ₽</b>
+      </div>
+      <button class="primary full" type="button" id="checkout-btn">Оформить заказ</button>
+    </div>
+  </aside>
+
+  <dialog class="checkout" id="checkout-dialog">
+    <form method="dialog" class="checkout-form" id="order-form">
+      <div class="drawer-head">
+        <div>
+          <h2>Оформление</h2>
+          <span>менеджер подтвердит заказ</span>
+        </div>
+        <button class="icon-btn" value="cancel" type="button" id="close-checkout">×</button>
+      </div>
+
+      <div class="segmented" role="group" aria-label="Способ получения">
+        <label><input type="radio" name="deliveryType" value="pickup" checked> <span>Самовывоз</span></label>
+        <label><input type="radio" name="deliveryType" value="delivery"> <span>Доставка</span></label>
+      </div>
+
+      <label>Имя<input name="name" required placeholder="Как к вам обращаться"></label>
+      <label>Телефон<input name="phone" required inputmode="tel" placeholder="+7…"></label>
+      <label class="delivery-only">Адрес доставки<input name="address" placeholder="Улица, дом, подъезд, квартира"></label>
+      <div class="two-cols">
+        <label>Дата<input name="date" type="date" required></label>
+        <label>Время<input name="time" type="time" required></label>
+      </div>
+      <label>Комментарий<textarea name="comment" rows="3" placeholder="Надпись, пожелания, время, детали доставки"></textarea></label>
+      <label class="checkbox-row"><input name="legal" type="checkbox" required> <span>Согласен/согласна на обработку персональных данных и понимаю, что заказ подтверждает менеджер.</span></label>
+      <div class="form-error" id="form-error"></div>
+      <button class="primary full" type="submit">Отправить заказ</button>
+    </form>
+  </dialog>
+
+  <dialog class="product-modal" id="product-modal"></dialog>
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

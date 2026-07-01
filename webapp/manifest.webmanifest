@@ -1,0 +1,11 @@
+{
+  "name": "Deli Berry",
+  "short_name": "Deli Berry",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8f2",
+  "theme_color": "#4a2418",
+  "icons": [
+    { "src": "/assets/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

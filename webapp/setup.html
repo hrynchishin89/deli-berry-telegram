@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Deli Berry — настройка Telegram</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell setup-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/logo.svg" alt="Deli Berry" class="brand-logo">
+        <div>
+          <div class="brand-title">Deli Berry</div>
+          <div class="brand-subtitle">первичная настройка</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero card soft-card">
+        <div class="hero-copy">
+          <span class="eyebrow">1 кнопка после деплоя</span>
+          <h1>Привязать Telegram Mini App к этому адресу</h1>
+          <p>Введите PIN из переменной <b>ADMIN_PIN</b>, нажмите кнопку — бот получит команды, описание и кнопку «Заказать 🍓».</p>
+        </div>
+      </section>
+
+      <section class="section card contacts">
+        <h2>Настройка</h2>
+        <label>PIN администратора<input id="pin" type="password" placeholder="DB-XXXXXXXX" autocomplete="current-password"></label>
+        <label>HTTPS-ссылка приложения<input id="webapp-url" type="url" placeholder="заполнится автоматически текущим адресом"></label>
+        <div class="hero-actions">
+          <button class="primary" id="setup-btn" type="button">Настроить Telegram</button>
+          <button class="ghost" id="status-btn" type="button">Проверить статус</button>
+        </div>
+        <div class="notice" id="result">Пока не настроено.</div>
+      </section>
+
+      <section class="section card contacts">
+        <h2>После этого</h2>
+        <p>1. Создайте группу Telegram: <b>Deli Berry — Заказы</b>.</p>
+        <p>2. Добавьте туда бота.</p>
+        <p>3. Напишите в группе команду: <b>/manager</b>.</p>
+        <p>4. Сделайте тестовый заказ в боте.</p>
+      </section>
+    </main>
+  </div>
+  <script src="/setup.js"></script>
+</body>
+</html>

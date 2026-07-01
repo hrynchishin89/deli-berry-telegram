@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deli Berry — админка</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><img src="/assets/logo.svg" class="brand-logo" alt=""><div><div class="brand-title">Админка заказов</div><div class="brand-subtitle">Deli Berry</div></div></div>
+      <button class="ghost" id="reload">Обновить</button>
+    </header>
+    <section class="card contacts">
+      <h1>Заказы</h1>
+      <p>Введите PIN из переменной ADMIN_PIN. Заказы также приходят в Telegram-группу менеджеров.</p>
+      <div class="promo-row"><input id="pin" placeholder="ADMIN_PIN"><button class="primary" id="save-pin">Открыть</button></div>
+      <p><a id="export-link" href="#">Скачать CSV</a></p>
+    </section>
+    <section id="orders" class="section"></section>
+  </div>
+  <script src="/admin.js"></script>
+</body>
+</html>

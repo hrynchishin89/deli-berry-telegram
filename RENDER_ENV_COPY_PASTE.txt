@@ -1,0 +1,14 @@
+# Deli Berry — переменные для Render/Railway
+# BOT_TOKEN уже лежит в приватном файле .env. Если Render просит переменные вручную, скопируйте BOT_TOKEN из .env, не публикуйте его.
+BUSINESS_NAME=Deli Berry
+BOT_TOKEN=СКОПИРУЙТЕ_ЗНАЧЕНИЕ_ИЗ_ПРИВАТНОГО_ФАЙЛА_ENV
+WEBAPP_URL=
+PUBLIC_URL=
+MANAGER_CHAT_ID=
+MANAGER_PUBLIC_URL=
+ADMIN_PIN=DB-J15U2NRH
+REQUIRE_TELEGRAM_AUTH=false
+GOOGLE_SHEETS_WEBHOOK_URL=
+SETUP_TELEGRAM_ON_START=true
+PORT=3000
+NODE_ENV=production

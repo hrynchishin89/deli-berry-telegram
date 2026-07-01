@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: deli-berry-telegram
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: REQUIRE_TELEGRAM_AUTH
+        value: false
+      - key: SETUP_TELEGRAM_ON_START
+        value: true
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_PIN
+        sync: false
+      - key: WEBAPP_URL
+        value: https://deli-berry-telegram.onrender.com
+      - key: PUBLIC_URL
+        value: https://deli-berry-telegram.onrender.com
+      - key: MANAGER_CHAT_ID
+        sync: false
+      - key: GOOGLE_SHEETS_WEBHOOK_URL
+        sync: false

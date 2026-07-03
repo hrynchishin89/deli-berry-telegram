@@ -102,21 +102,31 @@ function renderCategories() {
   });
 }
 
+function productVisual(product, className = 'product-art') {
+  const badge = product.badge || product.badges?.[0] || '';
+  const image = String(product.image || '').trim();
+  return `
+    <div class="${className} ${image ? 'has-image' : ''}">
+      ${badge ? `<span class="product-badge">${badge}</span>` : ''}
+      ${image ? `<img src="${image}" alt="${product.name}" loading="lazy">` : `<span class="emoji">${product.emoji || '🍓'}</span>`}
+    </div>
+  `;
+}
+
 function productCard(product) {
   return `
     <article class="product-card">
-      <div class="product-art">
-        ${(product.badge || product.badges?.[0]) ? `<span class="product-badge">${product.badge || product.badges[0]}</span>` : ''}
-        <span>${product.emoji || '🍓'}</span>
-      </div>
-      <div class="product-title">${product.name}</div>
-      <div class="product-meta">${product.unit || ''}</div>
-      <div class="product-meta">${product.description || ''}</div>
-      <div class="product-bottom">
-        <div class="price">${product.priceText || money(product.price)}</div>
-        <div class="product-actions">
-          <button type="button" class="small-btn" data-add="${product.id}">Добавить</button>
-          <button type="button" class="small-btn info-btn" data-info="${product.id}">i</button>
+      ${productVisual(product)}
+      <div class="product-body">
+        <div class="product-title">${product.name}</div>
+        <div class="product-meta">${product.unit || ''}</div>
+        <div class="product-meta">${product.description || ''}</div>
+        <div class="product-bottom">
+          <div class="price">${product.priceText || money(product.price)}</div>
+          <div class="product-actions">
+            <button type="button" class="small-btn" data-add="${product.id}">Добавить</button>
+            <button type="button" class="small-btn info-btn" data-info="${product.id}">i</button>
+          </div>
         </div>
       </div>
     </article>
@@ -232,7 +242,7 @@ function openProduct(id) {
         <div><h2>${product.name}</h2><span>${product.categoryName || ''}</span></div>
         <button class="icon-btn" type="button" data-close-product>×</button>
       </div>
-      <div class="modal-art">${product.emoji || '🍓'}</div>
+      ${productVisual(product, 'modal-art')}
       <p>${product.description || ''}</p>
       <dl>
         <dt>Цена</dt><dd>${product.priceText || money(product.price)}</dd>

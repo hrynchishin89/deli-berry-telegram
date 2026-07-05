@@ -1,9 +1,14 @@
-<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1200" height="900" rx="64" fill="#24100B"/>
-<circle cx="925" cy="170" r="260" fill="#D8A94F" fill-opacity="0.24"/>
-<circle cx="250" cy="695" r="260" fill="#C82F55" fill-opacity="0.28"/>
-<rect x="92" y="92" width="1016" height="716" rx="54" stroke="#D8A94F" stroke-opacity="0.45" stroke-width="6"/>
-<text x="600" y="405" text-anchor="middle" font-size="92" font-family="Arial, sans-serif" font-weight="800" fill="#FFF0DF">Deli Berry</text>
-<text x="600" y="485" text-anchor="middle" font-size="42" font-family="Arial, sans-serif" fill="#D8A94F">фото товара</text>
-<text x="600" y="600" text-anchor="middle" font-size="120" font-family="Arial, sans-serif" fill="#FFF0DF">🍓 🍫 ✨</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3a120d"/><stop offset=".45" stop-color="#d93359"/><stop offset="1" stop-color="#f3d08b"/></linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="800" height="600" rx="64" fill="url(#g)"/>
+  <circle cx="650" cy="95" r="120" fill="#fff" opacity=".16"/>
+  <circle cx="138" cy="520" r="170" fill="#fff" opacity=".10"/>
+  <g filter="url(#s)">
+    <text x="400" y="284" text-anchor="middle" font-size="154">🍓</text>
+    <text x="400" y="380" text-anchor="middle" font-size="58" font-family="Arial, sans-serif" font-weight="800" fill="#fff7ef">Deli Berry</text>
+    <text x="400" y="430" text-anchor="middle" font-size="28" font-family="Arial, sans-serif" font-weight="700" fill="#ffe7b4">фото скоро</text>
+  </g>
 </svg>

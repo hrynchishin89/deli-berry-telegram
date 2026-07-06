@@ -1,9 +1,16 @@
 {
   "name": "Deli Berry",
   "short_name": "Deli Berry",
+  "description": "Премиальные десерты, подарки и напитки",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#120706",
-  "theme_color": "#120706",
-  "icons": [{"src":"/assets/brand/mascot-square.jpg","sizes":"512x512","type":"image/jpeg"}]
+  "background_color": "#120404",
+  "theme_color": "#120404",
+  "icons": [
+    {
+      "src": "/assets/brand/mascot-square.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
 }

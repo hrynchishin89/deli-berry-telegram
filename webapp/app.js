@@ -1,4 +1,4 @@
-// Deli Berry V5 FINAL Commercial — V3 polish + V4 Motion 3D + manager replies/payments + final release polish
+// Deli Berry V7 Porsche Cream — product object stage + cutout-first rendering
 const tg = window.Telegram?.WebApp;
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -6,7 +6,7 @@ const money = (n) => `${Number(n || 0).toLocaleString('ru-RU')} ₽`;
 const today = () => new Date().toISOString().slice(0, 10);
 
 const state = {
-  page: localStorage.getItem('db_page') || 'home',
+  page: 'home',
   catalog: [],
   categories: [],
   points: [],
@@ -26,8 +26,8 @@ function initTelegram(){
     if(!tg) return;
     tg.ready();
     tg.expand();
-    tg.setHeaderColor?.('#120706');
-    tg.setBackgroundColor?.('#120706');
+    tg.setHeaderColor?.('#E8DED2');
+    tg.setBackgroundColor?.('#E8DED2');
     tg.BackButton?.onClick?.(() => {
       if(state.page === 'home') return tg.close?.();
       navigate('home');
@@ -62,7 +62,7 @@ function save(){
   localStorage.setItem('db_category', state.category || 'hits');
   localStorage.setItem('db_promo', state.promoCode || '');
   localStorage.setItem('db_delivery_type', state.deliveryType || 'pickup');
-  localStorage.setItem('db_page', state.page || 'home');
+  // page intentionally opens from home on each new Mini App launch
 }
 function navigate(page, opts={}){
   track('navigate', {to: page, category: opts.category || ''});
@@ -228,17 +228,22 @@ function modelKind(product){
   return 'berry';
 }
 function productArt(product, cls='product-art'){
+  const cutout = String(product.cutout || '').trim();
   const image = String(product.image || '').trim();
+  const stageImage = String(product.stageImage || '').trim();
+  // V7: cutout first. Stage images were too flat/skewed; use them only as last fallback.
+  const asset = cutout || image || stageImage;
+  const mode = cutout ? 'cutout' : image ? 'photo' : stageImage ? 'stage' : 'emoji';
   const emoji = product.emoji || categoryEmoji(product.category);
   const tone = artTone(product);
   const kind = modelKind(product);
   const badge = product.badge ? `<span class="badge motion-badge">${escapeHtml(product.badge)}</span>` : '';
-  const visual = image
-    ? `<img class="model-image" src="${escapeAttr(image)}" alt="${escapeAttr(product.name)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;emoji model-emoji&quot;>${emoji}</span>'">`
+  const visual = asset
+    ? `<img class="model-image mode-${mode}-image" src="${escapeAttr(asset)}" alt="${escapeAttr(product.name)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;emoji model-emoji&quot;>${emoji}</span>'">`
     : `<span class="emoji model-emoji">${emoji}</span>`;
-  return `<div class="${cls} art-${escapeAttr(tone)} product-art-3d">
+  return `<div class="${cls} art-${escapeAttr(tone)} product-art-3d product-mode-${mode}">
     ${badge}
-    <div class="model-stage model-${escapeAttr(kind)}" data-rotatable data-model-id="${escapeAttr(product.id || '')}" aria-label="3D preview">
+    <div class="model-stage model-${escapeAttr(kind)}" data-rotatable data-model-id="${escapeAttr(product.id || '')}" aria-label="product stage preview">
       <span class="model-glow"></span>
       <span class="model-ring ring-a"></span>
       <span class="model-ring ring-b"></span>
@@ -248,12 +253,10 @@ function productArt(product, cls='product-art'){
       <span class="model-spark spark-b">✧</span>
       <span class="model-spark spark-c">✦</span>
       <div class="model-turntable">
-        <span class="model-shadow"></span>
-        <span class="model-side side-left"></span>
-        <span class="model-side side-right"></span>
         ${visual}
         <span class="model-highlight"></span>
       </div>
+      <span class="model-shadow"></span>
       <span class="model-floor"></span>
     </div>
   </div>`;
@@ -293,7 +296,7 @@ function renderHome(){
         <span class="eyebrow">premium dessert boutique</span>
         <h1>Подарки, десерты и напитки с вау‑эффектом</h1>
         <p>Клубника в шоколаде, подарочные боксы, дубайский шоколад и авторские напитки. Соберите заказ за минуту — менеджер подтвердит наличие, время и оплату.</p>
-        <div class="release-chip">✨ V5 commercial release · Telegram ready</div>
+        <div class="release-chip">✨ Подарок к нужному времени · менеджер подтвердит заказ</div>
         <div class="hero-actions">
           <button class="primary magnetic" data-nav="catalog" type="button">🍓 Собрать подарок</button>
           <button class="secondary magnetic" data-nav="drinks" type="button">🥤 Выбрать напиток</button>
@@ -309,7 +312,6 @@ function renderHome(){
     ${renderHomeStats()}
     ${renderTrustStrip()}
     ${renderExperienceStrip()}
-    ${renderTrustStrip()}
     ${renderPoints()}
     <section class="section">
       <div class="quick-grid">

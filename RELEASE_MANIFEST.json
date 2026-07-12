@@ -1,0 +1,60 @@
+{
+  "name": "Deli Berry Production 1.0",
+  "version": "1.0.0",
+  "builtAt": "2026-07-12T12:30:43Z",
+  "catalog": {
+    "productsTotal": 208,
+    "activeProducts": 161,
+    "hiddenLegacyProducts": 47,
+    "categories": 13,
+    "dybenko": 77,
+    "greenpark": 89,
+    "greenparkCoffee": 24
+  },
+  "loyalty": {
+    "earnPercent": 5,
+    "maxRedeemPercent": 30,
+    "rublesPerPoint": 1
+  },
+  "checks": {
+    "syntax": true,
+    "catalog": true,
+    "productionScenario": true,
+    "npmAuditVulnerabilities": 0,
+    "secretScan": true,
+    "uploadPartsPrepared": true,
+    "responsiveAlignmentReviewed": true
+  },
+  "requiredProductionEnv": [
+    "BOT_TOKEN",
+    "WEBAPP_URL",
+    "PUBLIC_URL",
+    "MANAGER_CHAT_ID",
+    "ADMIN_PIN",
+    "DATABASE_URL"
+  ],
+  "features": {
+    "customerIds": true,
+    "loyalty5Percent": true,
+    "bonusRedeemMaxPercent": 30,
+    "requiredProductChoices": true,
+    "postgres": true,
+    "telegramAuthValidation": true,
+    "localQr": true,
+    "catalogAdmin": true,
+    "loyaltyAdmin": true,
+    "customerPublicIds": true,
+    "loyaltyHistory": true,
+    "repeatOrder": true,
+    "managerReadyButton": true,
+    "paidStatus": true,
+    "pointSpecificMenus": true,
+    "volumeVariants": true,
+    "requiredFlavorChoices": true
+  },
+  "files": {
+    "total": 145,
+    "webappUploadPart": 65,
+    "backendUploadPart": 80
+  }
+}

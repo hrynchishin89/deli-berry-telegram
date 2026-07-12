@@ -2,18 +2,37 @@ services:
   - type: web
     name: deli-berry-telegram
     env: node
-    plan: free
-    buildCommand: npm install
+    plan: starter
+    buildCommand: npm ci --omit=dev
     startCommand: npm start
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: 20
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3000
+      - key: BUSINESS_NAME
+        value: Deli Berry
       - key: REQUIRE_TELEGRAM_AUTH
-        value: false
+        value: true
+      - key: TELEGRAM_AUTH_MAX_AGE_SECONDS
+        value: 86400
+      - key: BONUS_ENABLED
+        value: true
+      - key: BONUS_EARN_PERCENT
+        value: 5
+      - key: BONUS_MAX_REDEEM_PERCENT
+        value: 30
+      - key: BONUS_RUBLES_PER_POINT
+        value: 1
+      - key: ORDER_RATE_LIMIT_WINDOW_MS
+        value: 60000
+      - key: ORDER_RATE_LIMIT_MAX
+        value: 8
+      - key: PROFILE_RATE_LIMIT_MAX
+        value: 60
+      - key: DATABASE_SSL
+        value: true
       - key: SETUP_TELEGRAM_ON_START
         value: true
       - key: BOT_TOKEN
@@ -21,10 +40,18 @@ services:
       - key: ADMIN_PIN
         sync: false
       - key: WEBAPP_URL
-        value: https://deli-berry-telegram.onrender.com
+        sync: false
       - key: PUBLIC_URL
-        value: https://deli-berry-telegram.onrender.com
+        sync: false
       - key: MANAGER_CHAT_ID
         sync: false
-      - key: GOOGLE_SHEETS_WEBHOOK_URL
+      - key: DATABASE_URL
+        sync: false
+      - key: GITHUB_OWNER
+        sync: false
+      - key: GITHUB_REPO
+        sync: false
+      - key: GITHUB_BRANCH
+        value: main
+      - key: GITHUB_TOKEN
         sync: false

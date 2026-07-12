@@ -13,6 +13,9 @@ function printStartupReport() {
   console.log(`WEBAPP_URL: ${config.webAppUrl || 'пока не указан — можно настроить через /setup.html после деплоя'}`);
   console.log(`MANAGER_CHAT_ID: ${config.managerChatId || 'пока не указан — можно назначить командой /manager в группе'}`);
   console.log(`ADMIN_PIN: ${config.adminPin && config.adminPin !== 'change-me' ? 'задан' : 'не задан'}`);
+  console.log(`DATABASE_URL: ${config.databaseUrl ? 'задана (Postgres)' : 'не задана — временный JSON-режим'}`);
+  console.log(`TELEGRAM AUTH: ${config.requireTelegramAuth ? 'строгая проверка включена' : 'тестовый режим'}`);
+  console.log(`BONUS: ${config.bonusEnabled ? `${config.bonusEarnPercent}% / списание до ${config.bonusMaxRedeemPercent}%` : 'выключены'}`);
   console.log('----------------------------');
 }
 

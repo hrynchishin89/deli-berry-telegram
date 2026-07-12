@@ -1,0 +1,32 @@
+[
+  {
+    "id": "coffee",
+    "name": "Кофе и чай",
+    "emoji": "☕"
+  },
+  {
+    "id": "milkshakes",
+    "name": "Милкшейки",
+    "emoji": "🥛"
+  },
+  {
+    "id": "smoothies",
+    "name": "Смузи",
+    "emoji": "🥤"
+  },
+  {
+    "id": "fresh",
+    "name": "Фреши",
+    "emoji": "🍊"
+  },
+  {
+    "id": "drinks",
+    "name": "Холодные напитки",
+    "emoji": "🧋"
+  },
+  {
+    "id": "addons",
+    "name": "Добавки",
+    "emoji": "➕"
+  }
+]

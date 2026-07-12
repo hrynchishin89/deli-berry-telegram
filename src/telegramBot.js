@@ -1,7 +1,8 @@
 const fs = require('fs/promises');
 const path = require('path');
+const QRCode = require('qrcode');
 const config = require('./config');
-const store = require('./store/jsonStore');
+const store = require('./store');
 const {
   STATUS_LABELS,
   formatOrderForManager,
@@ -10,6 +11,7 @@ const {
   statusKeyboard,
   escapeHtml
 } = require('./telegram/formatters');
+const { canTransition, transitionError } = require('./statusRules');
 
 let bot = null;
 let polling = false;
@@ -64,8 +66,26 @@ async function sendPhoto(chatId, photo, options = {}) {
   return callApi('sendPhoto', { chat_id: chatId, photo, ...options });
 }
 
-function qrImageUrl(value) {
-  return `https://api.qrserver.com/v1/create-qr-code/?size=900x900&format=png&data=${encodeURIComponent(String(value || ''))}`;
+async function sendPhotoBuffer(chatId, buffer, filename = 'payment-qr.png', options = {}) {
+  const form = new FormData();
+  form.append('chat_id', String(chatId));
+  form.append('photo', new Blob([buffer], { type: 'image/png' }), filename);
+  for (const [key, value] of Object.entries(options || {})) {
+    if (value === undefined || value === null) continue;
+    form.append(key, typeof value === 'object' ? JSON.stringify(value) : String(value));
+  }
+  const response = await fetch(apiUrl('sendPhoto'), { method: 'POST', body: form });
+  const json = await response.json().catch(() => ({}));
+  if (!response.ok || json.ok === false) throw new Error(json.description || 'sendPhoto failed');
+  return json.result;
+}
+
+async function qrImageBuffer(value) {
+  return QRCode.toBuffer(String(value || ''), {
+    type: 'png', width: 900, margin: 2,
+    color: { dark: '#2E1C16', light: '#FFF8F1' },
+    errorCorrectionLevel: 'M'
+  });
 }
 
 async function editMessageText(chatId, messageId, text, options = {}) {
@@ -103,7 +123,7 @@ async function buildOpenAppMarkup() {
   return rows.length ? { inline_keyboard: rows } : undefined;
 }
 
-async function sendWelcome(chatId) {
+async function sendWelcome(chatId, telegramUser = null) {
   const url = await appUrl();
   const text = [
     '🍓 <b>Deli Berry</b>',
@@ -115,8 +135,16 @@ async function sendWelcome(chatId) {
     '',
     '⚠️ Наличие, цена и время приготовления подтверждаются менеджером.'
   ].join('\n');
+  let customerLine = '';
+  if (telegramUser?.id) {
+    const customer = await store.getOrCreateCustomer({ telegramUser }).catch(() => null);
+    if (customer) customerLine = `
+
+🪪 Ваш ID: <code>${escapeHtml(customer.publicId)}</code>
+🍓 Бонусы: <b>${Number(customer.bonusBalance || 0).toLocaleString('ru-RU')}</b>`;
+  }
   const replyMarkup = await buildOpenAppMarkup();
-  await sendMessage(chatId, text, {
+  await sendMessage(chatId, `${text}${customerLine}`, {
     parse_mode: 'HTML',
     ...(replyMarkup ? { reply_markup: replyMarkup } : {})
   });
@@ -168,7 +196,7 @@ async function sendPaymentLink(order, paymentLink, mode = 'link') {
 
   const caption = [
     `🍓 Оплата по заказу <b>${escapeHtml(order.id)}</b>`,
-    `Сумма ориентировочно: <b>${escapeHtml(order.total)} ₽</b>`,
+    `К оплате: <b>${escapeHtml(order.cashTotal ?? order.total)} ₽</b>`,
     '',
     'Оплачивайте только после подтверждения менеджера.'
   ].join('\n');
@@ -178,7 +206,8 @@ async function sendPaymentLink(order, paymentLink, mode = 'link') {
   };
 
   if (mode === 'qr') {
-    await sendPhoto(order.telegramUser.id, qrImageUrl(paymentLink), {
+    const qr = await qrImageBuffer(paymentLink);
+    await sendPhotoBuffer(order.telegramUser.id, qr, `deli-berry-${order.id}-qr.png`, {
       caption,
       parse_mode: 'HTML',
       reply_markup
@@ -278,6 +307,8 @@ async function configureTelegram() {
       { command: 'order', description: 'Открыть каталог' },
       { command: 'catalog', description: 'Открыть каталог' },
       { command: 'status', description: 'Проверить статус заказа' },
+      { command: 'profile', description: 'ID, бонусы и история заказов' },
+      { command: 'bonus', description: 'Проверить бонусный баланс' },
       { command: 'myid', description: 'Узнать свой Telegram ID' },
       { command: 'groupid', description: 'Узнать ID группы' },
       { command: 'manager', description: 'Назначить этот чат группой заказов' },
@@ -362,7 +393,7 @@ async function handleMessage(message) {
   }
 
   if (/^\/start(?:\s|$)/.test(text) || /^\/(order|catalog)(?:\s|$)/.test(text)) {
-    await sendWelcome(chatId);
+    await sendWelcome(chatId, message.from || null);
     return;
   }
 
@@ -373,6 +404,8 @@ async function handleMessage(message) {
       '/order — открыть каталог',
       '/catalog — открыть каталог',
       '/status НОМЕР — проверить статус заказа',
+      '/profile — ID, бонусы и история',
+      '/bonus — бонусный баланс',
       '/myid — узнать свой Telegram ID',
       '/groupid — узнать ID группы',
       '/manager — назначить текущий чат группой заказов',
@@ -388,6 +421,30 @@ async function handleMessage(message) {
       'Можно проще: ответьте текстом или фото/QR прямо на сообщение заказа в группе — бот перешлёт это клиенту.'
     ].join('\n');
     await sendMessage(chatId, help, { parse_mode: 'HTML' });
+    return;
+  }
+
+  if (/^\/(profile|bonus)(?:\s|$)/.test(text)) {
+    const profile = await store.getCustomerProfile({ telegramUser: message.from || {} }).catch(() => null);
+    if (!profile?.customer) {
+      await sendMessage(chatId, 'Профиль пока не создан. Откройте Mini App или оформите первый заказ.');
+      return;
+    }
+    const customer = profile.customer;
+    const url = await appUrl();
+    const body = [
+      '🍓 <b>Профиль Deli Berry</b>',
+      `ID: <code>${escapeHtml(customer.publicId)}</code>`,
+      `Бонусы: <b>${Number(customer.bonusBalance || 0).toLocaleString('ru-RU')}</b>`,
+      `Завершённых заказов: <b>${Number(customer.completedOrders || 0)}</b>`,
+      `Сумма покупок: <b>${Number(customer.lifetimeSpend || 0).toLocaleString('ru-RU')} ₽</b>`,
+      '',
+      'Начисляем 5% после завершения заказа. Бонусами можно оплатить до 30% стоимости товаров.'
+    ].join('\n');
+    await sendMessage(chatId, body, {
+      parse_mode: 'HTML',
+      ...(url ? { reply_markup: { inline_keyboard: [[{ text: 'Открыть профиль', web_app: { url } }]] } } : {})
+    });
     return;
   }
 
@@ -467,8 +524,10 @@ async function handleMessage(message) {
   if (qrHereMatch) {
     if (!(await isManagerChat(chatId))) return;
     const paymentLink = qrHereMatch[1];
-    await sendPhoto(chatId, qrImageUrl(paymentLink), {
-      caption: `QR на оплату\n${escapeHtml(paymentLink)}`,
+    const qr = await qrImageBuffer(paymentLink);
+    await sendPhotoBuffer(chatId, qr, 'deli-berry-payment-qr.png', {
+      caption: `QR на оплату
+${escapeHtml(paymentLink)}`,
       parse_mode: 'HTML',
       reply_markup: { inline_keyboard: [[{ text: 'Открыть оплату', url: paymentLink }]] }
     });
@@ -507,10 +566,26 @@ async function handleCallbackQuery(query) {
     return;
   }
   const [, orderId, status] = data.split('|');
-  const updated = await store.updateOrderStatus(orderId, status, {
+  const current = await store.getOrder(orderId);
+  if (!current) {
+    await answerCallbackQuery(query.id, { text: 'Заказ не найден', show_alert: true });
+    return;
+  }
+  if (!canTransition(current.status, status)) {
+    await answerCallbackQuery(query.id, {
+      text: transitionError(current.status, status),
+      show_alert: true
+    });
+    return;
+  }
+  const updated = await store.transitionOrderStatus(orderId, status, {
     type: 'telegram-manager',
     id: query.from?.id,
     username: query.from?.username || ''
+  }, {
+    enabled: config.bonusEnabled,
+    earnPercent: config.bonusEarnPercent,
+    maxRedeemPercent: config.bonusMaxRedeemPercent
   });
   if (!updated) {
     await answerCallbackQuery(query.id, { text: 'Заказ не найден', show_alert: true });

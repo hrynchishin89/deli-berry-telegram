@@ -44,22 +44,54 @@ function buildOrderFromPayload(payload, bundle, promocodes) {
   const deliveryType = payload.deliveryType === 'delivery' ? 'delivery' : 'pickup';
   const rawItems = Array.isArray(payload.items) ? payload.items : [];
   const items = [];
+  const itemErrors = [];
 
   for (const rawItem of rawItems) {
     const product = catalogById.get(String(rawItem.id || ''));
     if (!product) continue;
     const qty = Math.max(1, Math.min(20, Number(rawItem.qty || 1)));
-    if (pointId && Array.isArray(product.points) && !product.points.includes(pointId)) continue;
+    if (Array.isArray(product.points) && product.points.length === 0) continue;
+    if (pointId && Array.isArray(product.points) && product.points.length && !product.points.includes(pointId)) continue;
+
+    const variants = Array.isArray(product.variants) ? product.variants.filter((variant) => variant && variant.id) : [];
+    const requestedVariantId = String(rawItem.variantId || '').trim();
+    const variant = variants.find((item) => String(item.id) === requestedVariantId) || (variants.length ? variants[0] : null);
+    const variantLabel = variant ? String(variant.label || variant.unit || '').trim() : '';
+    const optionGroups = Array.isArray(product.options) ? product.options.filter((group) => group && group.id && Array.isArray(group.values)) : [];
+    const rawOptions = rawItem.options && typeof rawItem.options === 'object' ? rawItem.options : {};
+    const optionSelections = {};
+    const optionLabels = [];
+    for (const group of optionGroups) {
+      const requested = String(rawOptions[group.id] || '');
+      const selected = group.values.find((value) => String(value?.id || '') === requested);
+      if (!selected && group.required !== false) {
+        itemErrors.push(`${product.name}: выберите «${group.label || group.id}»`);
+        continue;
+      }
+      if (selected) {
+        optionSelections[group.id] = String(selected.id);
+        optionLabels.push(String(selected.label || selected.name || selected.id));
+      }
+    }
+    const unitPrice = Number((variant ? variant.price : product.price) || 0);
+    const itemDetails = [variantLabel, ...optionLabels].filter(Boolean);
+    const productName = itemDetails.length ? `${product.name} · ${itemDetails.join(' · ')}` : product.name;
+
     items.push({
       id: product.id,
-      name: product.name,
+      variantId: variant ? variant.id : '',
+      variantLabel,
+      name: productName,
+      baseName: product.name,
       category: product.category,
       categoryName: product.categoryName,
       qty,
-      unitPrice: Number(product.price || 0),
-      priceText: product.priceText || '',
-      unit: product.unit || '',
-      subtotal: Number(product.price || 0) * qty,
+      unitPrice,
+      priceText: variant ? (variant.priceText || '') : (product.priceText || ''),
+      unit: variantLabel || product.unit || '',
+      options: optionSelections,
+      optionLabels,
+      subtotal: unitPrice * qty,
       needsConfirmation: Boolean(product.needsConfirmation)
     });
   }
@@ -105,13 +137,15 @@ function buildOrderFromPayload(payload, bundle, promocodes) {
     promoError: promoResult.error || '',
     legalAccepted: Boolean(payload.legalAccepted),
     telegramUser,
-    statusHistory: [{ status: 'new', at: new Date().toISOString(), actor: { type: 'system' } }]
+    statusHistory: [{ status: 'new', at: new Date().toISOString(), actor: { type: 'system' } }],
+    itemErrors
   };
 }
 
 function validateOrder(order) {
   const errors = [];
   if (!order.items.length) errors.push('Добавьте хотя бы один товар');
+  if (Array.isArray(order.itemErrors) && order.itemErrors.length) errors.push(...order.itemErrors);
   if (!order.customer.name) errors.push('Укажите имя');
   if (!order.customer.phone || order.customer.phone.length < 6) errors.push('Укажите телефон');
   if (order.deliveryType === 'delivery' && !order.deliveryAddress) errors.push('Укажите адрес доставки');

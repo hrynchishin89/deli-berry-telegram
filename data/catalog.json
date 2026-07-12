@@ -66,7 +66,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/klubnika-v-molochnom-i-belom-shokolade-owner.jpg",
-    "photoHint": "webapp/assets/products/rzhavki-klubnika-v-molochnom-i-belom-shokolade.jpg"
+    "photoHint": "webapp/assets/products/rzhavki-klubnika-v-molochnom-i-belom-shokolade.jpg",
+    "stageImage": "/assets/products/stage/klubnika-v-molochnom-i-belom-shokolade-owner-stage.png",
+    "cutout": "/assets/products/cutouts/klubnika-v-molochnom-i-belom-shokolade-owner-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "rzhavki-klubnika-v-shokolade-mame-podarochnyy-nabor",
@@ -848,7 +851,10 @@
     "source": "Yandex/Yango Deli public menu: Deli_berry, Ржавки, 2-й микрорайон, с20, updated June 30, 2026. Delivery prices may differ from on-site.",
     "needsConfirmation": true,
     "image": "",
-    "photoHint": "webapp/assets/products/rzhavki-kinder-joy-minecraft.jpg"
+    "photoHint": "webapp/assets/products/rzhavki-kinder-joy-minecraft.jpg",
+    "stageImage": "/assets/products/stage/kinder-joy-minecraft-stage.png",
+    "cutout": "/assets/products/cutouts/kinder-joy-minecraft-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "rzhavki-dubayskiy-shokolad-2-serdca",
@@ -986,7 +992,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/banan-v-shokolade.jpg",
-    "photoHint": "webapp/assets/products/rzhavki-banan-v-molochnom-shokolade.jpg"
+    "photoHint": "webapp/assets/products/rzhavki-banan-v-molochnom-shokolade.jpg",
+    "stageImage": "/assets/products/stage/banan-v-shokolade-stage.png",
+    "cutout": "/assets/products/cutouts/banan-v-shokolade-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "rzhavki-golubika-v-shokolade",
@@ -1078,7 +1087,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/babl-ti-marokko-650ml.jpg",
-    "photoHint": "webapp/assets/products/dybenko-babl-ti-marokko-650-ml.jpg"
+    "photoHint": "webapp/assets/products/dybenko-babl-ti-marokko-650-ml.jpg",
+    "stageImage": "/assets/products/stage/babl-ti-marokko-650ml-stage.png",
+    "cutout": "/assets/products/cutouts/babl-ti-marokko-650ml-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "dybenko-babl-ti-taro-klaud",
@@ -1653,7 +1665,10 @@
     "source": "Yandex/Yango Deli public menu: Deli_Berry, Москва, Дыбенко 7/1, updated June 30, 2026. Delivery prices may differ from on-site.",
     "needsConfirmation": true,
     "image": "",
-    "photoHint": "webapp/assets/products/dybenko-kinder-joy-minecraft.jpg"
+    "photoHint": "webapp/assets/products/dybenko-kinder-joy-minecraft.jpg",
+    "stageImage": "/assets/products/stage/kinder-joy-minecraft-stage.png",
+    "cutout": "/assets/products/cutouts/kinder-joy-minecraft-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "dybenko-kinder-joy-stranger-things-nabor-iz-treh-yaic",
@@ -2113,7 +2128,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/klubnika-v-molochnom-i-belom-shokolade-owner.jpg",
-    "photoHint": "webapp/assets/products/dybenko-klubnika-v-molochnom-i-belom-shokolade.jpg"
+    "photoHint": "webapp/assets/products/dybenko-klubnika-v-molochnom-i-belom-shokolade.jpg",
+    "stageImage": "/assets/products/stage/klubnika-v-molochnom-i-belom-shokolade-owner-stage.png",
+    "cutout": "/assets/products/cutouts/klubnika-v-molochnom-i-belom-shokolade-owner-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "dybenko-klubnika-v-shokolade-s-dnem-rozhdeniya",
@@ -2688,7 +2706,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/banan-v-shokolade.jpg",
-    "photoHint": "webapp/assets/products/dybenko-banan-v-molochnom-shokolade.jpg"
+    "photoHint": "webapp/assets/products/dybenko-banan-v-molochnom-shokolade.jpg",
+    "stageImage": "/assets/products/stage/banan-v-shokolade-stage.png",
+    "cutout": "/assets/products/cutouts/banan-v-shokolade-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "dybenko-golubika-v-shokolade",
@@ -2781,7 +2802,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/kinder-joy-garri-potter.jpg",
-    "photoHint": "webapp/assets/products/kinder-joy-garri-potter.jpg"
+    "photoHint": "webapp/assets/products/kinder-joy-garri-potter.jpg",
+    "stageImage": "/assets/products/stage/kinder-joy-garri-potter-stage.png",
+    "cutout": "/assets/products/cutouts/kinder-joy-garri-potter-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "owner-kinder-joy-minecraft",
@@ -2805,7 +2829,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/kinder-joy-minecraft.jpg",
-    "photoHint": "webapp/assets/products/kinder-joy-minecraft.jpg"
+    "photoHint": "webapp/assets/products/kinder-joy-minecraft.jpg",
+    "stageImage": "/assets/products/stage/kinder-joy-minecraft-stage.png",
+    "cutout": "/assets/products/cutouts/kinder-joy-minecraft-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "owner-ochen-strannye-dela-nabor-3-sht",
@@ -2829,7 +2856,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/ochen-strannye-dela-nabor-3-sht.jpg",
-    "photoHint": "webapp/assets/products/ochen-strannye-dela-nabor-3-sht.jpg"
+    "photoHint": "webapp/assets/products/ochen-strannye-dela-nabor-3-sht.jpg",
+    "stageImage": "/assets/products/stage/ochen-strannye-dela-nabor-3-sht-stage.png",
+    "cutout": "/assets/products/cutouts/ochen-strannye-dela-nabor-3-sht-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "owner-fistabls-milk-crunch",
@@ -2853,7 +2883,10 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/fistabls-milk-crunch.jpg",
-    "photoHint": "webapp/assets/products/fistabls-milk-crunch.jpg"
+    "photoHint": "webapp/assets/products/fistabls-milk-crunch.jpg",
+    "stageImage": "/assets/products/stage/fistabls-milk-crunch-stage.png",
+    "cutout": "/assets/products/cutouts/fistabls-milk-crunch-cutout.png",
+    "imagePresentation": "product-stage"
   },
   {
     "id": "owner-haribo-piratskie-monety",
@@ -2877,6 +2910,9 @@
     "source": "Owner photo upload / test catalog, July 2026",
     "needsConfirmation": false,
     "image": "/assets/products/haribo-piratskie-monety.jpg",
-    "photoHint": "webapp/assets/products/haribo-piratskie-monety.jpg"
+    "photoHint": "webapp/assets/products/haribo-piratskie-monety.jpg",
+    "stageImage": "/assets/products/stage/haribo-piratskie-monety-stage.png",
+    "cutout": "/assets/products/cutouts/haribo-piratskie-monety-cutout.png",
+    "imagePresentation": "product-stage"
   }
 ]

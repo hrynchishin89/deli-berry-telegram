@@ -351,7 +351,7 @@ body{
 }
 
 /* =========================================================
-   Deli Berry V7 Porsche Cream — final visual correction
+   Deli Berry Production 1.0 — final cream visual system
    Goal: not dark, not flat. Premium cream/taupe salon mood + product objects.
    ========================================================= */
 :root{
@@ -427,8 +427,114 @@ body{
     radial-gradient(ellipse at 50% 82%,rgba(78,42,33,.13),transparent 11rem),
     linear-gradient(135deg,#F3E7DC 0%,#D8C8B8 100%)!important;
 }
-.product-art:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.46),transparent 42%,rgba(201,164,106,.15));pointer-events:none}.product-art:after{content:"";position:absolute;left:18%;right:18%;bottom:28px;height:22px;background:radial-gradient(ellipse,rgba(76,48,36,.22),transparent 67%);filter:blur(6px);opacity:.85}.product-art.product-mode-photo{background:linear-gradient(135deg,#F5E9DD,#D6C5B5)!important}.product-art.product-mode-cutout{background:radial-gradient(circle at 50% 34%,rgba(255,255,255,.95),transparent 15rem),linear-gradient(135deg,#F4E9DD,#D5C4B4)!important}.model-stage{width:min(390px,92%)!important;height:235px!important;display:grid!important;place-items:center!important;perspective:900px!important;z-index:2}.product-mode-cutout .model-stage{height:250px!important}.model-turntable{position:relative!important;width:100%!important;height:100%!important;display:grid!important;place-items:center!important;animation:objectFloatV7 5.4s ease-in-out infinite!important;transform-style:preserve-3d!important}.model-image{display:block!important;user-select:none!important;pointer-events:none!important}.mode-cutout-image{max-width:96%!important;max-height:96%!important;object-fit:contain!important;border-radius:0!important;filter:drop-shadow(0 30px 26px rgba(70,47,35,.24)) drop-shadow(0 4px 0 rgba(255,255,255,.20))!important;transform:translateZ(54px)!important}.mode-photo-image{width:92%!important;height:88%!important;object-fit:cover!important;border-radius:30px!important;box-shadow:0 28px 54px rgba(70,47,35,.22), inset 0 1px 0 rgba(255,255,255,.40)!important;transform:translateZ(42px)!important}.mode-stage-image{width:92%!important;height:88%!important;object-fit:contain!important;border-radius:30px!important;box-shadow:0 28px 54px rgba(70,47,35,.18)!important;transform:translateZ(38px)!important}.model-side,.side-left,.side-right{display:none!important}.model-glow{position:absolute!important;width:82%!important;height:82%!important;border-radius:50%!important;background:radial-gradient(circle,rgba(255,255,255,.72),rgba(233,90,134,.13) 42%,transparent 68%)!important;filter:blur(18px)!important;opacity:.88!important}.model-shadow{position:absolute!important;left:18%!important;right:18%!important;bottom:8px!important;height:20px!important;border-radius:50%!important;background:radial-gradient(ellipse,rgba(70,47,35,.32),transparent 68%)!important;filter:blur(7px)!important;display:block!important;z-index:-1!important}.model-floor{position:absolute!important;left:20%!important;right:20%!important;bottom:14px!important;height:1px!important;background:linear-gradient(90deg,transparent,rgba(201,164,106,.44),transparent)!important;display:block!important}.model-highlight{position:absolute!important;inset:7% 9%!important;border-radius:32px!important;background:linear-gradient(120deg,rgba(255,255,255,.35),transparent 45%)!important;opacity:.17!important;pointer-events:none!important}.model-ring{border-color:rgba(255,255,255,.40)!important}.model-orbit{border-color:rgba(255,255,255,.34)!important}.model-spark{color:#C9A46A!important;text-shadow:0 0 16px rgba(201,164,106,.55)!important}
+.product-art:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.46),transparent 42%,rgba(201,164,106,.15));pointer-events:none}.product-art:after{content:"";position:absolute;left:18%;right:18%;bottom:28px;height:22px;background:radial-gradient(ellipse,rgba(76,48,36,.22),transparent 67%);filter:blur(6px);opacity:.85}.product-art.product-mode-photo{background:linear-gradient(135deg,#F5E9DD,#D6C5B5)!important}.product-art.product-mode-cutout{background:radial-gradient(circle at 50% 34%,rgba(255,255,255,.95),transparent 15rem),linear-gradient(135deg,#F4E9DD,#D5C4B4)!important}.model-stage{width:min(390px,92%)!important;height:235px!important;display:grid!important;place-items:center!important;perspective:900px!important;z-index:2}.product-mode-cutout .model-stage{height:250px!important}.model-turntable{position:relative!important;width:100%!important;height:100%!important;display:grid!important;place-items:center!important;animation:objectFloatProduction 5.4s ease-in-out infinite!important;transform-style:preserve-3d!important}.model-image{display:block!important;user-select:none!important;pointer-events:none!important}.mode-cutout-image{max-width:96%!important;max-height:96%!important;object-fit:contain!important;border-radius:0!important;filter:drop-shadow(0 30px 26px rgba(70,47,35,.24)) drop-shadow(0 4px 0 rgba(255,255,255,.20))!important;transform:translateZ(54px)!important}.mode-photo-image{width:92%!important;height:88%!important;object-fit:cover!important;border-radius:30px!important;box-shadow:0 28px 54px rgba(70,47,35,.22), inset 0 1px 0 rgba(255,255,255,.40)!important;transform:translateZ(42px)!important}.mode-stage-image{width:92%!important;height:88%!important;object-fit:contain!important;border-radius:30px!important;box-shadow:0 28px 54px rgba(70,47,35,.18)!important;transform:translateZ(38px)!important}.model-side,.side-left,.side-right{display:none!important}.model-glow{position:absolute!important;width:82%!important;height:82%!important;border-radius:50%!important;background:radial-gradient(circle,rgba(255,255,255,.72),rgba(233,90,134,.13) 42%,transparent 68%)!important;filter:blur(18px)!important;opacity:.88!important}.model-shadow{position:absolute!important;left:18%!important;right:18%!important;bottom:8px!important;height:20px!important;border-radius:50%!important;background:radial-gradient(ellipse,rgba(70,47,35,.32),transparent 68%)!important;filter:blur(7px)!important;display:block!important;z-index:-1!important}.model-floor{position:absolute!important;left:20%!important;right:20%!important;bottom:14px!important;height:1px!important;background:linear-gradient(90deg,transparent,rgba(201,164,106,.44),transparent)!important;display:block!important}.model-highlight{position:absolute!important;inset:7% 9%!important;border-radius:32px!important;background:linear-gradient(120deg,rgba(255,255,255,.35),transparent 45%)!important;opacity:.17!important;pointer-events:none!important}.model-ring{border-color:rgba(255,255,255,.40)!important}.model-orbit{border-color:rgba(255,255,255,.34)!important}.model-spark{color:#C9A46A!important;text-shadow:0 0 16px rgba(201,164,106,.55)!important}
 .product-card:hover .model-turntable{animation-play-state:paused!important;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px) translateZ(34px)!important}.card-tilt{transition:transform .18s ease, box-shadow .18s ease!important}.modal-art{background:linear-gradient(135deg,#F6EADC,#D8C9B8)!important}.modal-art .model-stage{width:min(520px,92%)!important;height:350px!important}.modal-panel{background:linear-gradient(155deg,#FFF8F1,#E8D9C8)!important;color:#2E1C16!important;box-shadow:0 35px 100px rgba(70,47,35,.25)!important}.spec{background:rgba(78,42,33,.06)!important}.field input,.field textarea,.field select{background:rgba(255,248,241,.84)!important;color:#2E1C16!important;border-color:rgba(64,42,31,.14)!important}.checkout-hint{background:rgba(201,164,106,.14)!important;border-color:rgba(201,164,106,.25)!important;color:#674925!important}.bottom-nav{background:rgba(247,239,229,.86)!important;color:#2E1C16!important;border-color:rgba(64,42,31,.13)!important;box-shadow:0 -14px 46px rgba(70,47,35,.15)!important}.bottom-nav button{color:#756155!important}.bottom-nav button.active{background:rgba(78,42,33,.10)!important;color:#2E1C16!important}.floating-cart button{background:linear-gradient(135deg,#F8DEA1,#C9A46A)!important;color:#2E1C16!important}.toast{background:#FFF8F1!important;color:#2E1C16!important;box-shadow:0 18px 46px rgba(70,47,35,.18)!important}
-@keyframes objectFloatV7{0%,100%{transform:translateY(0) rotateX(0deg) rotateY(-2deg) translateZ(20px)}50%{transform:translateY(-10px) rotateX(2deg) rotateY(3deg) translateZ(32px)}}
+@keyframes objectFloatProduction{0%,100%{transform:translateY(0) rotateX(0deg) rotateY(-2deg) translateZ(20px)}50%{transform:translateY(-10px) rotateX(2deg) rotateY(3deg) translateZ(32px)}}
 @media(min-width:900px){.hero{grid-template-columns:1.08fr .72fr!important}.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.compact-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.quick-grid{grid-template-columns:repeat(4,1fr)!important}.point-grid{grid-template-columns:repeat(2,1fr)!important}}
 @media(max-width:899px){:root{--frame:calc(100vw - 16px)!important}.app-frame{padding-top:8px!important}.hero{grid-template-columns:1fr!important;padding:22px!important}.product-grid,.compact-grid{grid-template-columns:1fr!important}.product-art{min-height:286px!important}.model-stage{height:238px!important}.mode-photo-image{width:91%!important;height:86%!important}.bottom-nav{width:100%!important;left:0!important;right:0!important;transform:none!important;border-radius:0!important}.floating-cart{left:10px!important;right:10px!important;width:auto!important;transform:none!important}}
+
+
+/* =========================================================
+   Deli Berry Production 1.0 — contrast and readability polish
+   Fixes: pale yellow text on cream cards, unreadable release/trust chips.
+   Safe patch: does not touch catalog, prices, photos, orders or bot logic.
+   ========================================================= */
+:root{
+  --accent-readable:#5A2E22;
+  --accent-readable-2:#7A4B2C;
+  --accent-gold-soft:#D7B66F;
+  --surface-glass:#FFF8F1;
+  --surface-glass-2:#F4E7DA;
+}
+
+/* Trust metric cards: "30 сек", "QR / ссылка", "Подарок" */
+.trust-strip div,
+.trust-item{
+  background:linear-gradient(135deg,rgba(255,248,241,.88),rgba(238,225,211,.78))!important;
+  border:1px solid rgba(90,46,34,.16)!important;
+  box-shadow:0 14px 34px rgba(70,47,35,.10), inset 0 1px 0 rgba(255,255,255,.82)!important;
+}
+.trust-item:before,
+.trust-strip div:before{
+  opacity:.18!important;
+  background:radial-gradient(circle at 18% 0%,rgba(201,164,106,.36),transparent 48%)!important;
+}
+.trust-strip b,
+.trust-item b{
+  color:var(--accent-readable)!important;
+  text-shadow:none!important;
+  -webkit-text-stroke:0!important;
+}
+.trust-strip span,
+.trust-item span{
+  color:#6D574B!important;
+  text-shadow:none!important;
+}
+
+/* Hero/release chips and small golden UI labels */
+.release-chip,
+.eyebrow,
+.checkout-hint{
+  background:linear-gradient(135deg,#F8E5C4,#E6D2AD)!important;
+  color:#5A2E22!important;
+  border:1px solid rgba(122,75,44,.22)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.62), 0 10px 24px rgba(70,47,35,.08)!important;
+  text-shadow:none!important;
+}
+.release-chip *,.eyebrow *,.checkout-hint *{color:inherit!important;text-shadow:none!important;}
+
+/* Number/accent text in step cards and experience blocks */
+.experience-strip i,
+.stats-row b,
+.trust-strip b{
+  color:#5A2E22!important;
+}
+.experience-strip b,
+.quick-card b,
+.point-card b{
+  color:#2E1C16!important;
+}
+
+/* Active nav/chips/buttons: stronger text contrast */
+.chip.active,
+.bottom-nav button.active,
+.point-card.active,
+.secondary{
+  color:#2E1C16!important;
+}
+
+/* Mobile-specific readability — especially iPhone Telegram Mini App */
+@media(max-width:640px){
+  .trust-strip b,.trust-item b{font-size:18px!important;line-height:1.08!important;}
+  .trust-strip span,.trust-item span{font-size:12px!important;line-height:1.24!important;}
+  .release-chip{font-size:13px!important;line-height:1.28!important;}
+}
+
+
+/* ===== Deli Berry V8 release lock: final cream contrast system ===== */
+body, .app-frame{background:radial-gradient(circle at 20% 0%,#FFF8EF 0%,#E8DED2 38%,#D6C6B7 100%)!important;color:#2E1C16!important;}
+.app-header,.bottom-nav{background:rgba(255,248,239,.88)!important;border:1px solid rgba(74,48,35,.13)!important;box-shadow:0 18px 55px rgba(70,47,35,.14)!important;}
+.brand-lockup b,.section-head h2,.hero h1,.cart-page h1,.modal h2,.product-title,.price,.total-row b{color:#2E1C16!important;}
+.brand-lockup small,.hero p,.stats-row span,.experience-strip span,.quick-card span,.point-card p,.modal p,.product-description,.product-meta{color:#6F5A4D!important;}
+.eyebrow,.trust-pill,.release-pill,.hero-note,.checkout-hint{background:rgba(255,248,239,.72)!important;border-color:rgba(126,88,50,.24)!important;color:#5A3926!important;text-shadow:none!important;}
+.eyebrow *, .trust-pill *, .release-pill *, .hero-note *, .checkout-hint *{color:#5A3926!important;text-shadow:none!important;}
+.stats-row b,.experience-strip i,.quick-card b{color:#4A2F23!important;text-shadow:none!important;}
+.stats-row div,.experience-strip div,.quick-card,.point-card,.cart-item,.form-card,.empty,.total-card{background:rgba(255,248,239,.62)!important;border-color:rgba(74,48,35,.12)!important;box-shadow:0 18px 50px rgba(70,47,35,.12)!important;}
+.hero{background:linear-gradient(135deg,rgba(255,248,239,.88),rgba(232,222,210,.76))!important;border-color:rgba(74,48,35,.12)!important;box-shadow:0 26px 75px rgba(70,47,35,.13)!important;}
+.product-card{background:linear-gradient(180deg,#FFF8F1,#F1E3D5)!important;color:#2E1C16!important;box-shadow:0 24px 65px rgba(70,47,35,.16)!important;}
+.product-art{background:radial-gradient(circle at 45% 28%,#FFF8EF 0%,#F1DFCF 42%,#D3BBA4 100%)!important;}
+.model-floor{background:radial-gradient(ellipse at center,rgba(78,42,33,.26),rgba(78,42,33,.06) 46%,transparent 70%)!important;}
+.primary{background:linear-gradient(135deg,#F06B94,#C62A55)!important;color:#fff!important;box-shadow:0 18px 42px rgba(198,42,85,.22)!important;}
+.secondary,.ghost{background:rgba(255,248,239,.78)!important;color:#2E1C16!important;border-color:rgba(74,48,35,.12)!important;}
+.cart-chip{background:rgba(255,248,239,.75)!important;color:#2E1C16!important;border-color:rgba(74,48,35,.14)!important;}
+.bottom-nav button{color:#756155!important;}
+.bottom-nav button.active{background:rgba(78,42,33,.10)!important;color:#2E1C16!important;}
+@media(max-width:640px){.app-frame{padding-left:9px!important;padding-right:9px!important}.app-view{padding-bottom:110px!important}.hero h1{font-size:34px!important}.stats-row div,.experience-strip div{padding:14px!important}.product-art{min-height:220px!important}.model-stage{width:min(240px,88%)!important}}
+
+
+/* Production 1.0 — volume variants and required product choices */
+.variant-preview{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.variant-preview span{display:inline-flex;align-items:center;justify-content:center;min-height:26px;padding:0 9px;border-radius:999px;background:rgba(78,42,33,.08);color:#6F4B38;font-size:12px;font-weight:950;border:1px solid rgba(78,42,33,.10)}
+.variant-box{margin:18px 0 14px;padding:14px;border-radius:24px;background:rgba(78,42,33,.055);border:1px solid rgba(78,42,33,.11)}
+.variant-box-title{margin-bottom:10px;color:#4E2A21;font-weight:1000;letter-spacing:-.02em}.variant-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.variant-option{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px;border-radius:18px;background:rgba(255,248,241,.72);border:1px solid rgba(78,42,33,.12);color:#2E1C16;text-align:left;box-shadow:inset 0 1px 0 rgba(255,255,255,.42);transition:.18s}.variant-option b{font-size:14px}.variant-option span{font-size:13px;color:#7C6252;font-weight:900}.variant-option.active{background:linear-gradient(135deg,#FFF2DC,#E7C783);border-color:rgba(201,164,106,.72);box-shadow:0 14px 34px rgba(201,164,106,.22), inset 0 1px 0 rgba(255,255,255,.50)}
+@media(max-width:640px){.variant-options{grid-template-columns:1fr 1fr 1fr}.variant-option{padding:10px 9px}.variant-option b{font-size:12px}.variant-option span{font-size:11px}}

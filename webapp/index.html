@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Deli Berry — V7 Porsche cream</title>
+  <title>Deli Berry — Production 1.0</title>
   <meta name="theme-color" content="#E8DED2">
   <meta name="description" content="Deli Berry: клубника в шоколаде, подарки, напитки и десерты в Telegram Mini App.">
   <link rel="icon" href="/assets/brand/mascot-square.jpg" type="image/jpeg">
   <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="stylesheet" href="/styles.css?v=7.0.0-porsche-cream">
+  <link rel="stylesheet" href="/styles.css?v=1.0.0-final">
+  <link rel="stylesheet" href="/production.css?v=1.0.0-final">
   <script src="https://telegram.org/js/telegram-web-app.js?62"></script>
 </head>
 <body>
@@ -27,9 +28,14 @@
         <img src="/assets/brand/mascot-square.jpg" alt="Deli Berry" class="brand-icon">
         <span><b>Deli Berry</b><small>dessert boutique</small></span>
       </button>
-      <button class="cart-chip" data-nav="cart" type="button" aria-label="Корзина">
-        <span>🛒</span><b id="mini-cart-count">0</b>
-      </button>
+      <div class="header-actions">
+        <button id="profile-chip" class="profile-chip" data-nav="profile" type="button" aria-label="Профиль и бонусы" hidden>
+          <span data-profile-id>Профиль</span><b data-profile-bonus>0 🍓</b>
+        </button>
+        <button class="cart-chip" data-nav="cart" type="button" aria-label="Корзина">
+          <span>🛒</span><b id="mini-cart-count">0</b>
+        </button>
+      </div>
     </header>
 
     <main id="app" class="app-view" tabindex="-1"></main>
@@ -46,11 +52,12 @@
       <button data-nav="catalog" type="button"><span>🍓</span><b>Каталог</b></button>
       <button data-nav="drinks" type="button"><span>🥤</span><b>Напитки</b></button>
       <button data-nav="cart" type="button"><span>🛒</span><b>Корзина</b></button>
+      <button data-nav="profile" type="button"><span>👤</span><b>Профиль</b></button>
     </nav>
   </div>
 
   <div id="product-modal" class="modal" aria-hidden="true"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="/app.js?v=7.0.0-porsche-cream"></script>
+  <script src="/app.js?v=1.0.0-final"></script>
 </body>
 </html>

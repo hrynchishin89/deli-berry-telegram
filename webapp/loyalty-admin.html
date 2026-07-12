@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deli Berry — клиенты и бонусы</title>
+  <link rel="stylesheet" href="/loyalty-admin.css?v=1.0.0">
+</head>
+<body>
+  <main class="shell">
+    <header><div><span>Deli Berry</span><h1>Клиенты и бонусы</h1></div><button id="reload">Обновить</button></header>
+    <section class="login" id="login"><input id="pin" type="password" placeholder="ADMIN_PIN"><button id="loginBtn">Войти</button></section>
+    <section id="workspace" hidden>
+      <div class="toolbar"><input id="search" placeholder="Поиск по ID, имени, телефону"><span id="count"></span></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Клиент</th><th>Телефон</th><th>Бонусы</th><th>Заказы</th><th>Покупки</th><th>Корректировка</th></tr></thead><tbody id="rows"></tbody></table></div>
+    </section>
+    <div id="toast"></div>
+  </main>
+  <script src="/loyalty-admin.js?v=1.0.0"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deli Berry — каталог</title>
+  <link rel="stylesheet" href="catalog-admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Deli Berry CMS</p>
+        <h1>Каталог как на сайте</h1>
+        <p>Меняй цены, описания, точки и фото без редактирования JSON.</p>
+      </div>
+      <button id="reloadBtn" class="ghost">Обновить</button>
+    </section>
+
+    <section id="login" class="panel login-panel">
+      <label>PIN администратора</label>
+      <div class="row">
+        <input id="pinInput" type="password" placeholder="ADMIN_PIN из Render" autocomplete="current-password" />
+        <button id="loginBtn">Войти</button>
+      </div>
+      <p class="hint">PIN берётся из Render → Environment → ADMIN_PIN. Токен бота тут не нужен.</p>
+    </section>
+
+    <section id="workspace" class="workspace hidden">
+      <aside class="panel sidebar">
+        <div class="toolbar">
+          <input id="searchInput" type="search" placeholder="Поиск товара" />
+          <button id="newBtn" class="secondary">+ Товар</button>
+        </div>
+        <div class="chips">
+          <button class="chip active" data-filter="all">Все</button>
+          <button class="chip" data-filter="no-photo">Без фото</button>
+          <button class="chip" data-filter="hit">Хиты</button>
+          <button class="chip" data-filter="drinks">Напитки</button>
+          <button class="chip" data-filter="hidden">Скрытые</button>
+        </div>
+        <div id="productList" class="product-list"></div>
+      </aside>
+
+      <section class="panel editor">
+        <div id="emptyEditor" class="empty">Выбери товар слева или нажми “+ Товар”.</div>
+        <form id="productForm" class="hidden">
+          <div class="editor-head">
+            <div>
+              <p class="eyebrow">Карточка товара</p>
+              <h2 id="editorTitle">Товар</h2>
+            </div>
+            <span id="syncBadge" class="badge">—</span>
+          </div>
+
+          <div class="preview-card">
+            <div class="image-preview" id="imagePreview">🍓</div>
+            <div>
+              <label>Фото товара</label>
+              <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" />
+              <p class="hint">JPG/PNG/WEBP до 6 МБ. После сохранения путь появится в каталоге.</p>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <label>Название
+              <input name="name" required />
+            </label>
+            <label>ID
+              <input name="id" disabled />
+            </label>
+          </div>
+
+          <div class="grid three">
+            <label>Цена числом
+              <input name="price" type="number" min="0" step="1" />
+            </label>
+            <label>Цена для клиента
+              <input name="priceText" placeholder="2 590 ₽" />
+            </label>
+            <label>Вес / количество
+              <input name="unit" placeholder="12 шт. / 300 г" />
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label>Категория
+              <select name="category" id="categorySelect"></select>
+            </label>
+            <label>Название категории
+              <input name="categoryName" />
+            </label>
+          </div>
+
+          <label>Описание
+            <textarea name="description" rows="3"></textarea>
+          </label>
+
+          <div class="grid two">
+            <label>Состав
+              <textarea name="composition" rows="2"></textarea>
+            </label>
+            <label>Аллергены
+              <textarea name="allergens" rows="2"></textarea>
+            </label>
+          </div>
+
+          <div class="grid three">
+            <label>Срок годности
+              <input name="shelfLife" placeholder="уточняется" />
+            </label>
+            <label>Бейдж
+              <input name="badge" placeholder="Хит / Новинка" />
+            </label>
+            <label>Эмодзи
+              <input name="emoji" placeholder="🍓" />
+            </label>
+          </div>
+
+          <div class="points-box">
+            <p>Где доступен товар</p>
+            <label><input type="checkbox" value="dybenko" class="pointCheck" /> Дыбенко 7/1</label>
+            <label><input type="checkbox" value="rzhavki" class="pointCheck" /> Зеленопарк, с20</label>
+          </div>
+
+          <div class="toggles">
+            <label><input type="checkbox" name="isHit" /> Хит / популярное</label>
+            <label><input type="checkbox" name="needsConfirmation" /> Нужно подтверждение менеджером</label>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Сохранить товар</button>
+            <button type="button" id="hideBtn" class="danger">Скрыть товар</button>
+          </div>
+          <pre id="resultBox" class="result hidden"></pre>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <script src="catalog-admin.js"></script>
+</body>
+</html>

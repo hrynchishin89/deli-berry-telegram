@@ -4,13 +4,14 @@
   "description": "Премиальные десерты, подарки и напитки",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#120404",
-  "theme_color": "#120404",
+  "background_color": "#E8DED2",
+  "theme_color": "#E8DED2",
   "icons": [
     {
       "src": "/assets/brand/mascot-square.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     }
   ]
 }

@@ -1,11 +1,6 @@
 name: Deli Berry VK community sync
 
 on:
-  # One approved initialization run; this trigger is removed after success.
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/vk-community-sync.yml
   workflow_dispatch:
     inputs:
       mode:
@@ -39,12 +34,7 @@ jobs:
       - name: Check script syntax
         run: node --check scripts/vk-community-sync.js
 
-      - name: Apply the approved initial community update
-        if: github.event_name == 'push'
-        run: node scripts/vk-community-sync.js --mode=apply
-
-      - name: Run the requested manual mode
-        if: github.event_name == 'workflow_dispatch'
+      - name: Run the requested mode
         env:
           VK_MODE: ${{ inputs.mode }}
         run: node scripts/vk-community-sync.js

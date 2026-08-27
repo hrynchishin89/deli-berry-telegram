@@ -1,0 +1,35 @@
+name: Apply Deli Berry VK visuals
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Verify access or apply the reviewed avatar, cover, and pinned catalog
+        required: true
+        default: dry_run
+        type: choice
+        options:
+          - dry_run
+          - apply
+
+permissions:
+  contents: read
+
+jobs:
+  visuals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      VK_USER_TOKEN: ${{ secrets.VK_USER_TOKEN }}
+      VK_MODE: ${{ inputs.mode }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check script syntax
+        run: node --check scripts/upload-vk-community-visuals.js
+      - name: Upload visual package
+        run: node scripts/upload-vk-community-visuals.js

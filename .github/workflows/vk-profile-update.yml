@@ -1,0 +1,31 @@
+name: Update Deli Berry VK profile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/vk-community-sync.js
+      - .github/workflows/vk-profile-update.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      VK_TOKEN: ${{ secrets.VK_TOKEN }}
+      VK_MODE: profile_only
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check script syntax
+        run: node --check scripts/vk-community-sync.js
+      - name: Replace the retired catalog link
+        run: node scripts/vk-community-sync.js

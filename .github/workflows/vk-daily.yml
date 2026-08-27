@@ -1,0 +1,42 @@
+name: Deli Berry daily VK post
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Check the next post or publish it now
+        required: true
+        default: dry_run
+        type: choice
+        options:
+          - dry_run
+          - publish
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deli-berry-vk-daily
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      VK_TOKEN: ${{ secrets.VK_TOKEN }}
+      VK_USER_TOKEN: ${{ secrets.VK_USER_TOKEN }}
+      VK_MODE: ${{ github.event_name == 'schedule' && 'publish' || inputs.mode }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check script syntax
+        run: node --check scripts/publish-vk-daily-post.js
+      - name: Publish one reviewed post
+        run: node scripts/publish-vk-daily-post.js

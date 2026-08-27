@@ -1,0 +1,49 @@
+name: Deli Berry VK community sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/vk-community-sync.yml
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Check safely or apply the reviewed VK community update
+        required: true
+        default: dry_run
+        type: choice
+        options:
+          - dry_run
+          - apply
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    name: Verify and sync community
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      VK_TOKEN: ${{ secrets.VK_TOKEN }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check script syntax
+        run: node --check scripts/vk-community-sync.js
+
+      - name: Apply the approved initial community update
+        if: github.event_name == 'push'
+        run: node scripts/vk-community-sync.js --mode=apply
+
+      - name: Run the requested manual mode
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          VK_MODE: ${{ inputs.mode }}
+        run: node scripts/vk-community-sync.js

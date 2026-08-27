@@ -1,6 +1,7 @@
 name: Deli Berry VK community sync
 
 on:
+  # One approved initialization run; this trigger is removed after success.
   push:
     branches: [main]
     paths:
@@ -30,10 +31,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Check script syntax
         run: node --check scripts/vk-community-sync.js

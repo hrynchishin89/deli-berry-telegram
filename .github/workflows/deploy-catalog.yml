@@ -1,6 +1,10 @@
 name: Deploy Deli Berry catalog
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - catalog-site/publish-release.txt
   workflow_dispatch:
 
 permissions:

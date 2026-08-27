@@ -2,13 +2,14 @@
 
 const GROUP_ID = '240781627';
 const API_VERSION = '5.199';
-const CATALOG_URL = 'https://hrynchishin89.github.io/deli-berry-telegram/';
+// Until GitHub Pages is active, the only public destination is the community's messages.
+const CONTACT_URL = 'https://vk.me/club240781627';
 const LAUNCH_MARKER = '#DeliBerryСтарт';
 const POST_GUID = 'deli-berry-launch-v1';
 
 const CONTENT = Object.freeze({
   title: 'Deli Berry | Клубника в шоколаде',
-  status: 'Клубника в шоколаде до 30 минут • Discovery и Зеленопарк',
+  status: 'Клубника в шоколаде • до 30 минут после подтверждения',
   description: [
     'Deli Berry — наборы из клубники в шоколаде.',
     '',
@@ -25,7 +26,7 @@ const CONTENT = Object.freeze({
     '',
     'Чтобы заказать, напишите в сообщения сообщества: размер набора, точку получения, дату и время.',
     '',
-    `Каталог: ${CATALOG_URL}`,
+    `Заказ: ${CONTACT_URL}`,
     '',
     'Фотографии показывают примеры оформления. Доступный декор подтверждаем перед сборкой.'
   ].join('\n'),
@@ -48,8 +49,7 @@ const CONTENT = Object.freeze({
     '2. Напишите нам размер набора, точку, дату и время.',
     '3. Дождитесь подтверждения наличия и готовности.',
     '',
-    `Каталог: ${CATALOG_URL}`,
-    'Написать: https://vk.me/club240781627',
+    `Написать: ${CONTACT_URL}`,
     '',
     LAUNCH_MARKER
   ].join('\n')
@@ -103,7 +103,7 @@ async function main() {
     title: CONTENT.title,
     description: CONTENT.description,
     status: CONTENT.status,
-    website: CATALOG_URL
+    website: CONTACT_URL
   });
   if (mode === 'profile_only') { console.log('Community profile updated. No wall post was created.'); return; }
 

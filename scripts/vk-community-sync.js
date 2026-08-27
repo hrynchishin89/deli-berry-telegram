@@ -65,7 +65,8 @@ if (!['dry_run', 'apply'].includes(mode)) {
   throw new Error('VK_MODE must be either dry_run or apply.');
 }
 
-const token = String(process.env.VK_TOKEN || '').trim();
+const groupToken = String(process.env.VK_TOKEN || '').trim();
+const userToken = String(process.env.VK_USER_TOKEN || '').trim();
 
 function apiError(method, payload, status) {
   const code = payload?.error?.error_code ?? status ?? 'unknown';
@@ -73,14 +74,14 @@ function apiError(method, payload, status) {
   return new Error(`${method} failed (${code}): ${message}`);
 }
 
-async function callVk(method, params = {}) {
-  if (!token) throw new Error('VK_TOKEN is not available to this workflow.');
+async function callVk(method, params = {}, accessToken = groupToken) {
+  if (!accessToken) throw new Error('The required VK token is not available to this workflow.');
 
   const body = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined && value !== null) body.set(key, String(value));
   }
-  body.set('access_token', token);
+  body.set('access_token', accessToken);
   body.set('v', API_VERSION);
 
   const response = await fetch(`https://api.vk.com/method/${method}`, {
@@ -154,11 +155,11 @@ async function main() {
   }
 
   try {
-    await callVk('wall.pin', { owner_id: `-${GROUP_ID}`, post_id: postId });
+    await callVk('wall.pin', { owner_id: `-${GROUP_ID}`, post_id: postId }, userToken || groupToken);
     console.log(`Community updated and launch post ${postId} pinned.`);
   } catch (error) {
     if (/method is unavailable with group auth/i.test(error.message)) {
-      console.warn(`Community updated and launch post ${postId} published. Pin it in VK with a user token or in the community interface.`);
+      console.warn(`Community updated and launch post ${postId} published. Add optional VK_USER_TOKEN to pin it automatically, or pin it in VK.`);
       return;
     }
     throw error;

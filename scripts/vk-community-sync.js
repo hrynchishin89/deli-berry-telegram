@@ -4,6 +4,7 @@ const GROUP_ID = '240781627';
 const API_VERSION = '5.199';
 const CATALOG_URL = 'https://deli-berry-catalog.neuronix.chatgpt.site';
 const LAUNCH_MARKER = '#DeliBerryСтарт';
+const POST_GUID = 'deli-berry-launch-v1';
 
 const CONTENT = Object.freeze({
   title: 'Deli Berry | Клубника в шоколаде',
@@ -119,27 +120,12 @@ async function verifyTarget() {
   return group;
 }
 
-async function findLaunchPost() {
-  const response = await callVk('wall.get', {
-    owner_id: `-${GROUP_ID}`,
-    filter: 'owner',
-    count: 100
-  });
-  const posts = Array.isArray(response) ? response : response?.items || [];
-  return posts.find((post) => (
-    String(post?.owner_id) === `-${GROUP_ID}`
-      && typeof post?.text === 'string'
-      && post.text.includes(LAUNCH_MARKER)
-  )) || null;
-}
-
 async function main() {
   const group = await verifyTarget();
-  const existingPost = await findLaunchPost();
   const displayName = String(group?.name || 'community').replace(/[\r\n]/g, ' ');
 
   console.log(`Target verified: ${displayName} (id ${GROUP_ID}).`);
-  console.log(existingPost ? 'Existing launch post will be updated.' : 'A new launch post will be created.');
+  console.log('The post uses VK guid-based duplicate protection; group tokens cannot call wall.get.');
 
   if (mode === 'dry_run') {
     console.log('Dry run complete. No VK changes were made.');
@@ -154,24 +140,14 @@ async function main() {
     website: CATALOG_URL
   });
 
-  let postId;
-  if (existingPost) {
-    postId = Number(existingPost.id);
-    await callVk('wall.edit', {
-      owner_id: `-${GROUP_ID}`,
-      post_id: postId,
-      message: CONTENT.launchPost
-    });
-  } else {
-    const response = await callVk('wall.post', {
-      owner_id: `-${GROUP_ID}`,
-      from_group: 1,
-      signed: 0,
-      guid: 'deli-berry-launch-v1',
-      message: CONTENT.launchPost
-    });
-    postId = Number(response?.post_id ?? response?.id);
-  }
+  const response = await callVk('wall.post', {
+    owner_id: `-${GROUP_ID}`,
+    from_group: 1,
+    signed: 0,
+    guid: POST_GUID,
+    message: CONTENT.launchPost
+  });
+  const postId = Number(response?.post_id ?? response?.id);
 
   if (!Number.isSafeInteger(postId) || postId <= 0) {
     throw new Error('VK did not return a valid launch-post ID.');

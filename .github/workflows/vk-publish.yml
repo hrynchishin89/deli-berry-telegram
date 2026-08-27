@@ -1,0 +1,55 @@
+name: Deli Berry VK post publisher
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Validate access safely or publish a reviewed post
+        required: true
+        default: validate
+        type: choice
+        options:
+          - validate
+          - publish
+      message:
+        description: Reviewed VK post text (required for publish)
+        required: false
+        type: string
+      photo_url:
+        description: Optional direct HTTPS image URL for wall upload
+        required: false
+        type: string
+      guid:
+        description: Optional stable unique id for duplicate protection
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Validate or publish VK post
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      VK_TOKEN: ${{ secrets.VK_TOKEN }}
+      VK_GROUP_ID: '240781627'
+      VK_MODE: ${{ inputs.mode }}
+      VK_MESSAGE: ${{ inputs.message }}
+      VK_PHOTO_URL: ${{ inputs.photo_url }}
+      VK_GUID: ${{ inputs.guid }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check publisher syntax
+        run: node --check scripts/vk-publish.js
+
+      - name: Run requested mode
+        run: node scripts/vk-publish.js

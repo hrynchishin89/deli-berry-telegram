@@ -153,8 +153,16 @@ async function main() {
     throw new Error('VK did not return a valid launch-post ID.');
   }
 
-  await callVk('wall.pin', { owner_id: `-${GROUP_ID}`, post_id: postId });
-  console.log(`Community updated and launch post ${postId} pinned.`);
+  try {
+    await callVk('wall.pin', { owner_id: `-${GROUP_ID}`, post_id: postId });
+    console.log(`Community updated and launch post ${postId} pinned.`);
+  } catch (error) {
+    if (/method is unavailable with group auth/i.test(error.message)) {
+      console.warn(`Community updated and launch post ${postId} published. Pin it in VK with a user token or in the community interface.`);
+      return;
+    }
+    throw error;
+  }
 }
 
 main().catch((error) => {

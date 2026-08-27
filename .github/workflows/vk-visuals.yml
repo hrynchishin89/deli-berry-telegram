@@ -1,6 +1,10 @@
 name: Apply Deli Berry VK visuals
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - vk-assets/visual-release.txt
   workflow_dispatch:
     inputs:
       mode:
@@ -21,7 +25,7 @@ jobs:
     timeout-minutes: 5
     env:
       VK_USER_TOKEN: ${{ secrets.VK_USER_TOKEN }}
-      VK_MODE: ${{ inputs.mode }}
+      VK_MODE: ${{ github.event_name == 'push' && 'apply' || inputs.mode }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

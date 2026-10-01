@@ -12,6 +12,7 @@ const {
   escapeHtml
 } = require('./telegram/formatters');
 const { canTransition, transitionError } = require('./statusRules');
+const { deliverCatalogV5, catalogV5StatusSummary } = require('./catalogV5Messages');
 
 let bot = null;
 let polling = false;
@@ -46,16 +47,22 @@ function apiUrl(method) {
 
 async function callApi(method, payload = {}) {
   if (!config.botToken) return null;
-  const response = await fetch(apiUrl(method), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok || data.ok === false) {
-    throw new Error(data.description || `Telegram API ${method} failed`);
-  }
-  return data.result;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), method === 'getUpdates' ? 40000 : 15000);
+  try {
+    const response = await fetch(apiUrl(method), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+    const data = await response.json();
+    if (!response.ok || data.ok !== true) throw new Error(data.description || `Telegram API ${method} failed`);
+    return data.result;
+  } catch (error) {
+    if (controller.signal.aborted) throw new Error('Telegram request aborted after deadline');
+    throw error;
+  } finally { clearTimeout(timer); }
 }
 
 async function sendMessage(chatId, text, options = {}) {
@@ -126,8 +133,8 @@ async function buildOpenAppMarkup() {
 async function sendWelcome(chatId, telegramUser = null) {
   const url = await appUrl();
   const text = [
-    '🍓 <b>Deli Berry</b>',
-    'Клубника в шоколаде, сладкие подарки, дубайский шоколад и десерты.',
+    '🍓 <b>Дели Берри</b>',
+    'Наборы и букеты из клубники в шоколаде.',
     '',
     url
       ? 'Нажмите кнопку ниже, выберите точку, соберите корзину и отправьте заказ менеджеру.'
@@ -159,6 +166,11 @@ async function notifyManagers(order) {
   const managerChatId = await getManagerChatId();
   if (!bot || !managerChatId) return { skipped: true, reason: 'No bot or manager chat id' };
   try {
+    if (order.catalogVersion) {
+      return await deliverCatalogV5(order, { store, send: (text, controls) => sendMessage(managerChatId, text, {
+        ...(controls ? { reply_markup: statusKeyboard(order.id) } : {}), disable_web_page_preview: true
+      }) });
+    }
     const message = await sendMessage(managerChatId, formatOrderForManager(order), {
       parse_mode: 'HTML',
       reply_markup: statusKeyboard(order.id),
@@ -593,8 +605,8 @@ async function handleCallbackQuery(query) {
   }
   await answerCallbackQuery(query.id, { text: STATUS_LABELS[status] || status });
   if (query.message) {
-    await editMessageText(query.message.chat.id, query.message.message_id, formatOrderForManager(updated), {
-      parse_mode: 'HTML',
+    await editMessageText(query.message.chat.id, query.message.message_id, updated.catalogVersion ? catalogV5StatusSummary(updated) : formatOrderForManager(updated), {
+      ...(updated.catalogVersion ? {} : { parse_mode: 'HTML' }),
       reply_markup: statusKeyboard(updated.id),
       disable_web_page_preview: true
     }).catch(() => null);

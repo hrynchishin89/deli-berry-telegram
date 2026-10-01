@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {variants,families,catalogVersion} from '../shared/catalog.mjs';
+import {priceItem,validateOrder} from '../shared/order.mjs';
+const item=(variantId,extra={})=>({variantId,quantity:1,design:'',berry:'none',inscription:'',...extra});
+test('16 exact owner-approved prices and 9 families',()=>{assert.equal(families.length,9);assert.deepEqual(variants.map(v=>priceItem(item(v.id)).unitPrice),[1190,890,1590,1790,990,1990,1250,2790,1990,2750,4890,3290,2790,1690,4390,2950]);});
+test('A06 does not double charge berries; quantities include addons',()=>{assert.equal(priceItem(item('SET-12-A06',{berry:'blueberry',inscription:'Маме',quantity:2})).total,4080);assert.equal(priceItem(item('SET-09-FRESH',{berry:'raspberry',inscription:'Маме'})).total,1640);});
+test('forged price, nonexistent products and blocked photos',()=>{assert.equal(priceItem(item('SET-09-FRESH',{price:1,total:1})).total,1190);for(const id of ['SET-40-FRESH','BQT-A07-FD','KIT-09'])assert.throws(()=>priceItem(item(id)));for(const design of ['A04','B05','B08','C01'])assert.throws(()=>priceItem(item('SET-16-FRESH',{design})));assert.throws(()=>priceItem(item('SET-12-FD',{design:'A06'})));assert.throws(()=>priceItem(item('SET-09-FRESH',{berry:'included'})));for(const quantity of [0,-1,1.2,100,'1'])assert.throws(()=>priceItem(item('SET-09-FRESH',{quantity})));});
+const order={version:catalogVersion,requestId:'test-order-1',items:[item('SET-09-FRESH')],point:'discovery',date:'2026-10-02',time:'14:00',comment:''};
+test('Moscow time, impossible dates, invalid catalog and point',()=>{assert.equal(validateOrder(order,new Date('2026-10-02T10:59:00Z')).total,1190);assert.throws(()=>validateOrder(order,new Date('2026-10-02T11:00:00Z')));assert.throws(()=>validateOrder({...order,date:'2026-02-30'},new Date('2026-01-01')));for(const extra of [{items:[]},{point:'other'},{version:'v3'},{time:'27:00'}])assert.throws(()=>validateOrder({...order,...extra},new Date('2026-01-01')));});

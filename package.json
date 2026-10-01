@@ -13,7 +13,7 @@
     "wizard": "node scripts/wizard.js",
     "telegram:setup": "node scripts/setup-telegram.js",
     "test:order": "node scripts/test-order.js",
-    "check": "node --check src/server.js && node --check src/telegramBot.js && node --check src/startupCheck.js && node --check src/orderUtils.js && node --check src/statusRules.js && node --check src/store/index.js && node --check src/store/fileData.js && node --check src/store/jsonStore.js && node --check src/store/postgresStore.js && node --check src/security/telegramAuth.js && node --check src/integrations/googleSheets.js && node --check src/telegram/formatters.js && node --check webapp/app.js && node --check webapp/admin.js && node --check webapp/setup.js && node --check webapp/loyalty-admin.js && node --check src/githubCms.js && node --check webapp/catalog-admin.js",
+    "check": "node --check src/server.js && node --check src/telegramBot.js && node --check src/startupCheck.js && node --check src/orderUtils.js && node --check src/statusRules.js && node --check src/store/index.js && node --check src/store/fileData.js && node --check src/store/jsonStore.js && node --check src/store/postgresStore.js && node --check src/security/telegramAuth.js && node --check src/integrations/googleSheets.js && node --check src/telegram/formatters.js && node --check webapp/app.js && node --check webapp/admin.js && node --check webapp/setup.js && node --check webapp/loyalty-admin.js && node --check src/githubCms.js && node --check webapp/catalog-admin.js && node --check src/catalogV5.js && node --check src/catalogV5Messages.js",
     "env:check": "node scripts/check-env.js",
     "live": "npm run check && npm start",
     "telegram:validate": "node scripts/validate-telegram.js",
@@ -28,7 +28,9 @@
     "create:env": "node scripts/create-env.js",
     "test:production": "node scripts/test-production.js",
     "validate:catalog": "node scripts/validate-catalog.js",
-    "release:check": "npm run check && npm run validate:catalog && npm run test:production && npm audit --omit=dev"
+    "release:check": "npm run check && npm run validate:catalog && npm run test:production && npm audit --omit=dev",
+    "catalog:test": "node --test miniapp/tests/*.test.mjs tests/catalog-v5.test.js",
+    "catalog:build": "npm --prefix miniapp run typecheck && npm --prefix miniapp run build"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

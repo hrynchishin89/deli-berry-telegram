@@ -1,0 +1,791 @@
+{
+  "schema": "deliberry.miniapp.catalog/2.0",
+  "updatedAt": "2026-10-02",
+  "brand": {
+    "name": "Дели Берри",
+    "tagline": "Клубника в шоколаде — для подарка и для себя",
+    "phone": "+7 (995) 901-47-24",
+    "phoneLink": "tel:+79959014724",
+    "telegram": "@deliberry_msk"
+  },
+  "seller": {
+    "legalName": "ИП Булгатова Светлана Андреевна",
+    "shortName": "ИП Булгатова Светлана Андреевна",
+    "inn": "032621982803",
+    "ogrnip": "324030000006409",
+    "registrationAddress": "670013, Россия, Республика Бурятия, г. Улан-Удэ, ул. Приречная, д. 8А, кв. 17"
+  },
+  "stores": [
+    {
+      "id": "discovery",
+      "name": "Дели Берри — ТЦ Discovery",
+      "shortName": "Discovery",
+      "address": "Москва, ул. Дыбенко, 7/1, ТЦ Discovery",
+      "hours": "Ежедневно, 10:00–22:00",
+      "mapsUrl": "https://yandex.ru/maps/?text=%D0%94%D0%B5%D0%BB%D0%B8%20%D0%91%D0%B5%D1%80%D1%80%D0%B8%20Discovery%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%20%D0%94%D1%8B%D0%B1%D0%B5%D0%BD%D0%BA%D0%BE%207/1",
+      "phone": "+7 (995) 901-47-24",
+      "dateOverrides": {},
+      "stopList": [],
+      "enabled": true,
+      "openTime": "10:00",
+      "closeTime": "22:00"
+    },
+    {
+      "id": "zelenopark",
+      "name": "Дели Берри — ТРЦ Zеленопарк",
+      "shortName": "Zеленопарк",
+      "address": "Московская область, г. о. Солнечногорск, пгт Ржавки, 2-й микрорайон, стр. 20, ТРЦ Zеленопарк",
+      "hours": "Ежедневно, 10:00–22:00",
+      "mapsUrl": "https://yandex.ru/maps/?text=%D0%94%D0%B5%D0%BB%D0%B8%20%D0%91%D0%B5%D1%80%D1%80%D0%B8%20Z%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%BF%D0%B0%D1%80%D0%BA%20%D0%A0%D0%B6%D0%B0%D0%B2%D0%BA%D0%B8%202-%D0%B9%20%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%20%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5%2020",
+      "phone": "+7 (995) 901-47-24",
+      "dateOverrides": {},
+      "stopList": [],
+      "enabled": true,
+      "openTime": "10:00",
+      "closeTime": "22:00"
+    }
+  ],
+  "fulfilment": {
+    "pickup": {
+      "enabled": true,
+      "label": "Самовывоз",
+      "holdHours": 24,
+      "note": "Храним заказ на точке до 24 часов, но не дольше срока годности"
+    },
+    "courier": {
+      "enabled": true,
+      "label": "Курьерская доставка",
+      "note": "Доставку выполняет сторонний курьерский сервис. Стоимость рассчитывается отдельно и оплачивается клиентом. Точное время подтверждает оператор."
+    },
+    "orderHours": {
+      "from": "10:00",
+      "to": "22:00",
+      "slotMinutes": 15
+    }
+  },
+  "storage": {
+    "fresh": "Хранить до 24 часов с момента изготовления при температуре +2…+6 °C в закрытой упаковке. Рекомендуется употребить в день получения. Не замораживать.",
+    "freezeDried": "Хранить до 3 месяцев с даты изготовления в закрытой упаковке, в сухом месте при температуре 18±3 °C и относительной влажности не выше 75 %. Точную дату смотрите на упаковке."
+  },
+  "pricing": {
+    "currency": "RUB",
+    "addOns": [
+      {
+        "id": "whole-blueberry",
+        "name": "Целая голубика в оформлении",
+        "price": 200,
+        "group": "whole-berry"
+      },
+      {
+        "id": "whole-raspberry",
+        "name": "Целая малина в оформлении",
+        "price": 200,
+        "group": "whole-berry"
+      },
+      {
+        "id": "chocolate-inscription",
+        "name": "Шоколадная надпись",
+        "price": 250,
+        "group": "inscription"
+      }
+    ]
+  },
+  "products": [
+    {
+      "id": "SET-09",
+      "kind": "set",
+      "category": "Наборы",
+      "title": "Набор из 9 ягод",
+      "subtitle": "Клубника в шоколаде",
+      "strawberryCount": 9,
+      "bananaCount": 0,
+      "image": "assets/approved/B04.webp",
+      "thumbnail": "assets/approved/B04.webp",
+      "badges": [
+        "9 ягод"
+      ],
+      "description": "9 ягод клубники в шоколаде в подарочной коробке",
+      "variants": [
+        {
+          "id": "SET-09-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 1190,
+          "prepText": "Приготовим за 20–30 минут",
+          "prepMinutes": 30,
+          "addOns": true,
+          "defaultAppearanceId": "B04"
+        },
+        {
+          "id": "SET-09-FD",
+          "type": "freeze_dried",
+          "label": "Хрустящая сублимированная клубника в шоколаде",
+          "price": 890,
+          "prepText": "В наличии",
+          "prepMinutes": 0,
+          "addOns": false,
+          "defaultAppearanceId": "B04"
+        }
+      ],
+      "groupId": "SET-09",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "SET-12",
+      "kind": "set",
+      "category": "Наборы",
+      "title": "Набор из 12 ягод",
+      "subtitle": "Клубника в шоколаде",
+      "strawberryCount": 12,
+      "bananaCount": 0,
+      "image": "assets/approved/B02.webp",
+      "thumbnail": "assets/approved/B02.webp",
+      "badges": [
+        "12 ягод"
+      ],
+      "description": "12 ягод клубники в шоколаде",
+      "variants": [
+        {
+          "id": "SET-12-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 1590,
+          "prepText": "Приготовим за 20–30 минут",
+          "prepMinutes": 30,
+          "addOns": true,
+          "defaultAppearanceId": "B02"
+        },
+        {
+          "id": "SET-12-A06",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 1790,
+          "prepText": "Приготовим за 20–30 минут",
+          "prepMinutes": 30,
+          "addOns": true,
+          "includedAddOnGroup": "whole-berry",
+          "note": "Доплата за ягодное оформление уже включена в цену.",
+          "defaultAppearanceId": "A06"
+        },
+        {
+          "id": "SET-12-FD",
+          "type": "freeze_dried",
+          "label": "Хрустящая сублимированная клубника в шоколаде",
+          "price": 990,
+          "prepText": "В наличии",
+          "prepMinutes": 0,
+          "addOns": false,
+          "defaultAppearanceId": "B02"
+        }
+      ],
+      "groupId": "SET-12",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "SET-16",
+      "kind": "set",
+      "category": "Наборы",
+      "title": "Набор из 16 ягод",
+      "subtitle": "Клубника в шоколаде",
+      "strawberryCount": 16,
+      "bananaCount": 0,
+      "image": "assets/approved/A01.webp",
+      "thumbnail": "assets/approved/A01.webp",
+      "badges": [
+        "16 ягод"
+      ],
+      "description": "16 ягод клубники в шоколаде в подарочной коробке",
+      "variants": [
+        {
+          "id": "SET-16-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 1990,
+          "prepText": "Приготовим за 20–30 минут",
+          "prepMinutes": 30,
+          "addOns": true,
+          "defaultAppearanceId": "A01"
+        },
+        {
+          "id": "SET-16-FD",
+          "type": "freeze_dried",
+          "label": "Хрустящая сублимированная клубника в шоколаде",
+          "price": 1250,
+          "prepText": "В наличии",
+          "prepMinutes": 0,
+          "addOns": false,
+          "defaultAppearanceId": "A01"
+        }
+      ],
+      "groupId": "SET-16",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "SET-25",
+      "kind": "set",
+      "category": "Наборы",
+      "title": "Набор из 25 ягод",
+      "subtitle": "Свежая клубника в шоколаде",
+      "strawberryCount": 25,
+      "bananaCount": 0,
+      "image": "assets/set-25.webp",
+      "thumbnail": "assets/set-25.webp",
+      "badges": [
+        "25 ягод"
+      ],
+      "description": "25 свежих ягод клубники в шоколаде в крафтовой коробке",
+      "variants": [
+        {
+          "id": "SET-25-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 2790,
+          "prepText": "Приготовим за 20–30 минут",
+          "prepMinutes": 30,
+          "addOns": true,
+          "defaultAppearanceId": "SET25-KRAFT"
+        }
+      ],
+      "groupId": "SET-25",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "MIX-BANANA",
+      "kind": "set",
+      "category": "Наборы",
+      "title": "Клубника и бананы",
+      "subtitle": "12 ягод клубники + 2 банана в шоколаде",
+      "strawberryCount": 12,
+      "bananaCount": 2,
+      "image": "assets/approved/C02.webp",
+      "thumbnail": "assets/approved/C02.webp",
+      "badges": [
+        "Ассорти",
+        "12 + 2"
+      ],
+      "description": "12 ягод клубники и 2 банана в шоколаде",
+      "variants": [
+        {
+          "id": "MIX-BANANA-C02",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 1990,
+          "prepText": "Приготовим за 20–30 минут",
+          "prepMinutes": 30,
+          "addOns": false,
+          "defaultAppearanceId": "C02"
+        }
+      ],
+      "groupId": "MIX-BANANA",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "BQT-A07",
+      "kind": "bouquet",
+      "category": "Букеты",
+      "title": "Букет из 19 ягод",
+      "subtitle": "Свежая клубника в шоколаде",
+      "strawberryCount": 19,
+      "bananaCount": 0,
+      "image": "assets/approved/A07.webp",
+      "thumbnail": "assets/approved/A07.webp",
+      "badges": [
+        "19 ягод"
+      ],
+      "description": "19 ягод клубники в шоколаде",
+      "variants": [
+        {
+          "id": "BQT-A07-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 2750,
+          "prepText": "Приготовим за 30–60 минут",
+          "prepMinutes": 60,
+          "addOns": false,
+          "defaultAppearanceId": "A07"
+        }
+      ],
+      "groupId": "BQT-19",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "BQT-A08",
+      "kind": "bouquet",
+      "category": "Букеты",
+      "title": "Букет из 39 ягод",
+      "subtitle": "Клубника в шоколаде",
+      "strawberryCount": 39,
+      "bananaCount": 0,
+      "image": "assets/approved/A08.webp",
+      "thumbnail": "assets/approved/A08.webp",
+      "badges": [
+        "39 ягод"
+      ],
+      "description": "39 ягод клубники в шоколаде",
+      "variants": [
+        {
+          "id": "BQT-A08-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 4890,
+          "prepText": "Приготовим за 30–60 минут",
+          "prepMinutes": 60,
+          "addOns": false,
+          "defaultAppearanceId": "A08"
+        },
+        {
+          "id": "BQT-A08-FD",
+          "type": "freeze_dried",
+          "label": "Хрустящая сублимированная клубника в шоколаде",
+          "price": 3290,
+          "prepText": "В наличии",
+          "prepMinutes": 0,
+          "addOns": false,
+          "defaultAppearanceId": "A08"
+        }
+      ],
+      "groupId": "BQT-39",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "BQT-B09",
+      "kind": "bouquet",
+      "category": "Букеты",
+      "title": "Букет из 19 ягод",
+      "subtitle": "Клубника в шоколаде",
+      "strawberryCount": 19,
+      "bananaCount": 0,
+      "image": "assets/approved/B09.webp",
+      "thumbnail": "assets/approved/B09.webp",
+      "badges": [
+        "19 ягод"
+      ],
+      "description": "19 ягод клубники в шоколаде",
+      "variants": [
+        {
+          "id": "BQT-B09-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 2790,
+          "prepText": "Приготовим за 30–60 минут",
+          "prepMinutes": 60,
+          "addOns": false,
+          "defaultAppearanceId": "B09"
+        },
+        {
+          "id": "BQT-B09-FD",
+          "type": "freeze_dried",
+          "label": "Хрустящая сублимированная клубника в шоколаде",
+          "price": 1690,
+          "prepText": "В наличии",
+          "prepMinutes": 0,
+          "addOns": false,
+          "defaultAppearanceId": "B09"
+        }
+      ],
+      "groupId": "BQT-19",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    },
+    {
+      "id": "BQT-B10",
+      "kind": "bouquet",
+      "category": "Букеты",
+      "title": "Букет из 35 ягод",
+      "subtitle": "Клубника в шоколаде",
+      "strawberryCount": 35,
+      "bananaCount": 0,
+      "image": "assets/approved/B10.webp",
+      "thumbnail": "assets/approved/B10.webp",
+      "badges": [
+        "35 ягод"
+      ],
+      "description": "35 ягод клубники в шоколаде",
+      "variants": [
+        {
+          "id": "BQT-B10-FRESH",
+          "type": "fresh",
+          "label": "Свежая клубника в шоколаде",
+          "price": 4390,
+          "prepText": "Приготовим за 30–60 минут",
+          "prepMinutes": 60,
+          "addOns": false,
+          "defaultAppearanceId": "B10"
+        },
+        {
+          "id": "BQT-B10-FD",
+          "type": "freeze_dried",
+          "label": "Хрустящая сублимированная клубника в шоколаде",
+          "price": 2950,
+          "prepText": "В наличии",
+          "prepMinutes": 0,
+          "addOns": false,
+          "defaultAppearanceId": "B10"
+        }
+      ],
+      "groupId": "BQT-35",
+      "labeling": {
+        "status": "pending",
+        "composition": null,
+        "allergens": null
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "SET-09",
+      "kind": "set",
+      "label": "9",
+      "title": "Набор из 9 ягод",
+      "families": [
+        "SET-09"
+      ]
+    },
+    {
+      "id": "SET-12",
+      "kind": "set",
+      "label": "12",
+      "title": "Набор из 12 ягод",
+      "families": [
+        "SET-12"
+      ]
+    },
+    {
+      "id": "SET-16",
+      "kind": "set",
+      "label": "16",
+      "title": "Набор из 16 ягод",
+      "families": [
+        "SET-16"
+      ]
+    },
+    {
+      "id": "SET-25",
+      "kind": "set",
+      "label": "25",
+      "title": "Набор из 25 ягод",
+      "families": [
+        "SET-25"
+      ]
+    },
+    {
+      "id": "MIX-BANANA",
+      "kind": "set",
+      "label": "Клубника и бананы",
+      "title": "Клубника и бананы",
+      "families": [
+        "MIX-BANANA"
+      ]
+    },
+    {
+      "id": "BQT-19",
+      "kind": "bouquet",
+      "label": "19",
+      "title": "Букет из 19 ягод",
+      "families": [
+        "BQT-A07",
+        "BQT-B09"
+      ]
+    },
+    {
+      "id": "BQT-35",
+      "kind": "bouquet",
+      "label": "35",
+      "title": "Букет из 35 ягод",
+      "families": [
+        "BQT-B10"
+      ]
+    },
+    {
+      "id": "BQT-39",
+      "kind": "bouquet",
+      "label": "39",
+      "title": "Букет из 39 ягод",
+      "families": [
+        "BQT-A08"
+      ]
+    }
+  ],
+  "appearances": [
+    {
+      "id": "B04",
+      "familyId": "SET-09",
+      "label": "Базовое оформление · красная коробка",
+      "allowedSkus": [
+        "SET-09-FRESH",
+        "SET-09-FD"
+      ],
+      "photos": [
+        "assets/approved/B04.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B04.webp",
+      "photoVersion": "5aacb96965fd48d2d38068575bce03786da61aabc2fed091e1ad17c0b3dc1ec3",
+      "packaging": "Красная подарочная коробка",
+      "includedDecoration": "",
+      "referenceForTypes": [
+        "freeze_dried"
+      ],
+      "note": ""
+    },
+    {
+      "id": "B02",
+      "familyId": "SET-12",
+      "label": "Базовое оформление",
+      "allowedSkus": [
+        "SET-12-FRESH",
+        "SET-12-FD"
+      ],
+      "photos": [
+        "assets/approved/B02.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B02.webp",
+      "photoVersion": "83e79ad0912c76df2a139ceecbecc1558310398e42c938a9c0fe11e24719f495",
+      "packaging": "Подарочная коробка",
+      "includedDecoration": "",
+      "referenceForTypes": [
+        "freeze_dried"
+      ],
+      "note": ""
+    },
+    {
+      "id": "A06",
+      "familyId": "SET-12",
+      "label": "Ягодное оформление",
+      "allowedSkus": [
+        "SET-12-A06"
+      ],
+      "photos": [
+        "assets/approved/A06.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/A06.webp",
+      "photoVersion": "4414632cbc7372b66b8f538f24237e116072f0d344c2b58e7d8be30c19653f0f",
+      "packaging": "Подарочная коробка",
+      "includedDecoration": "Ягодный декор включён",
+      "referenceForTypes": [],
+      "note": ""
+    },
+    {
+      "id": "A01",
+      "familyId": "SET-16",
+      "label": "Шоколадное ассорти",
+      "allowedSkus": [
+        "SET-16-FRESH",
+        "SET-16-FD"
+      ],
+      "photos": [
+        "assets/approved/A01.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/A01.webp",
+      "photoVersion": "265df13e52843033dc83422f517aa55f2470c61eaa16e8db079494bd807b58c8",
+      "packaging": "Крафтовая подарочная коробка",
+      "includedDecoration": "",
+      "referenceForTypes": [
+        "freeze_dried"
+      ],
+      "note": ""
+    },
+    {
+      "id": "B01",
+      "familyId": "SET-16",
+      "label": "Светлый и молочный шоколад",
+      "allowedSkus": [
+        "SET-16-FRESH"
+      ],
+      "photos": [
+        "assets/approved/B01.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B01.webp",
+      "photoVersion": "2bf7fcbf72ab815b809025cd44e313b3af129a61d79b5411f394a0ac14de36e9",
+      "packaging": "Подарочная коробка с розовой бумагой",
+      "includedDecoration": "",
+      "referenceForTypes": [],
+      "note": ""
+    },
+    {
+      "id": "B03",
+      "familyId": "SET-16",
+      "label": "Шоколад и ягодная крошка",
+      "allowedSkus": [
+        "SET-16-FRESH"
+      ],
+      "photos": [
+        "assets/approved/B03.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B03.webp",
+      "photoVersion": "5dde1801969b053ef27505dca65af88a8661ce0d236d300d42581269c6691f1e",
+      "packaging": "Подарочная коробка с розовой бумагой",
+      "includedDecoration": "",
+      "referenceForTypes": [],
+      "note": ""
+    },
+    {
+      "id": "B07",
+      "familyId": "SET-16",
+      "label": "Розовое оформление",
+      "allowedSkus": [
+        "SET-16-FRESH"
+      ],
+      "photos": [
+        "assets/approved/B07.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B07.webp",
+      "photoVersion": "52cc3c4fe1e42b459df9b6d0bc10d2677862d9a36ee7cb687ee5c68692544961",
+      "packaging": "Подарочная коробка с красной бумагой",
+      "includedDecoration": "",
+      "referenceForTypes": [],
+      "note": ""
+    },
+    {
+      "id": "SET25-KRAFT",
+      "familyId": "SET-25",
+      "label": "Крафтовая коробка",
+      "allowedSkus": [
+        "SET-25-FRESH"
+      ],
+      "photos": [
+        "assets/set-25.webp"
+      ],
+      "photoSource": "feat/cloudflare-free-d1@867d5c9/deli-berry-cloudflare-2.0.0.tar.gz:cloudflare/public/assets/set-25.webp",
+      "photoVersion": "7524fe0dd8c8c2d6c45af60081f5e5973ca28cab27ba30cc83d68c766e6c0f22",
+      "packaging": "Крафтовая коробка",
+      "includedDecoration": "",
+      "referenceForTypes": [],
+      "note": "На фото пример оформления. Заказ выдаётся в крафтовой коробке"
+    },
+    {
+      "id": "C02",
+      "familyId": "MIX-BANANA",
+      "label": "Клубника и бананы",
+      "allowedSkus": [
+        "MIX-BANANA-C02"
+      ],
+      "photos": [
+        "assets/approved/C02.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/C02.webp",
+      "photoVersion": "20a96788f458ed9f08039b3a59e7eb3bf89287eee5b1421118668dd27da00f16",
+      "packaging": "Подарочная коробка",
+      "includedDecoration": "",
+      "referenceForTypes": [],
+      "note": ""
+    },
+    {
+      "id": "A07",
+      "familyId": "BQT-A07",
+      "label": "Кремовая упаковка",
+      "allowedSkus": [
+        "BQT-A07-FRESH"
+      ],
+      "photos": [
+        "assets/approved/A07.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/A07.webp",
+      "photoVersion": "c4194786503a593b12b4fd3b1e06d2c00d97c0e7a051defe079c4318c57590b2",
+      "packaging": "Кремовая упаковка",
+      "includedDecoration": "",
+      "referenceForTypes": [],
+      "note": ""
+    },
+    {
+      "id": "B09",
+      "familyId": "BQT-B09",
+      "label": "Яркая упаковка",
+      "allowedSkus": [
+        "BQT-B09-FRESH",
+        "BQT-B09-FD"
+      ],
+      "photos": [
+        "assets/approved/B09.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B09.webp",
+      "photoVersion": "652ab3b3ac8a7ca511cab78e53ab395bc340eabfe6ef4707e667706fb35829dd",
+      "packaging": "Яркая упаковка",
+      "includedDecoration": "",
+      "referenceForTypes": [
+        "freeze_dried"
+      ],
+      "note": ""
+    },
+    {
+      "id": "B10",
+      "familyId": "BQT-B10",
+      "label": "Коралловая упаковка",
+      "allowedSkus": [
+        "BQT-B10-FRESH",
+        "BQT-B10-FD"
+      ],
+      "photos": [
+        "assets/approved/B10.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/B10.webp",
+      "photoVersion": "3ef0c14d17a495afd0a748459309339d95470c9a89340afb599d392be5bbf784",
+      "packaging": "Коралловая упаковка",
+      "includedDecoration": "",
+      "referenceForTypes": [
+        "freeze_dried"
+      ],
+      "note": ""
+    },
+    {
+      "id": "A08",
+      "familyId": "BQT-A08",
+      "label": "Розово-фиолетовая упаковка",
+      "allowedSkus": [
+        "BQT-A08-FRESH",
+        "BQT-A08-FD"
+      ],
+      "photos": [
+        "assets/approved/A08.webp"
+      ],
+      "photoSource": "codex/telegram-catalog-v5@ab0ba4f:miniapp/public/products/A08.webp",
+      "photoVersion": "f72c9277c751077d88be6a74b7bb28775ad8642e237adb31000defbe7368fe75",
+      "packaging": "Розово-фиолетовая упаковка",
+      "includedDecoration": "",
+      "referenceForTypes": [
+        "freeze_dried"
+      ],
+      "note": ""
+    }
+  ],
+  "mediaPending": [
+    {
+      "id": "C04",
+      "reason": "Целая малина на фото: не подтверждена совместимость и включение в базовую цену."
+    },
+    {
+      "id": "legacy-set-09",
+      "reason": "Целая голубика на фото старого assets/set-09.webp; базовая цена показана с подтверждённым B04."
+    }
+  ]
+}

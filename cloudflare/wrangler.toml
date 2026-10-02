@@ -1,0 +1,40 @@
+name = "deli-berry"
+main = "src/worker.mjs"
+compatibility_date = "2026-07-30"
+workers_dev = true
+preview_urls = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*", "/v1/webhook"]
+html_handling = "none"
+not_found_handling = "none"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "deli-berry-orders"
+# Replace with the UUID returned by `npx wrangler d1 create deli-berry-orders`.
+# The placeholder permits local development but cannot deploy to another database.
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[vars]
+ORDERS_ENABLED = "false"
+TELEGRAM_ENABLED = "false"
+PAYMENT_MODE = "disabled"
+OWNER_LIVE_APPROVED = "false"
+LIVE_PAYMENTS_APPROVED = "false"
+LEGAL_APPROVED = "false"
+LEGAL_VERSION = "2026-10-02"
+PERSONAL_DATA_APPROVED = "false"
+CATALOG_LABELING_APPROVED = "false"
+TERMS_URL = "/legal.html#terms"
+PRIVACY_URL = "/legal.html#privacy"
+
+[triggers]
+crons = ["* * * * *"]
+
+[observability]
+enabled = false
+# Do not enable request logs for personal APIs until redaction/retention is approved.

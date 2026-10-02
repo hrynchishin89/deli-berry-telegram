@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f1e8">
+  <title>Дели Берри — оператор заказов</title>
+  <link rel="icon" href="assets/logo.webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="operator-shell">
+    <header class="operator-header">
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo.webp" alt="Дели Берри">
+        <div class="operator-title"><h1>Заказы Дели Берри</h1><p>Единый оператор · один номер · две точки</p></div>
+      </div>
+      <div class="button-row" style="display:flex;grid-template-columns:none;flex-wrap:wrap">
+        <button class="button ghost" id="refreshOrders" type="button">Обновить</button>
+        <a class="button ghost" href="index.html">Открыть каталог</a>
+      </div>
+    </header>
+
+    <div id="operatorError" role="status"></div>
+    <details class="page-card" style="padding:16px;margin-bottom:16px"><summary>Точки и стоп-лист</summary><div id="storeSettings"></div></details>
+    <section class="operator-grid">
+      <div class="operator-panel">
+        <div class="field-grid two" style="margin-bottom:12px">
+          <div id="operatorSession" class="form-note">Проверяем доступ Telegram…</div>
+          <div class="field"><label for="searchOrders">Поиск</label><input id="searchOrders" class="input" placeholder="Номер, имя, телефон"></div>
+        </div>
+        <div id="statusFilters" class="operator-filter"></div>
+        <div id="ordersList" style="margin-top:10px"></div>
+        <button id="moreOrders" class="button secondary block" type="button" hidden>Показать более ранние заказы</button>
+      </div>
+
+      <div class="operator-panel operator-detail" id="orderDetail">
+        <div class="empty-state">Выберите заказ слева.<br><small>В мобильной версии список и карточка отображаются последовательно.</small></div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="operator.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Local-only. Production secrets go in Cloudflare Secrets, never in Git.
+# Copy to .dev.vars and set real values privately only after owner approval.
+# Public preview requires no credentials and leaves every live gate disabled.
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_OPERATOR_ID=
+TELEGRAM_WEBHOOK_SECRET=
+YANDEX_PAY_MERCHANT_ID=
+YANDEX_PAY_API_KEY=

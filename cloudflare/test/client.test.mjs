@@ -196,7 +196,7 @@ test("A7: response lost after send retains cart/form and identical request key",
     !w.sessionStorage.getItem("deliBerry.pending.v2").includes("signed-test"),
   );
 });
-test("A9/A12: public preview has no contact collection; guest orders no authenticated request", async (t) => {
+test("A9/A12: public preview is a phone-only showcase with no order affordances", async (t) => {
   const { w, calls } = await page(
     t,
     "index",
@@ -213,16 +213,23 @@ test("A9/A12: public preview has no contact collection; guest orders no authenti
         : null,
     false,
   );
-  await add(w);
-  click(w, '[data-action="to-cart"]');
-  click(w, '[data-action="checkout"]');
+  assert.equal(w.document.querySelector('[data-route="cart"]'), null);
+  assert.equal(w.document.querySelector('[data-route="orders"]'), null);
+  click(w, '[data-appearance="B04"]');
+  assert.equal(w.document.querySelector('[data-action="add-cart"]'), null);
+  assert.equal(w.document.querySelector('[data-action="checkout"]'), null);
+  assert.equal(w.document.querySelector('[data-action="submit-order"]'), null);
   assert.equal(w.document.querySelector("#customerPhone"), null);
-  click(w, '[data-route="orders"]');
-  assert.match(
-    w.document.querySelector("#app").textContent,
-    /Откройте приложение в Telegram/,
+  assert.equal(
+    w.document.querySelector('.sticky-cta a[href="tel:+79959014724"]')
+      ?.textContent,
+    "+7 (995) 901-47-24",
   );
+  w.location.hash = "#orders";
+  w.dispatchEvent(new w.HashChangeEvent("hashchange"));
+  assert.equal(w.document.body.dataset.route, "catalog");
   assert.equal(calls.filter((c) => c.url === "/api/orders").length, 0);
+  assert.equal(calls.filter((c) => c.url === "/api/quote").length, 0);
 });
 test("A7: success only after API persistence response, then pending storage cleared", async (t) => {
   const { w } = await page(t, "index", (url, o) =>

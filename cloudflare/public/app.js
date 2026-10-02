@@ -86,6 +86,8 @@
     },
   };
   const stack = [];
+  const orderingEnabled = () =>
+    Boolean(config?.ordersEnabled && config?.dataCollectionEnabled);
   async function api(url, options = {}) {
     const r = await fetch(url, {
       ...options,
@@ -111,6 +113,7 @@
     toast.timer = setTimeout(() => toastEl.classList.remove("show"), 3500);
   }
   function saveLocal() {
+    if (!orderingEnabled()) return;
     if (tg?.initData && sessionOwner === "guest") return;
     try {
       sessionStorage.setItem(
@@ -124,6 +127,7 @@
     } catch {}
   }
   function loadLocal() {
+    if (!orderingEnabled()) return;
     try {
       const saved = JSON.parse(sessionStorage.getItem("deliBerry.cart.v2"));
       if (
@@ -245,9 +249,15 @@
       return;
     }
     const route = location.hash.slice(1);
-    if (["orders", "contacts", "cart"].includes(route)) state.route = route;
+    if (
+      route === "contacts" ||
+      (orderingEnabled() && ["orders", "cart"].includes(route))
+    )
+      state.route = route;
   }
   function go(route) {
+    if (!orderingEnabled() && ["orders", "cart", "checkout"].includes(route))
+      route = "catalog";
     if (state.route === "catalog") catalogScroll = window.scrollY;
     stack.push(state.route);
     state.route = route;
@@ -274,14 +284,15 @@
     return `<button type="button" class="button ${cls}" data-action="${action}" ${attrs}>${text}</button>`;
   }
   function header(backButton = false) {
-    return `<header class="app-header">${backButton ? button("back", "←", "icon-button", 'aria-label="Назад"') : ""}<a href="#catalog" class="brand" data-route="catalog"><img class="brand-logo" src="assets/logo.webp" alt="" width="40" height="40"><span class="brand-name">Дели Берри</span></a><div class="header-actions"><a class="icon-button" href="tel:+79959014724" aria-label="Позвонить">☎</a><button class="icon-button" data-route="cart" aria-label="Корзина, товаров ${state.cart.reduce((n, i) => n + i.raw.quantity, 0)}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3h2l2.5 12h11l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count">${state.cart.reduce((n, i) => n + i.raw.quantity, 0)}</span></button></div></header>`;
+    return `<header class="app-header">${backButton ? button("back", "←", "icon-button", 'aria-label="Назад"') : ""}<a href="#catalog" class="brand" data-route="catalog"><img class="brand-logo" src="assets/logo.webp" alt="" width="40" height="40"><span class="brand-name">Дели Берри</span></a><div class="header-actions"><a class="icon-button" href="tel:+79959014724" aria-label="Позвонить">☎</a>${orderingEnabled() ? `<button class="icon-button" data-route="cart" aria-label="Корзина, товаров ${state.cart.reduce((n, i) => n + i.raw.quantity, 0)}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3h2l2.5 12h11l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count">${state.cart.reduce((n, i) => n + i.raw.quantity, 0)}</span></button>` : ""}</div></header>`;
   }
   function nav() {
-    return `<nav class="bottom-nav" aria-label="Главное меню">${[
+    const items = [
       ["catalog", "Каталог"],
-      ["orders", "Мои заказы"],
+      ...(orderingEnabled() ? [["orders", "Мои заказы"]] : []),
       ["contacts", "Контакты"],
-    ]
+    ];
+    return `<nav class="bottom-nav" aria-label="Главное меню">${items
       .map(
         ([id, label]) =>
           `<button data-route="${id}" class="${state.route === id ? "active" : ""}" ${state.route === id ? 'aria-current="page"' : ""}>${label}</button>`,
@@ -360,7 +371,7 @@
               : ""
           }<label class="checkbox-card"><input type="checkbox" data-bind="inscription" ${state.inscription ? "checked" : ""}><span>Шоколадная надпись · +250 ₽</span></label>${state.inscription ? field("inscriptionText", "Текст надписи", state.inscriptionText) + `<p class="form-note">Текст проверит оператор перед оплатой.</p>` : ""}</section>`
         : ""
-    }<div class="quantity-row"><span>Количество</span><div class="quantity-control">${button("qty-minus", "−", "qty-button", 'aria-label="Уменьшить количество"')}<span>${state.quantity}</span>${button("qty-plus", "+", "qty-button", 'aria-label="Увеличить количество"')}</div></div><details><summary>Хранение и состав</summary><p>${esc(v.type === "fresh" ? catalog.storage.fresh : catalog.storage.freezeDried)}</p><p>${p.labeling?.composition ? esc(p.labeling.composition) : "Состав и аллергены уточните по телефону перед заказом."}</p>${p.labeling?.allergens ? `<p>${esc(p.labeling.allergens)}</p>` : ""}</details><p class="form-note">Предварительная сумма. Проверим стоимость при добавлении в корзину.</p></section></main><div class="sticky-cta"><p class="form-note">Курьерская доставка оплачивается отдельно</p>${added ? `<p role="status">✓ Товар в корзине</p>${button("to-cart", "Перейти в корзину", "primary block")}` : button("add-cart", `${editing !== null ? "Сохранить" : "В корзину"} · ${money(sum)}`, "primary block", busy ? "disabled" : "")}</div>`;
+    }<div class="quantity-row"><span>Количество</span><div class="quantity-control">${button("qty-minus", "−", "qty-button", 'aria-label="Уменьшить количество"')}<span>${state.quantity}</span>${button("qty-plus", "+", "qty-button", 'aria-label="Увеличить количество"')}</div></div><details><summary>Хранение и состав</summary><p>${esc(v.type === "fresh" ? catalog.storage.fresh : catalog.storage.freezeDried)}</p><p>${p.labeling?.composition ? esc(p.labeling.composition) : "Состав и аллергены уточните по телефону перед заказом."}</p>${p.labeling?.allergens ? `<p>${esc(p.labeling.allergens)}</p>` : ""}</details><p class="form-note">${orderingEnabled() ? "Предварительная сумма. Проверим стоимость при добавлении в корзину." : "Стоимость выбранного варианта. Дополнения согласуем по телефону."}</p></section></main><div class="sticky-cta"><p class="form-note">Курьерская доставка оплачивается отдельно</p>${orderingEnabled() ? (added ? `<p role="status">✓ Товар в корзине</p>${button("to-cart", "Перейти в корзину", "primary block")}` : button("add-cart", `${editing !== null ? "Сохранить" : "В корзину"} · ${money(sum)}`, "primary block", busy ? "disabled" : "")) : `<p><strong>${money(sum)}</strong></p><a class="button primary block" href="tel:+79959014724">+7 (995) 901-47-24</a>`}</div>`;
   }
   function lineCard(line, i, editable = false) {
     const x = line.snapshot || line,

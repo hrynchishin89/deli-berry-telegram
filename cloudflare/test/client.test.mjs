@@ -28,6 +28,7 @@ async function page(
   authenticated = true,
   query = "",
   saved = {},
+  globals = {},
 ) {
   const dom = new JSDOM(
     await readFile(
@@ -49,6 +50,7 @@ async function page(
   Object.defineProperty(w, "crypto", { value: crypto.webcrypto });
   w.TextEncoder = TextEncoder;
   w.structuredClone = structuredClone;
+  Object.assign(w, globals);
   const noop = () => {},
     button = {
       hide: noop,
@@ -230,6 +232,32 @@ test("A9/A12: public preview is a phone-only showcase with no order affordances"
   assert.equal(w.document.body.dataset.route, "catalog");
   assert.equal(calls.filter((c) => c.url === "/api/orders").length, 0);
   assert.equal(calls.filter((c) => c.url === "/api/quote").length, 0);
+});
+test("A9/A12: static device preview boots without API and does not offer raspberry", async (t) => {
+  const staticConfig = {
+    ...config,
+    previewMode: true,
+    ordersEnabled: false,
+    dataCollectionEnabled: false,
+    paymentEnabled: false,
+  };
+  const { w, calls } = await page(t, "index", () => null, false, "", {}, {
+    DELI_BERRY_CATALOG: structuredClone(catalog),
+    DELI_BERRY_STATIC_CONFIG: staticConfig,
+  });
+  assert.equal(calls.length, 0);
+  assert.match(
+    w.document.querySelector("#app").textContent,
+    /Тестовый просмотр.*заказ через приложение пока недоступен/i,
+  );
+  click(w, '[data-appearance="B04"]');
+  assert.equal(
+    w.document.querySelector('[data-bind="berryAddon"][value="whole-raspberry"]'),
+    null,
+  );
+  assert.doesNotMatch(w.document.querySelector("#app").textContent, /малина/i);
+  assert.equal(w.document.querySelector('[data-action="add-cart"]'), null);
+  assert.equal(w.document.querySelector('[data-route="orders"]'), null);
 });
 test("A7: success only after API persistence response, then pending storage cleared", async (t) => {
   const { w } = await page(t, "index", (url, o) =>

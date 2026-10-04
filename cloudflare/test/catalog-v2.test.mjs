@@ -69,7 +69,7 @@ test("A2: A06 inscription is 2040; double berry and invalid SKU/appearance/addon
   for (const i of [
     item(undefined, undefined, { addOns: [{ id: "whole-blueberry" }] }),
     item("SET-12-FRESH", "B02", {
-      addOns: [{ id: "whole-blueberry" }, { id: "whole-raspberry" }],
+      addOns: [{ id: "whole-blueberry" }, { id: "whole-blueberry" }],
     }),
     item("BQT-A07-FRESH", "A07", {
       addOns: [{ id: "chocolate-inscription" }],
@@ -79,6 +79,23 @@ test("A2: A06 inscription is 2040; double berry and invalid SKU/appearance/addon
     item("SET-09-FRESH", "C04"),
   ])
     assert.throws(() => domain.priceCart(catalog, { items: [i] }));
+});
+test("Owner update: raspberry is not an active add-on and old requests are rejected", () => {
+  assert.deepEqual(
+    catalog.pricing.addOns.map((addOn) => addOn.id),
+    ["whole-blueberry", "chocolate-inscription"],
+  );
+  assert.throws(
+    () =>
+      domain.priceCart(catalog, {
+        items: [
+          item("SET-12-FRESH", "B02", {
+            addOns: [{ id: "whole-raspberry" }],
+          }),
+        ],
+      }),
+    (error) => error.code === "INVALID_ADDONS",
+  );
 });
 test("A3/A7: multi-line order snapshots selected photos and refuses stale quoted total", () => {
   const r = raw([

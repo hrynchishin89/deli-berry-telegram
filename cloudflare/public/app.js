@@ -318,7 +318,7 @@
   }
   function renderCatalog() {
     const opts = choices();
-    return `${header()}<main><section class="catalog-intro"><h1>Клубника в шоколаде</h1><p>Наборы и букеты — для подарка и для себя</p><p class="muted">Самовывоз или курьерская доставка</p></section><div class="catalog-controls"><div class="segmented categories" aria-label="Категория">${[
+    return `${header()}<main>${config?.previewMode ? '<p class="preview-banner" role="status">Тестовый просмотр · заказ через приложение пока недоступен</p>' : ""}<section class="catalog-intro"><h1>Клубника в шоколаде</h1><p>Наборы и букеты — для подарка и для себя</p><p class="muted">Самовывоз или курьерская доставка</p></section><div class="catalog-controls"><div class="segmented categories" aria-label="Категория">${[
       ["set", "Наборы"],
       ["bouquet", "Букеты"],
     ]
@@ -361,7 +361,6 @@
               ? `<fieldset><legend>Целая ягода — один вариант</legend>${[
                   ["", "Без дополнения"],
                   ["whole-blueberry", "Целая голубика · +200 ₽"],
-                  ["whole-raspberry", "Целая малина · +200 ₽"],
                 ]
                   .map(
                     ([id, label]) =>
@@ -941,16 +940,23 @@
     }
   });
   try {
-    [catalog, config] = await Promise.all([
-      api("/api/catalog"),
-      api("/api/config"),
-    ]);
+    const staticPreview =
+      window.DELI_BERRY_CATALOG && window.DELI_BERRY_STATIC_CONFIG;
+    if (staticPreview) {
+      catalog = structuredClone(window.DELI_BERRY_CATALOG);
+      config = { ...window.DELI_BERRY_STATIC_CONFIG };
+    } else {
+      [catalog, config] = await Promise.all([
+        api("/api/catalog"),
+        api("/api/config"),
+      ]);
+    }
     tg?.ready();
     tg?.expand();
     tg?.setHeaderColor?.("#F3EADF");
     tg?.setBackgroundColor?.("#F3EADF");
     tg?.BackButton?.onClick(back);
-    if (tg?.initData) {
+    if (tg?.initData && !config.previewMode) {
       try {
         const me = await api("/api/me");
         if (Number.isSafeInteger(me.id)) sessionOwner = String(me.id);

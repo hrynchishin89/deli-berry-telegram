@@ -229,6 +229,17 @@ small,
   line-height: 1.25rem;
   margin: 0;
 }
+.preview-banner {
+  margin: 4px 0 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--berry-strong);
+  border-radius: 12px;
+  background: var(--berry-soft);
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
 .catalog-controls {
   margin-top: 4px;
 }

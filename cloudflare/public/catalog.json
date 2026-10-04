@@ -1,6 +1,6 @@
 {
   "schema": "deliberry.miniapp.catalog/2.0",
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-04",
   "brand": {
     "name": "Дели Берри",
     "tagline": "Клубника в шоколаде — для подарка и для себя",
@@ -73,12 +73,6 @@
       {
         "id": "whole-blueberry",
         "name": "Целая голубика в оформлении",
-        "price": 200,
-        "group": "whole-berry"
-      },
-      {
-        "id": "whole-raspberry",
-        "name": "Целая малина в оформлении",
         "price": 200,
         "group": "whole-berry"
       },

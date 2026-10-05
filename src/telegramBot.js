@@ -115,25 +115,14 @@ async function sendDocument(chatId, filePath, filename) {
   return json.result;
 }
 
-async function buildOpenAppMarkup() {
-  const url = await appUrl();
-  const rows = [];
-  if (url) rows.push([{ text: 'Открыть каталог 🍓', web_app: { url } }]);
-  if (config.managerPublicUrl) rows.push([{ text: 'Связаться с менеджером', url: config.managerPublicUrl }]);
-  return rows.length ? { inline_keyboard: rows } : undefined;
-}
-
 async function sendWelcome(chatId, telegramUser = null) {
-  const url = await appUrl();
   const text = [
     '🍓 <b>Deli Berry</b>',
     'Клубника в шоколаде, сладкие подарки, дубайский шоколад и десерты.',
     '',
-    url
-      ? 'Нажмите кнопку ниже, выберите точку, соберите корзину и отправьте заказ менеджеру.'
-      : 'Каталог уже установлен на сервере. Осталось один раз открыть /setup.html после деплоя, чтобы привязать кнопку Telegram.',
+    'Нажмите «Открыть приложение» внизу экрана, чтобы посмотреть ассортимент и цены.',
     '',
-    '⚠️ Наличие, цена и время приготовления подтверждаются менеджером.'
+    'Заказ: +7 995 901-47-24.'
   ].join('\n');
   let customerLine = '';
   if (telegramUser?.id) {
@@ -143,10 +132,8 @@ async function sendWelcome(chatId, telegramUser = null) {
 🪪 Ваш ID: <code>${escapeHtml(customer.publicId)}</code>
 🍓 Бонусы: <b>${Number(customer.bonusBalance || 0).toLocaleString('ru-RU')}</b>`;
   }
-  const replyMarkup = await buildOpenAppMarkup();
   await sendMessage(chatId, `${text}${customerLine}`, {
-    parse_mode: 'HTML',
-    ...(replyMarkup ? { reply_markup: replyMarkup } : {})
+    parse_mode: 'HTML'
   });
 }
 
@@ -296,16 +283,14 @@ async function configureTelegram() {
   await callApi('deleteWebhook', { drop_pending_updates: false }).catch((error) => console.warn('deleteWebhook:', error.message));
   await callApi('setMyName', { name: config.businessName || 'Deli Berry' }).catch((error) => console.warn('setMyName:', error.message));
   await callApi('setMyDescription', {
-    description: 'Deli Berry — клубника в шоколаде, сладкие подарки, десерты и напитки. Откройте каталог, выберите точку и отправьте заказ менеджеру.'
+    description: 'Deli Berry — клубника в шоколаде, сладкие подарки, десерты и напитки. Откройте приложение, чтобы посмотреть ассортимент, цены и точки.'
   }).catch((error) => console.warn('setMyDescription:', error.message));
   await callApi('setMyShortDescription', {
     short_description: 'Клубника в шоколаде и сладкие подарки в Telegram.'
   }).catch((error) => console.warn('setMyShortDescription:', error.message));
   await callApi('setMyCommands', {
     commands: [
-      { command: 'start', description: 'Открыть главное меню' },
-      { command: 'order', description: 'Открыть каталог' },
-      { command: 'catalog', description: 'Открыть каталог' },
+      { command: 'start', description: 'Открыть приложение' },
       { command: 'status', description: 'Проверить статус заказа' },
       { command: 'profile', description: 'ID, бонусы и история заказов' },
       { command: 'bonus', description: 'Проверить бонусный баланс' },
@@ -319,10 +304,10 @@ async function configureTelegram() {
     ]
   }).catch((error) => console.warn('setMyCommands:', error.message));
 
-  const url = await appUrl();
+  const url = config.telegramAppUrl;
   if (url && /^https:\/\//i.test(url)) {
     await callApi('setChatMenuButton', {
-      menu_button: { type: 'web_app', text: 'Заказать 🍓', web_app: { url } }
+      menu_button: { type: 'web_app', text: 'Открыть приложение', web_app: { url } }
     }).catch((error) => console.warn('setChatMenuButton:', error.message));
   }
 
@@ -431,7 +416,6 @@ async function handleMessage(message) {
       return;
     }
     const customer = profile.customer;
-    const url = await appUrl();
     const body = [
       '🍓 <b>Профиль Deli Berry</b>',
       `ID: <code>${escapeHtml(customer.publicId)}</code>`,
@@ -441,10 +425,7 @@ async function handleMessage(message) {
       '',
       'Начисляем 5% после завершения заказа. Бонусами можно оплатить до 30% стоимости товаров.'
     ].join('\n');
-    await sendMessage(chatId, body, {
-      parse_mode: 'HTML',
-      ...(url ? { reply_markup: { inline_keyboard: [[{ text: 'Открыть профиль', web_app: { url } }]] } } : {})
-    });
+    await sendMessage(chatId, body, { parse_mode: 'HTML' });
     return;
   }
 
@@ -646,7 +627,6 @@ module.exports = {
   startBot,
   notifyManagers,
   notifyCustomer,
-  buildOpenAppMarkup,
   configureTelegram,
   callApi,
   sendPhoto,

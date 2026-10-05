@@ -13,7 +13,7 @@ function normalizeUrl(value) {
 function getEnv() {
   return {
     BOT_TOKEN: process.env.BOT_TOKEN,
-    WEBAPP_URL: normalizeUrl(process.env.WEBAPP_URL || process.env.PUBLIC_URL || '')
+    TELEGRAM_APP_URL: normalizeUrl(process.env.TELEGRAM_APP_URL || 'https://hrynchishin89.github.io/deli-berry-telegram/')
   };
 }
 
@@ -31,7 +31,7 @@ async function callTelegram(method, body) {
 }
 
 async function setupTelegram() {
-  const { BOT_TOKEN, WEBAPP_URL } = getEnv();
+  const { BOT_TOKEN, TELEGRAM_APP_URL } = getEnv();
   console.log(`Проверяю бота. Токен: ${maskToken(BOT_TOKEN)}`);
 
   const me = await callTelegram('getMe');
@@ -44,13 +44,11 @@ async function setupTelegram() {
     short_description: 'Клубника в шоколаде, сладкие подарки и десерты на заказ.'
   });
   await callTelegram('setMyDescription', {
-    description: 'Откройте каталог Deli Berry, выберите точку, соберите корзину и отправьте заказ менеджеру. Наличие, цена и время приготовления подтверждаются менеджером.'
+    description: 'Откройте приложение Deli Berry, чтобы посмотреть ассортимент, цены и точки.'
   });
   await callTelegram('setMyCommands', {
     commands: [
-      { command: 'start', description: 'Запустить меню' },
-      { command: 'order', description: 'Открыть каталог и заказ' },
-      { command: 'catalog', description: 'Каталог Deli Berry' },
+      { command: 'start', description: 'Открыть приложение' },
       { command: 'status', description: 'Проверить статус заказа' },
       { command: 'help', description: 'Помощь' },
       { command: 'myid', description: 'Узнать свой chat_id' },
@@ -59,19 +57,19 @@ async function setupTelegram() {
     ]
   });
 
-  if (WEBAPP_URL && WEBAPP_URL.startsWith('https://')) {
+  if (TELEGRAM_APP_URL && TELEGRAM_APP_URL.startsWith('https://')) {
     await callTelegram('setChatMenuButton', {
       menu_button: {
         type: 'web_app',
-        text: 'Заказать 🍓',
-        web_app: { url: WEBAPP_URL }
+        text: 'Открыть приложение',
+        web_app: { url: TELEGRAM_APP_URL }
       }
     });
-    console.log('Кнопка меню “Заказать 🍓” настроена.');
-    console.log(`Mini App URL: ${WEBAPP_URL}`);
+    console.log('Кнопка меню “Открыть приложение” настроена.');
+    console.log(`Mini App URL: ${TELEGRAM_APP_URL}`);
   } else {
-    console.log('WEBAPP_URL пока не задан или не HTTPS — кнопку Mini App пропустил.');
-    console.log('После деплоя вставьте WEBAPP_URL и запустите npm run telegram:setup ещё раз.');
+    console.log('TELEGRAM_APP_URL пока не задан или не HTTPS — кнопку Mini App пропустил.');
+    console.log('После деплоя вставьте TELEGRAM_APP_URL и запустите npm run telegram:setup ещё раз.');
   }
 
   console.log('Готово: имя, описание и команды Telegram настроены.');

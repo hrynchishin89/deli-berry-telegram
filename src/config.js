@@ -24,6 +24,7 @@ const config = {
   botToken: process.env.BOT_TOKEN || '',
   webAppUrl: normalizeUrl(process.env.WEBAPP_URL || process.env.PUBLIC_URL || ''),
   publicUrl: normalizeUrl(process.env.PUBLIC_URL || process.env.WEBAPP_URL || ''),
+  telegramAppUrl: normalizeUrl(process.env.TELEGRAM_APP_URL || 'https://hrynchishin89.github.io/deli-berry-telegram/'),
   managerChatId: process.env.MANAGER_CHAT_ID || '',
   managerPublicUrl: process.env.MANAGER_PUBLIC_URL || '',
   adminPin: process.env.ADMIN_PIN || 'change-me',

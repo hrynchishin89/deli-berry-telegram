@@ -38,13 +38,11 @@ async function setupBasicTelegram() {
     short_description: 'Клубника в шоколаде, сладкие подарки и десерты на заказ.'
   });
   await callTelegram('setMyDescription', {
-    description: 'Откройте каталог Deli Berry, выберите точку, соберите корзину и отправьте заказ менеджеру. Наличие, цена и время приготовления подтверждаются менеджером.'
+    description: 'Откройте приложение Deli Berry, чтобы посмотреть ассортимент, цены и точки.'
   });
   await callTelegram('setMyCommands', {
     commands: [
-      { command: 'start', description: 'Запустить меню' },
-      { command: 'order', description: 'Открыть каталог и заказ' },
-      { command: 'catalog', description: 'Каталог Deli Berry' },
+      { command: 'start', description: 'Открыть приложение' },
       { command: 'status', description: 'Проверить статус заказа' },
       { command: 'help', description: 'Помощь' },
       { command: 'myid', description: 'Узнать свой chat_id' },
@@ -54,7 +52,7 @@ async function setupBasicTelegram() {
   });
 
   console.log('Готово: имя, описание и команды Telegram настроены.');
-  console.log('Кнопка Mini App появится после WEBAPP_URL: npm run telegram:setup');
+  console.log('Кнопка Mini App настраивается командой: npm run telegram:setup');
 }
 
 if (require.main === module) {

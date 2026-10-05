@@ -1,0 +1,63 @@
+name: Cloudflare Free — Дели Берри
+on:
+  pull_request:
+    paths: ['cloudflare/**', '.github/workflows/deploy-cloudflare.yml']
+  push:
+    branches: [main]
+    paths: ['cloudflare/**', '.github/workflows/deploy-cloudflare.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cloudflare-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+      - run: npm ci
+        working-directory: cloudflare
+      - run: npm run check
+        working-directory: cloudflare
+        env:
+          WRANGLER_SEND_METRICS: 'false'
+  deploy:
+    needs: check
+    if: github.event_name != 'pull_request' && vars.CLOUDFLARE_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: cloudflare-free
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+      - run: npm ci
+        working-directory: cloudflare
+      - name: Bind the owner's D1 database
+        working-directory: cloudflare
+        env:
+          D1_ID: ${{ vars.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          const id=process.env.D1_ID;
+          if(!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(id||'')||id==='00000000-0000-0000-0000-000000000000')throw new Error('Set CLOUDFLARE_D1_DATABASE_ID');
+          writeFileSync('wrangler.toml',readFileSync('wrangler.toml','utf8').replace('00000000-0000-0000-0000-000000000000',id));
+          JS
+      - name: Apply migrations and deploy only the disabled preview
+        working-directory: cloudflare
+        run: npm run migrate:remote && npm run deploy -- --var BUILD_COMMIT:${{ github.sha }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_SEND_METRICS: 'false'

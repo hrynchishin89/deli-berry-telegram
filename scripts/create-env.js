@@ -13,18 +13,21 @@ async function main() {
   console.log('Не используйте токен, который уже был отправлен в чат. Сначала перевыпустите новый в @BotFather.\n');
 
   const BOT_TOKEN = await ask(rl, 'Новый BOT_TOKEN из BotFather');
-  const WEBAPP_URL = await ask(rl, 'HTTPS URL приложения после деплоя', 'https://deli-berry-telegram.onrender.com');
+  const WEBAPP_URL = await ask(rl, 'HTTPS URL серверной части после деплоя');
+  const TELEGRAM_APP_URL = await ask(rl, 'HTTPS URL кнопки «Открыть приложение»', 'https://hrynchishin89.github.io/deli-berry-telegram/');
   const MANAGER_CHAT_ID = await ask(rl, 'ID группы заказов, можно пусто');
   const MANAGER_PUBLIC_URL = await ask(rl, 'Ссылка на менеджера Telegram, можно пусто');
   const ADMIN_PIN = await ask(rl, 'PIN для админки и setup.html', `berry-${Math.random().toString(36).slice(2, 8)}`);
   rl.close();
 
   const normalizedUrl = WEBAPP_URL.replace(/\/$/, '');
+  const normalizedTelegramAppUrl = TELEGRAM_APP_URL.replace(/\/$/, '');
   const env = [
     'BUSINESS_NAME=Deli Berry',
     `BOT_TOKEN=${BOT_TOKEN}`,
     `WEBAPP_URL=${normalizedUrl}`,
     `PUBLIC_URL=${normalizedUrl}`,
+    `TELEGRAM_APP_URL=${normalizedTelegramAppUrl}`,
     `MANAGER_CHAT_ID=${MANAGER_CHAT_ID}`,
     `MANAGER_PUBLIC_URL=${MANAGER_PUBLIC_URL}`,
     `ADMIN_PIN=${ADMIN_PIN}`,

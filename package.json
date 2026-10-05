@@ -8,6 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "test": "node --test test/*.test.js",
     "start": "node src/server.js",
     "dev": "node src/server.js",
     "wizard": "node scripts/wizard.js",

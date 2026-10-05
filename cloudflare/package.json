@@ -1,0 +1,25 @@
+{
+  "name": "deli-berry-worker",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test test/*.test.mjs",
+    "migrate:local": "wrangler d1 migrations apply DB --local",
+    "migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "deploy": "wrangler deploy",
+    "check:local": "node scripts/check.mjs && npm test",
+    "check": "node scripts/check.mjs && npm test && wrangler deploy --dry-run",
+    "qa:server": "node scripts/qa-server.mjs",
+    "qa:browser": "node scripts/browser-qa.mjs",
+    "test:restore": "node scripts/restore-check.mjs",
+    "build:device-preview": "node scripts/build-device-preview.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.1",
+    "miniflare": "4.20260730.0",
+    "playwright": "1.56.1",
+    "wrangler": "4.144.0"
+  }
+}

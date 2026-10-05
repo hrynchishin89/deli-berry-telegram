@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+.dev.vars
+.env*
+!*.example
+coverage/
+
+evidence/
+release/
+device-preview-dist/

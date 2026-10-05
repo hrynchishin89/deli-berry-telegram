@@ -13,6 +13,7 @@ const { startBot, notifyManagers, notifyCustomer, configureTelegram, appUrl, get
 const { formatOrderForCustomer, formatStatusForCustomer } = require('./telegram/formatters');
 const { canTransition, transitionError } = require('./statusRules');
 const { printStartupReport } = require('./startupCheck');
+const { createCatalogV5Service } = require('./catalogV5');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -49,6 +50,11 @@ app.use((_req, res, next) => {
 });
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+const miniappBuild = path.join(__dirname, '..', 'miniapp', 'release', 'web');
+app.get(['/', '/index.html'], (_req, res) => res.sendFile(path.join(miniappBuild, 'index.html'), { headers: { 'Cache-Control': 'no-cache' } }));
+app.use('/assets', express.static(path.join(miniappBuild, 'assets'), { maxAge: '1y', immutable: true }));
+app.use('/products', express.static(path.join(__dirname, '..', 'miniapp', 'public', 'products'), { maxAge: '1d' }));
+app.get('/favicon.svg', (_req, res) => res.sendFile(path.join(__dirname, '..', 'miniapp', 'public', 'favicon.svg')));
 app.use(express.static(path.join(__dirname, '..', 'webapp'), { extensions: ['html'], etag: true, maxAge: config.nodeEnv === 'production' ? '10m' : 0 }));
 
 const orderLimiter = rateLimit({
@@ -63,6 +69,22 @@ const profileLimiter = rateLimit({
   limit: config.profileRateLimitMax,
   standardHeaders: 'draft-8',
   legacyHeaders: false
+});
+
+const catalogV5 = createCatalogV5Service({
+  store, config, notifyManagers, notifyCustomer, bonusRules,
+  ready: async () => Boolean(config.botToken && await getManagerChatId())
+});
+app.post('/api/catalog-v5/orders', orderLimiter, async (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  try {
+    const result = await catalogV5.submit(req.body);
+    res.status(result.status).json(result.body);
+  } catch (_error) {
+    // Never log signed initData, customer payloads or Telegram token URLs.
+    console.error('Catalog v5 request failed; retry using the same request ID.');
+    res.status(503).json({ ok: false, delivered: false, error: 'Не удалось подтвердить передачу заявки. Повторите отправку этой же заявки.' });
+  }
 });
 
 function requireAdminPin(req, res, next) {
@@ -92,6 +114,7 @@ app.get('/api/health', (_req, res) => {
     ok: true,
     service: 'deli-berry-production-1.0',
     version: '1.0.0',
+    catalogVersion: 'v5-2026-09-28',
     time: new Date().toISOString(),
     readiness: {
       botToken: Boolean(config.botToken),

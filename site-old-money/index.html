@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4ed">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Дели Берри — наборы и букеты клубники в шоколаде. Выберите оформление, соберите заказ и свяжитесь с оператором. Москва и Зеленопарк.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Дели Берри — клубника в шоколаде">
+  <meta property="og:description" content="Наборы и букеты из клубники в шоколаде. Для знаков внимания, которые остаются в памяти.">
+  <title>Дели Берри — клубника в шоколаде и подарочные букеты</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%2326362c%22%2F%3E%3Cpath%20d%3D%22M15%2025h34M32%2012v40M16%2045h32%22%20stroke%3D%22%23bba47f%22%20stroke-width%3D%221%22%20opacity%3D%22.65%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2240%22%20fill%3D%22%23f6f0e4%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2226%22%20font-style%3D%22italic%22%3E%D0%B4%D0%B1%3C%2Ftext%3E%3C%2Fsvg%3E%0A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --paper:#f7f4ed;
+  --paper-2:#eee9df;
+  --white:#fffdf8;
+  --ink:#2b2b26;
+  --muted:#777367;
+  --pine:#293a32;
+  --pine-deep:#1d2e27;
+  --oxblood:#683940;
+  --gold:#a58a62;
+  --border:#dcd6ca;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',Arial,sans-serif;
+  --content:1360px;
+}
+*,*::before,*::after {box-sizing:border-box}
+html {scroll-behavior:smooth; scroll-padding-top:110px}
+body {background:var(--paper);color:var(--ink);margin:0;font-family:var(--sans);font-size:15px;-webkit-font-smoothing:antialiased}
+body.is-locked {overflow:hidden}
+button,input,textarea,select {font:inherit}
+button {cursor:pointer}
+a {color:inherit;text-decoration:none}
+img {display:block;max-width:100%}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible {outline:2px solid #96633c;outline-offset:3px}
+[hidden] {display:none!important}
+.container {max-width:var(--content);padding:0 48px;margin-inline:auto}
+.sr-only {position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;margin:-1px;overflow:hidden;white-space:nowrap}
+.skip-link {position:absolute;z-index:500;transform:translateY(-150%);padding:12px 18px;background:#fff}
+.skip-link:focus {transform:translateY(0)}
+.announcement {background:var(--pine);color:#e6ddd0;min-height:33px;display:flex;justify-content:center;align-items:center;gap:18px;font-size:10px;letter-spacing:.23em;text-transform:uppercase;text-align:center;padding:8px 12px}
+.announcement__star {color:#baa27e;font-size:11px}
+.site-header {position:sticky;top:0;z-index:50;background:rgba(247,244,237,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.header-inner {display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:91px}
+.brand {display:flex;align-items:center;gap:13px;flex:none}
+.brand-mark {display:grid;place-items:center;position:relative;border:1px solid #b6a380;width:43px;height:43px;border-radius:50%;font-family:var(--serif);font-size:24px;font-style:italic;color:var(--pine);letter-spacing:-.06em}
+.brand-mark__stem {font-size:14px;color:var(--gold);margin-inline:1px}
+.brand-text {display:flex;flex-direction:column;align-items:flex-start}
+.brand-name {font-family:var(--serif);font-size:34px;line-height:.86;font-weight:600;letter-spacing:-.025em;white-space:nowrap}
+.brand-subtitle {font-size:8px;letter-spacing:.28em;margin-top:9px;color:#796d5b;white-space:nowrap}
+.header-nav {display:flex;align-items:center;gap:clamp(16px,2.3vw,38px);margin-left:auto;margin-right:auto}
+.header-nav a {font-size:12px;letter-spacing:.01em;color:#504e45;transition:color .2s}
+.header-nav a:hover,.header-phone:hover {color:var(--oxblood)}
+.header-actions {display:flex;align-items:center;gap:19px}
+.header-phone {font-size:12px;white-space:nowrap}
+.bag-button {position:relative;display:grid;place-items:center;background:none;border:0;color:var(--pine);width:42px;height:42px;padding:7px}
+.bag-button svg {width:25px;height:25px}
+.bag-count {position:absolute;right:-1px;top:-2px;display:grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border-radius:50%;background:var(--oxblood);color:#fff;font-size:10px;font-weight:700}
+.hero {display:grid;grid-template-columns:1fr 1.02fr;gap:45px;min-height:645px;padding-top:45px;padding-bottom:65px}
+.hero-copy {display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:17px 0 12px 25px}
+.eyebrow {display:flex;align-items:center;gap:15px;color:var(--oxblood);letter-spacing:.22em;font-weight:600;font-size:10px}
+.eyebrow-line {width:36px;height:1px;background:var(--oxblood)}
+.hero h1,.section-head h2,.editorial h2 {font-family:var(--serif);font-weight:500;letter-spacing:-.05em}
+.hero h1 {font-size:clamp(64px,5.2vw,97px);line-height:.92;margin:31px 0 26px;white-space:nowrap}
+.hero h1 em,.section-head h2 em,.editorial h2 em {font-weight:400;font-style:italic;color:var(--oxblood)}
+.hero-lead {font-size:15px;line-height:1.94;color:#68665e;max-width:425px;margin:0}
+.hero-actions {display:flex;flex-wrap:wrap;align-items:center;gap:30px;margin-top:36px}
+.btn {border:1px solid transparent;min-height:52px;padding:14px 23px;display:inline-flex;align-items:center;justify-content:center;gap:24px;font-size:12px;font-weight:700;letter-spacing:.015em;transition:background-color .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover {transform:translateY(-1px)}
+.btn--dark {background:var(--pine);color:#fff}
+.btn--dark:hover {background:#3c5145}
+.btn--outline {color:var(--pine);background:transparent;border-color:#bdbaae}
+.btn--outline:hover {background:var(--paper-2)}
+.btn--full {width:100%}
+.text-link {display:inline-flex;align-items:center;gap:16px;font-size:12px;padding-bottom:5px;border-bottom:1px solid #9a9388;white-space:nowrap}
+.text-link:hover {color:var(--oxblood);border-color:var(--oxblood)}
+.hero-stamp {display:flex;align-items:center;gap:16px;color:#837e73;font-size:10px;line-height:1.8;letter-spacing:.045em;margin-top:75px}
+.hero-stamp-icon {font-size:33px;color:var(--gold);font-family:var(--serif);font-weight:400}
+.hero-visual {position:relative;min-width:0;align-self:stretch}
+.hero-frame {height:100%;min-height:550px;background:linear-gradient(140deg,#b6a397 0%,#e7dacc 48%,#d0c3b2 100%);overflow:hidden;position:relative}
+.hero-frame::before {content:"";pointer-events:none;position:absolute;inset:15px;z-index:1;border:1px solid rgba(255,255,255,.5)}
+.hero-frame img {width:100%;height:100%;max-height:700px;object-fit:cover;object-position:center 53%;filter:saturate(.82) contrast(.98);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.hero-frame:hover img {transform:scale(1.035)}
+.hero-frame.image-missing::after {content:'Дели Берри';position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);font:italic 78px var(--serif);white-space:nowrap;color:rgba(66,55,44,.5)}
+.hero-caption {display:flex;justify-content:space-between;margin-top:13px;font-size:9px;letter-spacing:.2em;color:#817b70}
+.hero-medallion {position:absolute;left:-50px;bottom:84px;width:106px;height:106px;border-radius:50%;background:var(--pine);color:#f6ead2;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:var(--serif);font-size:20px;line-height:.96;letter-spacing:.02em;text-align:center;border:5px solid var(--paper);box-shadow:0 0 0 1px #c6bba8}
+.hero-medallion small {font-size:12px;margin-top:8px;color:#c7b08b}
+.marquee-rule {border-top:1px solid var(--border);border-bottom:1px solid var(--border);min-height:72px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:10px;letter-spacing:.22em;color:#756d61}
+.marquee-rule i {font-size:21px;color:var(--gold);font-style:normal}
+.catalog-section {padding:100px 0 118px}
+.section-head {display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px}
+.eyebrow--small {font-size:10px;letter-spacing:.23em}
+.section-head h2 {font-size:clamp(56px,5.5vw,84px);line-height:.95;margin:20px 0 0}
+.section-description {font-size:13px;line-height:1.85;color:#81786f;max-width:320px;margin:0 0 6px}
+.catalog-toolbar {display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--border);border-top:1px solid var(--border)}
+.category-tabs {display:flex;flex-wrap:wrap;align-items:center;gap:28px}
+.tab {border:0;background:none;font-size:13px;color:#827c71;letter-spacing:.015em;padding:13px 0;position:relative;white-space:nowrap}
+.tab span {color:#aaa293;font-size:10px;margin-left:5px}
+.tab.active {color:var(--pine);font-weight:700}
+.tab.active::after {content:"";position:absolute;height:2px;background:var(--oxblood);bottom:-13px;left:0;right:0}
+.catalog-controls {display:flex;gap:12px;align-items:center}
+.searchbox {border:1px solid var(--border);background:#fbf9f4;display:flex;align-items:center;gap:9px;height:42px;padding:0 10px;width:200px}
+.searchbox svg {width:17px;height:17px;flex:none;color:#837c6f}
+.searchbox input {background:none;border:0;outline:none;width:100%;min-width:0;font-size:12px}
+.searchbox input:focus {outline:none}
+.sort-select {border:1px solid var(--border);background:#fbf9f4;color:#645f55;padding:0 13px;height:42px;font-size:11px;min-width:157px}
+.line-filter {display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0}
+.line-filter__label {font-size:11px;color:#857e71;margin-right:5px}
+.line-pill {background:none;border:1px solid #d8d0c2;padding:9px 17px;color:#666056;font-size:11px;transition:all .2s}
+.line-pill:hover {border-color:var(--pine)}
+.line-pill.active {background:var(--pine);color:white;border-color:var(--pine)}
+.catalog-note {display:flex;justify-content:space-between;gap:15px;align-items:center;padding:8px 0 22px;font-size:10px;color:#8d8678;letter-spacing:.03em}
+.catalog-note span:first-child {color:#625d52;font-weight:600}
+.product-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 20px}
+.product-card {min-width:0;display:flex;flex-direction:column;position:relative}
+.product-card__visual {aspect-ratio: .85;position:relative;background:#eae3d8;overflow:hidden;width:100%;border:0;padding:0;color:inherit}
+.product-card__visual img {height:100%;width:100%;object-fit:cover;transition:transform .65s ease;filter:saturate(.93)}
+.product-card:hover .product-card__visual img {transform:scale(1.055)}
+.product-card__visual:focus-visible {outline-offset:4px}
+.product-card__index {position:absolute;top:14px;left:13px;padding:8px 10px;background:rgba(250,247,241,.88);font-size:9px;letter-spacing:.13em;color:#534d41;z-index:1}
+.product-card__tag {position:absolute;bottom:13px;left:13px;padding:8px 10px;background:var(--pine);color:#f8f3e8;font-size:9px;letter-spacing:.09em;z-index:1}
+.product-card__photo-missing {position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#827468;text-align:center;background:repeating-linear-gradient(45deg,#e9e2d7,#e9e2d7 1px,#e7e0d5 1px,#e7e0d5 8px);padding:20px}
+.product-card__photo-missing strong {font-family:var(--serif);font-size:42px;line-height:1.05;color:#67564c;font-weight:400}
+.product-card__photo-missing span {font-size:10px;letter-spacing:.07em;margin-top:12px}
+.product-card__top {font-size:10px;color:#9a8571;letter-spacing:.11em;text-transform:uppercase;margin:19px 0 5px}
+.product-card__name {font:500 30px/1.08 var(--serif);margin:0 0 8px;min-height:33px;letter-spacing:-.025em}
+.product-card__sub {font-size:11px;color:#888176;min-height:16px;margin:0 0 17px}
+.product-card__footer {display:flex;align-items:center;justify-content:space-between;margin-top:auto;gap:8px}
+.product-card__price {font-family:var(--serif);font-weight:600;font-size:30px;white-space:nowrap}
+.product-card__price small {font:400 11px var(--sans);color:#84776b;margin-right:4px}
+.product-card__view {width:40px;height:40px;background:none;border:1px solid #bfb4a6;color:var(--pine);display:grid;place-items:center;transition:all .2s;font-size:20px}
+.product-card__view:hover {color:white;background:var(--pine);border-color:var(--pine)}
+.empty-results {text-align:center;padding:70px 20px}
+.empty-results h3 {font:500 44px var(--serif);margin:0}
+.empty-results p {color:#756d61;font-size:13px;margin-bottom:25px}
+.editorial {display:grid;grid-template-columns:1.3fr .7fr;margin-top:0;margin-bottom:118px;min-height:480px}
+.editorial-main {background:var(--pine);color:#f7f2e8;padding:66px clamp(38px,6vw,97px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.editorial-number {font-size:10px;color:#d0b993;letter-spacing:.2em}
+.editorial h2 {font-size:clamp(55px,5.1vw,82px);line-height:.98;margin:35px 0 22px}
+.editorial h2 em {color:#d3b990}
+.editorial-main p {font-size:13px;line-height:1.95;color:#cccfc6;max-width:385px;margin:0 0 35px}
+.text-link--light {color:#eee6d4;border-color:#a6a799}
+.text-link--light:hover {color:#d2b387;border-color:#d2b387}
+.editorial-aside {background:#e9e0d2;padding:63px clamp(35px,4.5vw,72px);display:flex;flex-direction:column;justify-content:center}
+.editorial-aside__glyph {font-family:var(--serif);font-size:72px;color:var(--gold);line-height:1}
+.editorial-aside h3 {font:500 43px/1.03 var(--serif);margin:24px 0 15px}
+.editorial-aside p {font-size:12px;line-height:1.9;color:#766d61;max-width:240px}
+.hairline {width:60px;height:1px;background:#a48d6b;margin-top:28px}
+.editorial-aside__foot {font-size:9px;letter-spacing:.16em;margin-top:30px;color:#736753}
+.steps-section {margin-bottom:125px}
+.section-head--compact {margin-bottom:50px}
+.steps-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:42px}
+.step {border-top:1px solid #cfc6b7;padding-top:22px}
+.step-number {font:500 40px var(--serif);color:#9a896f}
+.step h3 {font:500 33px var(--serif);margin:16px 0 8px}
+.step p {font-size:12px;line-height:1.9;color:#786f63;max-width:320px}
+.steps-hint {font-size:11px;color:#8d8174;margin-top:42px}
+.locations-section {background:#ece6db;padding:100px 0 116px}
+.stores-grid {display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.store-card {border:1px solid #cfc3b3;background:rgba(255,253,247,.5);padding:42px 48px;min-height:260px;display:flex;flex-direction:column;align-items:flex-start}
+.store-card__index {font-size:10px;color:var(--oxblood);letter-spacing:.15em}
+.store-card h3 {font:500 44px var(--serif);margin:19px 0 7px}
+.store-card p {font-size:12px;line-height:1.7;color:#6f695c;margin:0}
+.store-card__hours {font-size:11px;color:#817665;margin-top:14px}
+.store-card a {font-size:11px;border-bottom:1px solid #b1a38b;padding-bottom:7px;margin-top:auto;padding-top:25px}
+.store-card a span {margin-left:12px}
+.footer {background:#222d27;color:#f4eee2;padding:69px 0 0}
+.footer-main {display:flex;justify-content:space-between;gap:30px;padding-bottom:70px}
+.footer-logo {font:500 51px/1 var(--serif)}
+.footer-main p {font-size:11px;line-height:1.9;color:#bec2b6}
+.footer-right {display:flex;flex-direction:column;align-items:flex-start}
+.footer-right span {font-size:9px;letter-spacing:.19em;color:#c7af8c;margin-bottom:20px}
+.footer-right a {font:500 31px var(--serif)}
+.footer-right p {margin:5px 0 0}
+.footer-bottom {border-top:1px solid #4a524a;padding:25px 0;display:flex;align-items:center;justify-content:space-between;gap:30px;color:#a6aea3;font-size:10px}
+.footer-bottom span:nth-child(2) {max-width:480px;line-height:1.6}
+/* Drawers */
+.overlay {position:fixed;inset:0;background:rgba(24,30,25,.6);backdrop-filter:blur(4px);z-index:100;animation:fadeIn .2s both}
+.drawer {position:fixed;right:0;top:0;bottom:0;width:min(570px,100vw);background:var(--paper);z-index:110;box-shadow:-8px 0 45px rgba(21,28,21,.16);display:flex;flex-direction:column;animation:slideIn .3s ease both;overflow:hidden}
+.drawer--cart {width:min(510px,100vw)}
+.drawer--checkout {width:min(530px,100vw)}
+.drawer-head {min-height:88px;padding:19px 32px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:15px;flex:none}
+.drawer-head__label {font-size:10px;letter-spacing:.16em;color:#8c806f}
+.drawer-head h2 {font:500 32px var(--serif);margin:3px 0 0}
+.drawer-head h2 span {font:400 12px var(--sans);color:#84766c;margin-left:5px}
+.icon-close {border:1px solid #d4cbbd;background:none;width:39px;height:39px;display:grid;place-items:center;font-size:26px;font-weight:300;flex:none;color:#544b40;line-height:1}
+.icon-close:hover {background:#eee7db}
+.drawer-scroll {flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 32px 34px}
+.drawer-footer {border-top:1px solid var(--border);padding:24px 32px 30px;flex:none;background:var(--paper)}
+.detail-photo {width:100%;height:350px;object-fit:cover;margin-top:24px;background:#e6dcd0;filter:saturate(.9)}
+.detail-photo--missing {display:grid;place-items:center;color:#847467;font:italic 37px var(--serif);background:#e6ded2}
+.detail-overline {color:#a18b6c;letter-spacing:.16em;font-size:10px;margin-top:27px}
+.detail-title {font:500 54px/1.02 var(--serif);letter-spacing:-.035em;margin:11px 0 9px}
+.detail-subtitle {color:#9a806a;font-size:12px;margin:0 0 21px}
+.detail-description {font-size:13px;line-height:1.85;color:#716d63;margin:0 0 25px}
+.detail-choices {border-top:1px solid var(--border);padding-top:20px}
+.detail-choices__title {font-weight:700;font-size:12px;margin:0 0 15px}
+.variant-option {display:flex;align-items:center;gap:15px;padding:15px 12px;margin-bottom:8px;border:1px solid #d9d0c2;background:#f9f6f0;cursor:pointer}
+.variant-option.selected {border-color:var(--pine);background:#ecefe9}
+.variant-option input {accent-color:var(--pine);flex:none;width:17px;height:17px}
+.variant-option__content {flex:1;min-width:0}
+.variant-option__name {font-size:12px;font-weight:700;display:block}
+.variant-option__note {font-size:10px;color:#7b766b;display:block;margin-top:4px}
+.variant-option__price {font:600 24px var(--serif);white-space:nowrap}
+.addons {border-top:1px solid var(--border);padding:21px 0;margin-top:12px}
+.addon-title {font-size:12px;font-weight:700;margin-bottom:10px}
+.addon-row {display:flex;align-items:center;gap:12px;padding:11px 0;cursor:pointer;font-size:12px}
+.addon-row input {accent-color:var(--pine);height:17px;width:17px;flex:none}
+.addon-row span:nth-child(2) {flex:1}
+.addon-row strong {font-weight:600;color:#6d665a}
+.detail-information {font-size:11px;line-height:1.75;color:#827970;margin:15px 0 20px}
+.detail-total {display:flex;justify-content:space-between;align-items:center;margin:18px 0;font-size:12px}
+.detail-total strong {font:600 32px var(--serif)}
+.detail-add {width:100%;margin-bottom:18px}
+.cart-empty {display:flex;flex-direction:column;align-items:center;text-align:center;padding:110px 12px;color:#746e60}
+.cart-empty svg {width:56px;height:56px;opacity:.42;margin-bottom:25px}
+.cart-empty h3 {font:500 43px/1 var(--serif);color:var(--ink);margin:0 0 15px}
+.cart-empty p {font-size:12px;line-height:1.8;margin:0 0 24px;max-width:250px}
+.cart-item {display:grid;grid-template-columns:90px 1fr;gap:16px;padding:25px 0;border-bottom:1px solid var(--border)}
+.cart-item__photo {width:90px;height:102px;object-fit:cover;background:#ddd2c6}
+.cart-item__photo--missing {display:grid;place-items:center;background:#e3d9cb;color:#86796c;font-size:10px;text-align:center;padding:10px}
+.cart-item__body {min-width:0}
+.cart-item__title {font:500 25px/1.1 var(--serif);margin:0 0 4px}
+.cart-item__variant {font-size:11px;color:#867c6c;margin:0 0 6px;line-height:1.55}
+.cart-item__price {font:600 25px var(--serif);margin:5px 0 8px}
+.cart-item__actions {display:flex;justify-content:space-between;align-items:center;gap:12px}
+.quantity {display:inline-flex;align-items:center;border:1px solid #d5cdc0}
+.quantity button {border:0;background:none;width:31px;height:31px;display:grid;place-items:center;font-size:18px}
+.quantity span {font-size:12px;min-width:28px;text-align:center}
+.remove-item {border:0;background:none;color:#a37d77;font-size:11px;text-decoration:underline;text-underline-offset:3px}
+.cart-total {display:flex;align-items:center;justify-content:space-between;font-size:12px;margin:0 0 15px}
+.cart-total strong {font:600 36px var(--serif)}
+.cart-footnote {font-size:10px;line-height:1.6;color:#847b71;margin:13px 0 0}
+.form-note {background:#eae4d9;border-left:2px solid #aa8964;padding:14px 16px;font-size:11px;line-height:1.8;color:#73695c;margin:25px 0}
+.form-field {display:flex;flex-direction:column;gap:8px;margin:17px 0}
+.form-field>label,.form-field>legend {font-size:11px;font-weight:700}
+.form-field>label span {color:#a75454}
+.form-field input:not([type=radio]),.form-field select,.form-field textarea {width:100%;border:1px solid #ccc4b9;border-radius:0;background:#fdfaf6;color:var(--ink);padding:14px 13px;min-height:47px;font-size:12px}
+.form-field textarea {resize:vertical}
+.form-field--fieldset {border:0;padding:0;margin-top:24px}
+.form-field--fieldset legend {margin-bottom:10px}
+.radio-option {padding:10px 0;font-size:12px!important;font-weight:400!important;display:flex;gap:8px;align-items:center}
+.radio-option input {accent-color:var(--pine)}
+.field-note {color:#887c70;font-size:10px;line-height:1.6;margin:0}
+.checkout-summary {border-top:1px solid var(--border);margin-top:25px;padding:20px 0;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.checkout-summary strong {font:600 29px var(--serif)}
+.prepared-order {padding:25px 0}
+.prepared-order__check {width:50px;height:50px;background:var(--pine);color:white;font-size:24px;display:grid;place-items:center;margin-bottom:20px}
+.prepared-order h3 {font:500 42px var(--serif);margin:0 0 10px}
+.prepared-order p {font-size:12px;line-height:1.8;color:#756c61}
+.prepared-order textarea {width:100%;resize:vertical;border:1px solid var(--border);padding:13px;font-size:11px;line-height:1.6;background:#fffdf8;color:#464138;margin:14px 0 16px}
+.prepared-order .btn {margin-bottom:9px}
+.return-form {border:0;background:none;color:#756d63;text-decoration:underline;text-underline-offset:3px;font-size:11px;display:block;margin:22px auto}
+.toast {position:fixed;z-index:400;bottom:28px;left:50%;transform:translate(-50%,20px);background:var(--pine);color:#fff;padding:15px 24px;box-shadow:0 8px 26px #0002;font-size:12px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:min(92vw,480px);text-align:center}
+.toast.visible {opacity:1;transform:translate(-50%,0)}
+@keyframes fadeIn {from {opacity:0}to {opacity:1}}
+@keyframes slideIn {from {transform:translateX(22px);opacity:.4}to {transform:translateX(0);opacity:1}}
+@media (max-width:1150px){.container {padding-inline:30px}.hero {gap:30px}.hero-copy {padding-left:0}.header-nav {gap:17px}.header-phone {display:none}.hero h1 {font-size:clamp(58px,6vw,83px)}.product-grid {grid-template-columns:repeat(3,minmax(0,1fr))}.hero-medallion {left:-25px}}
+@media (max-width:800px){.header-inner {min-height:76px}.brand-name {font-size:31px}.brand-mark {width:39px;height:39px;font-size:22px}.header-nav {display:none}.hero {gap:22px;min-height:0;padding-top:32px;padding-bottom:55px;grid-template-columns:1fr 1fr}.hero h1 {font-size:clamp(48px,6.6vw,70px);white-space:normal}.hero-lead {font-size:12px;line-height:1.75}.hero-actions {gap:14px;margin-top:22px}.hero-stamp {margin-top:40px}.hero-frame {min-height:420px}.hero-medallion {width:83px;height:83px;font-size:17px;left:-25px;bottom:60px}.catalog-section {padding:75px 0}.product-grid {grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-toolbar {align-items:flex-start;flex-wrap:wrap}.catalog-controls {width:100%}.searchbox {flex:1}.sort-select {min-width:150px}.editorial {grid-template-columns:1fr 1fr}.editorial-main,.editorial-aside {padding:40px}.editorial h2 {font-size:54px}.footer-bottom {flex-wrap:wrap}.marquee-rule span:nth-of-type(4),.marquee-rule i:last-of-type {display:none}}
+@media (max-width:580px){.container {padding-inline:19px}.announcement {font-size:9px;letter-spacing:.1em;gap:10px}.header-inner {min-height:70px}.brand-mark {width:34px;height:34px;font-size:20px}.brand {gap:9px}.brand-name {font-size:28px}.brand-subtitle {font-size:7px;letter-spacing:.21em;margin-top:6px}.bag-button {width:38px;height:38px}.hero {display:flex;flex-direction:column;gap:26px;padding-top:36px;padding-bottom:46px}.hero-copy {align-items:flex-start}.hero h1 {font-size:clamp(54px,11.5vw,77px);margin:23px 0 17px;letter-spacing:-.045em}.eyebrow {font-size:9px;letter-spacing:.17em}.hero-lead {font-size:13px;max-width:360px}.hero-actions {margin-top:25px;gap:22px}.btn {min-height:48px;padding:13px 18px;font-size:11px}.hero-stamp {display:none}.hero-visual {padding-left:19px}.hero-frame {min-height:0;height:390px}.hero-frame img {object-position:center}.hero-medallion {width:78px;height:78px;bottom:50px;left:-2px}.hero-caption {margin-left:3px}.marquee-rule {min-height:57px;gap:5px;font-size:8px;letter-spacing:.09em}.marquee-rule span:nth-of-type(3),.marquee-rule i:nth-of-type(2) {display:none}.catalog-section {padding:67px 0 75px}.section-head {display:block;margin-bottom:32px}.section-head h2 {font-size:60px;margin-top:13px}.section-description {margin-top:20px;font-size:12px}.catalog-toolbar {padding:0 0 15px}.category-tabs {justify-content:space-between;gap:15px;width:100%}.tab {font-size:12px}.tab.active::after {bottom:-16px}.catalog-controls {gap:7px}.sort-select {min-width:0;width:142px;padding-left:8px;padding-right:4px;font-size:10px}.line-filter {gap:6px;margin:20px 0}.line-filter__label {width:100%;font-size:10px}.line-pill {padding:8px 12px;font-size:10px}.catalog-note {align-items:flex-start;flex-direction:column;gap:5px;font-size:9px}.product-grid {gap:31px 12px}.product-card__visual {aspect-ratio:.79}.product-card__index {top:7px;left:7px;padding:6px 7px;font-size:8px}.product-card__tag {bottom:8px;left:7px;padding:6px;font-size:8px;max-width:calc(100% - 14px)}.product-card__top {font-size:8px;letter-spacing:.07em;margin:13px 0 6px}.product-card__name {font-size:23px;line-height:1.0;min-height:44px;margin-bottom:7px}.product-card__sub {font-size:10px;line-height:1.3;min-height:26px;margin:0 0 12px}.product-card__price {font-size:26px}.product-card__price small {font-size:10px}.product-card__view {width:34px;height:34px;font-size:19px}.product-card__photo-missing strong {font-size:29px}.product-card__photo-missing span {font-size:9px}.editorial {display:flex;flex-direction:column;margin-bottom:73px}.editorial-main {padding:55px 38px}.editorial h2 {font-size:61px}.editorial-aside {padding:38px}.editorial-aside__glyph {font-size:51px}.editorial-aside h3 {font-size:38px;margin:6px 0 6px}.steps-section {margin-bottom:75px}.steps-grid {display:flex;flex-direction:column;gap:22px}.step-number {font-size:30px}.step h3 {margin:8px 0;font-size:30px}.step p {margin:0}.steps-hint {font-size:10px;line-height:1.7;margin-top:28px}.locations-section {padding:70px 0}.stores-grid {grid-template-columns:1fr;gap:12px}.store-card {padding:30px;min-height:230px}.store-card h3 {font-size:39px}.footer {padding-top:46px}.footer-main {flex-direction:column;gap:30px;padding-bottom:36px}.footer-logo {font-size:44px}.footer-bottom {padding:20px 0;display:flex;flex-direction:column;align-items:flex-start;gap:10px;line-height:1.7}.drawer-head {padding:15px 20px;min-height:75px}.drawer-scroll {padding:0 20px 35px}.drawer-footer {padding:17px 20px 25px}.detail-photo {height:290px}.detail-title {font-size:46px}.variant-option {padding:12px 9px;gap:8px}.variant-option__price {font-size:21px}.detail-description {font-size:12px}.cart-item {grid-template-columns:79px 1fr;gap:12px}.cart-item__photo {width:79px;height:90px}.cart-item__title {font-size:23px}}
+@media (max-width:350px){.product-grid {gap:27px 10px}.product-card__name {font-size:21px}.hero h1 {font-size:51px}.line-pill {padding:7px 9px}.hero-frame {height:330px}.announcement {font-size:8px}}
+@media (prefers-reduced-motion:reduce){html {scroll-behavior:auto}*,*::before,*::after {animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+</style>
+  
+  
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Перейти к каталогу</a>
+  <div class="announcement"><span class="announcement__star">✦</span> Клубника в шоколаде · наборы и букеты <span class="announcement__star">✦</span></div>
+  <header class="site-header" id="top">
+    <div class="header-inner container">
+      <a class="brand" href="#top" aria-label="Дели Берри — на главную">
+        <span class="brand-mark" aria-hidden="true">д<span class="brand-mark__stem">·</span>б</span>
+        <span class="brand-text"><span class="brand-name">Дели Берри</span><span class="brand-subtitle">КЛУБНИКА В ШОКОЛАДЕ</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Главная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#approach">О десертах</a>
+        <a href="#how-it-works">Как заказать</a>
+        <a href="#stores">Наши точки</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-phone" href="tel:+79959014724">+7 (995) 901-47-24</a>
+        <button class="bag-button" id="openCart" type="button" aria-label="Открыть корзину" aria-controls="cartDrawer" aria-haspopup="dialog">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 8h14l-1 12H6L5 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 9V6a3 3 0 1 1 6 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="bag-count" id="cartCount" aria-hidden="true">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> КОЛЛЕКЦИЯ СЛАДКИХ ПОДАРКОВ</div>
+        <h1 id="hero-title">Сказать важное<br><em>без лишних слов.</em></h1>
+        <p class="hero-lead">Клубника в шоколаде, собранная в подарочные наборы и букеты. Небольшой жест, в котором много внимания.</p>
+        <div class="hero-actions"><a class="btn btn--dark" href="#catalog">Выбрать десерт <span aria-hidden="true">↗</span></a><a class="text-link" href="#how-it-works">Как это работает <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-stamp"><span class="hero-stamp-icon" aria-hidden="true">✳</span><span>Две точки получения<br>Москва · Зеленопарк</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame"><img src="https://raw.githubusercontent.com/hrynchishin89/deli-berry-telegram/main/catalog-site/products/B09.webp" alt="Подарочный букет клубники в шоколаде, оформление B09" fetchpriority="high"></div>
+        <div class="hero-caption"><span>БУКЕТЫ И НАБОРЫ</span><span>01 / 02</span></div>
+        <div class="hero-medallion" aria-hidden="true"><span>ДЕЛИ<br>БЕРРИ</span><small>✦</small></div>
+      </div>
+    </section>
+
+    <div class="marquee-rule container"><span>ШОКОЛАД</span><i>✧</i><span>КЛУБНИКА</span><i>✧</i><span>ЗНАКИ ВНИМАНИЯ</span><i>✧</i><span>ПОДАРОЧНЫЕ БУКЕТЫ</span></div>
+
+    <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow eyebrow--small">ПОДОБРАТЬ СВОЁ</p><h2 id="catalog-title">Наша <em>коллекция</em></h2></div><p class="section-description">Выберите формат, размер и вид клубники. Все цены указаны за готовый набор или букет.</p></div>
+        <div class="catalog-toolbar">
+          <div class="category-tabs" id="categoryTabs" role="group" aria-label="Категория товара">
+            <button type="button" class="tab active" data-category="all" aria-pressed="true">Все <span>09</span></button>
+            <button type="button" class="tab" data-category="sets" aria-pressed="false">Наборы <span>05</span></button>
+            <button type="button" class="tab" data-category="bouquets" aria-pressed="false">Букеты <span>04</span></button>
+          </div>
+          <div class="catalog-controls">
+            <label class="searchbox" for="searchInput"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="search" id="searchInput" placeholder="Найти десерт" autocomplete="off"></label>
+            <label class="sr-only" for="sortSelect">Сортировка</label><select id="sortSelect" class="sort-select"><option value="default">По каталогу</option><option value="price-asc">Сначала дешевле</option><option value="price-desc">Сначала дороже</option></select>
+          </div>
+        </div>
+        <div class="line-filter" id="lineFilters" role="group" aria-label="Вид клубники">
+          <span class="line-filter__label">Вид клубники:</span><button type="button" class="line-pill active" data-line="all" aria-pressed="true">Все варианты</button><button type="button" class="line-pill" data-line="fresh" aria-pressed="false">Свежая</button><button type="button" class="line-pill" data-line="fd" aria-pressed="false">Сублимированная</button>
+        </div>
+        <div class="catalog-note"><span id="resultCount">9 моделей · 16 вариантов</span><span>Наличие и время уточняет оператор</span></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-results" id="emptyResults" hidden><h3>Ничего не нашлось</h3><p>Попробуйте выбрать другую категорию или убрать фильтры.</p><button class="btn btn--outline" id="resetFilters" type="button">Сбросить фильтры</button></div>
+      </div>
+    </section>
+
+    <section class="editorial container" id="approach" aria-labelledby="editorial-title">
+      <div class="editorial-main"><div class="editorial-number">01 — В ДЕТАЛЯХ</div><h2 id="editorial-title">Красота —<br><em>в простых вещах.</em></h2><p>Есть подарки, которые не требуют повода. Клубника, шоколад и оформление, которое можно выбрать под настроение.</p><a href="#catalog" class="text-link text-link--light">Смотреть коллекцию <span aria-hidden="true">↗</span></a></div>
+      <div class="editorial-aside"><div class="editorial-aside__glyph" aria-hidden="true">✳</div><h3>Два вкуса,<br>два настроения</h3><p>Свежая клубника — для момента здесь и сейчас. Сублимированная — другой характер текстуры и вкуса.</p><span class="hairline"></span><span class="editorial-aside__foot">ВЫБОР ОСТАЁТСЯ ЗА ВАМИ</span></div>
+    </section>
+
+    <section class="steps-section container" id="how-it-works" aria-labelledby="steps-title"><div class="section-head section-head--compact"><div><p class="eyebrow eyebrow--small">ВСЁ ПРОСТО</p><h2 id="steps-title">Как <em>заказать</em></h2></div></div><div class="steps-grid"><article class="step"><span class="step-number">01</span><h3>Выберите десерт</h3><p>Откройте понравившийся набор или букет, выберите вид клубники и оформление.</p></article><article class="step"><span class="step-number">02</span><h3>Соберите корзину</h3><p>Укажите точку получения, удобное время и пожелания. Мы подготовим текст заказа.</p></article><article class="step"><span class="step-number">03</span><h3>Подтвердите с нами</h3><p>Передайте заказ оператору по телефону. Наличие, время и доставку согласуем отдельно.</p></article></div><p class="steps-hint">На этой версии сайта заказы не отправляются автоматически. До подтверждения оператором заказ не считается принятым.</p></section>
+
+    <section class="locations-section" id="stores" aria-labelledby="stores-title"><div class="container"><div class="section-head section-head--compact"><div><p class="eyebrow eyebrow--small">ВСЕГДА РЯДОМ</p><h2 id="stores-title">Наши <em>точки</em></h2></div><p class="section-description">Самовывоз или курьерская доставка сторонним сервисом. Стоимость доставки рассчитывается отдельно.</p></div><div class="stores-grid"><article class="store-card"><span class="store-card__index">01 / МОСКВА</span><h3>ТЦ Discovery</h3><p>Москва, ул. Дыбенко, 7/1</p><span class="store-card__hours">Ежедневно · 10:00–22:00</span><a href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%20%D0%94%D1%8B%D0%B1%D0%B5%D0%BD%D0%BA%D0%BE%207%2F1" target="_blank" rel="noopener noreferrer">Посмотреть на карте <span aria-hidden="true">↗</span></a></article><article class="store-card"><span class="store-card__index">02 / МОСКОВСКАЯ ОБЛАСТЬ</span><h3>ТРЦ Зеленопарк</h3><p>Солнечногорск, пгт Ржавки, 2-й микрорайон, стр. 20</p><span class="store-card__hours">Ежедневно · 10:00–22:00</span><a href="https://yandex.ru/maps/?text=%D0%A2%D0%A0%D0%A6%20%D0%97%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%BF%D0%B0%D1%80%D0%BA" target="_blank" rel="noopener noreferrer">Посмотреть на карте <span aria-hidden="true">↗</span></a></article></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-main"><div><a href="#top" class="footer-logo">Дели Берри</a><p>Клубника в шоколаде. Наборы и букеты<br>для особенных моментов.</p></div><div class="footer-right"><span>ВОПРОСЫ И ЗАКАЗЫ</span><a href="tel:+79959014724">+7 (995) 901-47-24</a><p>Ежедневно, 10:00–22:00</p></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Дели Берри</span><span>Информация на сайте не является публичной офертой. Наличие и детали заказа уточняйте у оператора.</span><a href="#top">Наверх ↑</a></div></div></footer>
+
+  <div id="overlay" class="overlay" hidden></div>
+  <div class="drawer" id="productDrawer" role="dialog" aria-modal="true" aria-labelledby="productDialogTitle" hidden><div class="drawer-head"><span class="drawer-head__label">КОЛЛЕКЦИЯ ДЕЛИ БЕРРИ</span><button class="icon-close" type="button" data-close aria-label="Закрыть карточку">×</button></div><div id="productDrawerBody" class="drawer-scroll"></div></div>
+  <div class="drawer drawer--cart" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden><div class="drawer-head"><div><span class="drawer-head__label">ВАШ ВЫБОР</span><h2 id="cartTitle">Корзина <span id="cartHeadingCount"></span></h2></div><button class="icon-close" type="button" data-close aria-label="Закрыть корзину">×</button></div><div id="cartDrawerBody" class="drawer-scroll"></div><div id="cartDrawerFooter" class="drawer-footer"></div></div>
+  <div class="drawer drawer--checkout" id="checkoutDrawer" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" hidden><div class="drawer-head"><div><span class="drawer-head__label">ПОЖЕЛАНИЯ К ЗАКАЗУ</span><h2 id="checkoutTitle">Оформление</h2></div><button class="icon-close" type="button" data-close aria-label="Закрыть оформление">×</button></div><div class="drawer-scroll"><form id="checkoutForm" novalidate><div class="form-note">Оформите пожелания, затем скопируйте заказ и свяжитесь с оператором. Автоматическая отправка и онлайн-оплата пока не подключены.</div><div class="form-field"><label for="customerName">Ваше имя <span>*</span></label><input id="customerName" name="name" autocomplete="name" required placeholder="Как к вам обращаться"></div><div class="form-field"><label for="customerPhone">Телефон <span>*</span></label><input id="customerPhone" name="phone" autocomplete="tel" inputmode="tel" type="tel" required placeholder="+7 999 000-00-00"></div><div class="form-field"><label for="storeChoice">Точка <span>*</span></label><select id="storeChoice" name="store" required><option value="">Выберите точку</option><option value="discovery">ТЦ Discovery · Москва</option><option value="zelenopark">ТРЦ Зеленопарк</option></select></div><fieldset class="form-field form-field--fieldset"><legend>Способ получения</legend><label class="radio-option"><input type="radio" name="receive" value="pickup" checked> Самовывоз</label><label class="radio-option"><input type="radio" name="receive" value="delivery"> Курьерская доставка</label></fieldset><div id="deliveryAddressField" class="form-field" hidden><label for="deliveryAddress">Адрес доставки <span>*</span></label><textarea id="deliveryAddress" rows="2" placeholder="Адрес, подъезд, квартира и другие детали"></textarea><p class="field-note">Стоимость доставки не включена в сумму заказа, рассчитывается отдельно.</p></div><div class="form-field"><label for="desiredDate">Желаемая дата</label><input id="desiredDate" type="date" name="date"></div><div class="form-field"><label for="desiredTime">Желаемое время</label><select id="desiredTime" name="time"><option value="">Согласуем с оператором</option></select><p class="field-note">Время и возможность приготовления подтверждает оператор.</p></div><div class="form-field"><label for="customerNote">Комментарий</label><textarea id="customerNote" name="comment" rows="3" maxlength="500" placeholder="Повод, пожелания, вопросы о составе"></textarea></div><div id="checkoutSummary" class="checkout-summary"></div><button type="submit" class="btn btn--dark btn--full">Подготовить текст заказа <span aria-hidden="true">↗</span></button></form><div id="preparedOrder" class="prepared-order" hidden><div class="prepared-order__check" aria-hidden="true">✓</div><h3>Текст заказа готов</h3><p>Скопируйте его и свяжитесь с оператором. Заказ не поступит к нам автоматически.</p><textarea id="orderMessage" readonly rows="9" aria-label="Подготовленный текст заказа"></textarea><button class="btn btn--dark btn--full" type="button" id="copyOrder">Скопировать заказ</button><button class="btn btn--outline btn--full" type="button" id="shareOrder">Поделиться заказом</button><a class="btn btn--outline btn--full" href="tel:+79959014724">Позвонить оператору</a><button class="return-form" id="editOrder" type="button">Изменить данные заказа</button></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+/* Дели Берри • Подтверждённый каталог: 9 семейств, 16 вариантов (28.09–29.09.2026).
+   Фото: оригинальные изображения из публичного репозитория владельца.
+   Не изменяйте цены и состав без сверки с активным каталогом. */
+window.DELI_CATALOG = Object.freeze({
+  phone: '+7 (995) 901-47-24',
+  phoneLink: 'tel:+79959014724',
+  originalPhotoRoot: 'https://raw.githubusercontent.com/hrynchishin89/deli-berry-telegram/main/catalog-site/products/',
+  stores: [
+    {id:'discovery', name:'ТЦ Discovery', city:'Москва', address:'ул. Дыбенко, 7/1', hours:'Ежедневно, 10:00–22:00', map:'https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%20%D0%94%D1%8B%D0%B1%D0%B5%D0%BD%D0%BA%D0%BE%207%2F1'},
+    {id:'zelenopark', name:'ТРЦ Зеленопарк', city:'Московская область', address:'Солнечногорск, пгт Ржавки, 2-й микрорайон, стр. 20', hours:'Ежедневно, 10:00–22:00', map:'https://yandex.ru/maps/?text=%D0%A2%D0%A0%D0%A6%20%D0%97%D0%B5%D0%BB%D0%B5%D0%BD%D0%BE%D0%BF%D0%B0%D1%80%D0%BA'}
+  ],
+  addOns: [
+    {id:'blueberry',name:'Голубика в оформлении',price:200,group:'berries'},
+    {id:'raspberry',name:'Малина в оформлении',price:200,group:'berries'},
+    {id:'inscription',name:'Шоколадная надпись',price:250,group:'text'}
+  ],
+  products: [
+    {id:'SET-09',group:'sets',title:'Набор из 9 ягод',subtitle:'Клубника в шоколаде',count:9,photo:'B04',description:'Небольшой набор клубники в шоколаде. Выберите свежую или сублимированную клубнику.',variants:[
+      {id:'SET-09-FRESH',type:'fresh',name:'Свежая клубника',price:1190,photo:'B04',addons:true},
+      {id:'SET-09-FD',type:'fd',name:'Сублимированная клубника',price:890,photo:'B04'}
+    ]},
+    {id:'SET-12',group:'sets',title:'Набор из 12 ягод',subtitle:'Клубника в шоколаде',count:12,photo:'B02',description:'Подарочный набор с выбором свежей или сублимированной клубники. Есть отдельное оформление A06.',variants:[
+      {id:'SET-12-FRESH',type:'fresh',name:'Свежая клубника',price:1590,photo:'B02',addons:true},
+      {id:'SET-12-A06',type:'fresh',name:'Свежая, оформление A06',price:1790,photo:'A06',addons:true,includedBerry:true},
+      {id:'SET-12-FD',type:'fd',name:'Сублимированная клубника',price:990,photo:'B02'}
+    ]},
+    {id:'SET-16',group:'sets',title:'Набор из 16 ягод',subtitle:'Клубника в шоколаде',count:16,photo:'A01',description:'Набор из 16 ягод клубники в шоколаде. Свежая и сублимированная линии.',variants:[
+      {id:'SET-16-FRESH',type:'fresh',name:'Свежая клубника',price:1990,photo:'A01',addons:true},
+      {id:'SET-16-FD',type:'fd',name:'Сублимированная клубника',price:1250,photo:'A01'}
+    ]},
+    {id:'SET-25',group:'sets',title:'Набор из 25 ягод',subtitle:'Свежая клубника',count:25,photo:null,description:'Набор из 25 свежих ягод. Только крафтовая коробка; фотография ожидает подтверждения.',note:'Только крафтовая коробка.',variants:[
+      {id:'SET-25-FRESH',type:'fresh',name:'Свежая клубника',price:2790,photo:null,addons:true}
+    ]},
+    {id:'MIX-BANANA',group:'sets',title:'Клубника и бананы',subtitle:'Ассорти · клубника + банан',count:12,bananaCount:2,photo:'C02',description:'12 ягод клубники и 2 банана в шоколаде. Один набор — два любимых вкуса.',variants:[
+      {id:'MIX-BANANA-C02',type:'fresh',name:'Свежая клубника + бананы',price:1990,photo:'C02'}
+    ]},
+    {id:'BQT-A07',group:'bouquets',title:'Букет из 19 ягод',subtitle:'Оформление A07',count:19,photo:'A07',description:'19 свежих ягод клубники в шоколаде, кремовая упаковка.',variants:[
+      {id:'BQT-A07-FRESH',type:'fresh',name:'Свежая клубника',price:2750,photo:'A07'}
+    ]},
+    {id:'BQT-A08',group:'bouquets',title:'Букет из 39 ягод',subtitle:'Оформление A08',count:39,photo:'A08',description:'Большой букет в розово-фиолетовой упаковке.',variants:[
+      {id:'BQT-A08-FRESH',type:'fresh',name:'Свежая клубника',price:4890,photo:'A08'},
+      {id:'BQT-A08-FD',type:'fd',name:'Сублимированная клубника',price:3290,photo:'A08'}
+    ]},
+    {id:'BQT-B09',group:'bouquets',title:'Букет из 19 ягод',subtitle:'Оформление B09',count:19,photo:'B09',description:'Букет в яркой подарочной упаковке, 19 ягод клубники.',variants:[
+      {id:'BQT-B09-FRESH',type:'fresh',name:'Свежая клубника',price:2790,photo:'B09'},
+      {id:'BQT-B09-FD',type:'fd',name:'Сублимированная клубника',price:1690,photo:'B09'}
+    ]},
+    {id:'BQT-B10',group:'bouquets',title:'Букет из 35 ягод',subtitle:'Оформление B10',count:35,photo:'B10',description:'Букет из 35 ягод клубники в коралловой упаковке.',variants:[
+      {id:'BQT-B10-FRESH',type:'fresh',name:'Свежая клубника',price:4390,photo:'B10'},
+      {id:'BQT-B10-FD',type:'fd',name:'Сублимированная клубника',price:2950,photo:'B10'}
+    ]}
+  ]
+});
+
+</script>
+<script>
+/* Дели Берри · сайт-каталог. Без Telegram SDK, без внешнего API и без приёма оплаты.
+   На статическом сайте оформление только подготавливает текст заказа — не отправляет данные автоматически. */
+(() => {
+  'use strict';
+  const data = window.DELI_CATALOG;
+  if (!data || !Array.isArray(data.products)) return;
+  const $ = (selector, root=document) => root.querySelector(selector);
+  const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+  const money = n => new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+  const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const photoUrl = code => code ? data.originalPhotoRoot + encodeURIComponent(code) + '.webp' : '';
+  const getProduct = id => data.products.find(p => p.id === id);
+  const getVariant = id => data.products.flatMap(p => p.variants.map(v => ({product:p,variant:v}))).find(x => x.variant.id === id);
+  const lines = {all:'Все варианты',fresh:'Свежая',fd:'Сублимированная'};
+  const typeLabel = {fresh:'Свежая клубника',fd:'Сублимированная клубника'};
+  const categoryLabel = {sets:'Наборы',bouquets:'Букеты'};
+  const state = {category:'all',line:'all',query:'',sort:'default',selectedProduct:null,selectedVariant:null,selectedAddons:[],open:null,lastFocus:null};
+  const CART_KEY = 'deli-berry-oldmoney-cart-v1';
+
+  function loadCart() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+      if (!Array.isArray(saved)) return [];
+      return saved.filter(item => item && typeof item.variantId==='string' && getVariant(item.variantId) && Array.isArray(item.addons))
+        .map(item => ({variantId:item.variantId,addons:item.addons.filter(id => data.addOns.some(a => a.id===id)),qty:Math.max(1,Math.min(99,Math.floor(Number(item.qty)||1))) }));
+    } catch { return []; }
+  }
+  let cart = loadCart();
+  const saveCart = () => { try { localStorage.setItem(CART_KEY,JSON.stringify(cart)); } catch {} };
+  const itemAmount = item => {
+    const pair = getVariant(item.variantId);
+    return pair ? (pair.variant.price + item.addons.reduce((sum,id)=>sum+(data.addOns.find(a=>a.id===id)?.price||0),0)) * item.qty : 0;
+  };
+  const cartAmount = () => cart.reduce((sum,item)=>sum+itemAmount(item),0);
+  const cartQty = () => cart.reduce((sum,item)=>sum+item.qty,0);
+
+  function updateCartCount() {
+    const n = cartQty();
+    $('#cartCount').textContent = n;
+    $('#openCart').setAttribute('aria-label',`Открыть корзину, товаров: ${n}`);
+  }
+  function photoHTML(code, alt, extraClass='') {
+    if (!code) return `<div class="product-card__photo-missing ${extraClass}"><strong>Дели Берри</strong><span>Фото уточняется</span></div>`;
+    return `<img src="${photoUrl(code)}" alt="${escapeHTML(alt)}" loading="lazy" decoding="async">`;
+  }
+  function validVariants(p) { return p.variants.filter(v=>state.line==='all'||v.type===state.line); }
+  function renderCatalog() {
+    let result=data.products.filter(p=>(state.category==='all'||p.group===state.category) && validVariants(p).length && (`${p.title} ${p.subtitle} ${p.description} ${p.count} ${p.variants.map(v=>v.name).join(' ')}`).toLocaleLowerCase('ru').includes(state.query.toLocaleLowerCase('ru')));
+    if (state.sort.startsWith('price')) result.sort((a,b) => {
+      const priceA=Math.min(...validVariants(a).map(v=>v.price)),priceB=Math.min(...validVariants(b).map(v=>v.price));
+      return state.sort==='price-asc' ? priceA-priceB : priceB-priceA;
+    });
+    $('#resultCount').textContent = `${result.length} ${result.length===1?'модель':result.length>=2&&result.length<=4?'модели':'моделей'} · ${result.reduce((n,p)=>n+validVariants(p).length,0)} ценовых вариантов`;
+    $('#emptyResults').hidden = result.length>0;
+    $('#productGrid').innerHTML = result.map((p,index)=>{
+      const variants=validVariants(p);
+      const first=variants[0], min=Math.min(...variants.map(v=>v.price));
+      const defaultPhoto=state.line==='fd' ? (variants.find(v=>v.type==='fd')?.photo||p.photo) : p.photo;
+      const pricePrefix=variants.length>1?'от ':'';
+      const countText=p.bananaCount ? '12 ягод + 2 банана' : `${p.count} ягод`;
+      const sub=p.subtitle.includes('Ассорти') ? p.subtitle : p.group==='sets'?'Клубника в шоколаде':p.subtitle;
+      return `<article class="product-card">
+        <button class="product-card__visual" type="button" data-open-product="${p.id}" aria-label="Посмотреть ${escapeHTML(p.title+', '+p.subtitle)}">
+           ${photoHTML(defaultPhoto,p.title+', '+p.subtitle)}
+           <span class="product-card__index">${p.group==='sets'?'НАБОР':'БУКЕТ'} / ${String(index+1).padStart(2,'0')}</span>
+           ${p.bananaCount?'<span class="product-card__tag">Ассорти · клубника + банан</span>':`<span class="product-card__tag">${escapeHTML(countText)}</span>`}
+        </button>
+        <div class="product-card__top">${escapeHTML(categoryLabel[p.group])} · ${escapeHTML(countText)}</div>
+        <h3 class="product-card__name">${escapeHTML(p.title)}</h3>
+        <p class="product-card__sub">${escapeHTML(sub)}</p>
+        <div class="product-card__footer"><span class="product-card__price"><small>${pricePrefix}</small>${money(min)}</span><button class="product-card__view" type="button" data-open-product="${p.id}" aria-label="Выбрать ${escapeHTML(p.title)}">↗</button></div>
+      </article>`;
+    }).join('');
+    attachFallbacks($('#productGrid'));
+    $$('#categoryTabs .tab').forEach(btn=>{const active=btn.dataset.category===state.category;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active)});
+    $$('#lineFilters .line-pill').forEach(btn=>{const active=btn.dataset.line===state.line;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',active)});
+  }
+  function attachFallbacks(root=document) {
+    $$('img',root).forEach(img=>{
+      if (img.dataset.fallbackAttached) return;
+      img.dataset.fallbackAttached='true';
+      img.addEventListener('error',()=>{
+        if (!img.parentNode || img.parentNode.classList.contains('detail-photo--missing')) return;
+        const placeholder=document.createElement('div');
+        if(img.classList.contains('cart-item__photo')) {
+          placeholder.className='cart-item__photo cart-item__photo--missing';
+          placeholder.textContent='Фото временно недоступно';
+        } else if(img.classList.contains('detail-photo')) {
+          placeholder.className='detail-photo detail-photo--missing';
+          placeholder.textContent='Фото временно недоступно';
+        } else {
+          placeholder.className='product-card__photo-missing';
+          placeholder.innerHTML='<strong>Дели Берри</strong><span>Фото временно недоступно</span>';
+        }
+        img.replaceWith(placeholder);
+      },{once:true});
+    });
+  }
+  function openDrawer(name) {
+    if (!state.open) state.lastFocus=document.activeElement;
+    state.open=name;
+    $$('.drawer').forEach(el=>el.hidden = el.id!==`${name}Drawer`);
+    $('#overlay').hidden=false;
+    document.body.classList.add('is-locked');
+    const d=$(`#${name}Drawer`);
+    const focusTarget=d.querySelector('[data-close]');
+    focusTarget?.focus({preventScroll:true});
+  }
+  function closeDrawer() {
+    if (!state.open) return;
+    state.open=null;
+    $$('.drawer').forEach(el=>el.hidden=true);
+    $('#overlay').hidden=true;
+    document.body.classList.remove('is-locked');
+    if (state.lastFocus?.isConnected) state.lastFocus.focus({preventScroll:true});
+    state.lastFocus=null;
+  }
+  function openProduct(id) {
+    const p=getProduct(id);if(!p)return;
+    state.selectedProduct=id;
+    state.selectedVariant=(validVariants(p)[0]||p.variants[0]).id;
+    state.selectedAddons=[];
+    renderProductDrawer();openDrawer('product');
+  }
+  function renderProductDrawer() {
+    const p=getProduct(state.selectedProduct);
+    if(!p)return;
+    const selected=p.variants.find(v=>v.id===state.selectedVariant)||p.variants[0];
+    const addOnPossible=selected.addons;
+    const addons=addOnPossible ? data.addOns.filter(a=> !selected.includedBerry||a.group!=='berries') : [];
+    state.selectedAddons=state.selectedAddons.filter(id=>addons.some(a=>a.id===id));
+    const extras=state.selectedAddons.reduce((n,id)=>n+(data.addOns.find(a=>a.id===id)?.price||0),0);
+    const photo=selected.photo||p.photo;
+    const fresh=selected.type==='fresh';
+    $('#productDrawerBody').innerHTML=`
+      ${photo ? `<img class="detail-photo" src="${photoUrl(photo)}" alt="${escapeHTML(p.title+', '+selected.name)}">`:'<div class="detail-photo detail-photo--missing">Фото готовится</div>'}
+      <p class="detail-overline">${p.group==='sets'?'НАБОРЫ':'БУКЕТЫ'} / ДЕЛИ БЕРРИ</p>
+      <h2 class="detail-title" id="productDialogTitle">${escapeHTML(p.title)}</h2>
+      <p class="detail-subtitle">${escapeHTML(p.subtitle)}</p>
+      <p class="detail-description">${escapeHTML(p.description)}</p>
+      <div class="detail-choices"><p class="detail-choices__title">Выберите вариант</p>
+      ${p.variants.map(v=>`<label class="variant-option ${v.id===selected.id?'selected':''}">
+         <input type="radio" name="productVariant" value="${v.id}" ${v.id===selected.id?'checked':''}>
+         <span class="variant-option__content"><span class="variant-option__name">${escapeHTML(v.name)}</span><span class="variant-option__note">${v.type==='fd'?'Наличие уточняется':p.group==='sets'?'Приготовление обычно 20–30 минут':'Приготовление обычно 30–60 минут'}</span></span>
+         <span class="variant-option__price">${money(v.price)}</span>
+      </label>`).join('')}</div>
+      ${selected.includedBerry?'<p class="detail-information">Оформление с ягодами уже включено в стоимость варианта A06.</p>':''}
+      ${addons.length?`<div class="addons"><p class="addon-title">Дополнить набор</p>${addons.map(a=>`<label class="addon-row"><input type="checkbox" data-addon="${a.id}" ${state.selectedAddons.includes(a.id)?'checked':''}><span>${escapeHTML(a.name)}</span><strong>+ ${money(a.price)}</strong></label>`).join('')}</div>`:''}
+      ${p.note?`<p class="detail-information">${escapeHTML(p.note)}</p>`:''}
+      <p class="detail-information">${fresh ? 'Приготовление начинается после подтверждения заказа оператором.':'Фото показывает пример оформления; вид и наличие сублимированного варианта уточните у оператора.'} Окончательное время получения согласуем отдельно.</p>
+      <div class="detail-total"><span>Стоимость выбранного варианта</span><strong>${money(selected.price+extras)}</strong></div>
+      <button type="button" class="btn btn--dark detail-add" id="addToCart">Добавить в корзину <span aria-hidden="true">↗</span></button>`;
+    attachFallbacks($('#productDrawerBody'));
+  }
+  function addToCart() {
+    const id=state.selectedVariant;
+    if (!getVariant(id)) return;
+    const addons=[...state.selectedAddons].sort();
+    const item=cart.find(item=>item.variantId===id&&JSON.stringify([...item.addons].sort())===JSON.stringify(addons));
+    if (item) item.qty=Math.min(item.qty+1,99); else cart.push({variantId:id,addons,qty:1});
+    saveCart();updateCartCount();renderCart();openDrawer('cart');toast('Товар добавлен в корзину');
+  }
+  function renderCart() {
+    $('#cartHeadingCount').textContent=`· ${cartQty()}`;
+    const body=$('#cartDrawerBody');const foot=$('#cartDrawerFooter');
+    if (!cart.length) {
+      body.innerHTML=`<div class="cart-empty"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="12" y="22" width="40" height="34" stroke="currentColor" stroke-width="2"/><path d="M22 26v-9a10 10 0 0 1 20 0v9" stroke="currentColor" stroke-width="2"/></svg><h3>Пока пусто</h3><p>Подарок начинается с выбора. Загляните в коллекцию.</p><button class="btn btn--dark" type="button" data-close>К каталогу</button></div>`;
+      foot.innerHTML='';return;
+    }
+    body.innerHTML=cart.map((item,index)=>{
+      const pair=getVariant(item.variantId);if(!pair)return'';
+      const p=pair.product,v=pair.variant;
+      const addonNames=item.addons.map(id=>data.addOns.find(x=>x.id===id)?.name).filter(Boolean);
+      return `<article class="cart-item">${photoUrl(v.photo||p.photo)?`<img class="cart-item__photo" src="${photoUrl(v.photo||p.photo)}" alt="${escapeHTML(p.title)}">`:'<div class="cart-item__photo cart-item__photo--missing">Фото уточняется</div>'}<div class="cart-item__body"><h3 class="cart-item__title">${escapeHTML(p.title)}</h3><p class="cart-item__variant">${escapeHTML(v.name)}${addonNames.length?'<br>'+escapeHTML(addonNames.join(', ')):''}</p><p class="cart-item__price">${money(itemAmount(item))}</p><div class="cart-item__actions"><div class="quantity"><button type="button" data-cart-qty="${index}" data-delta="-1" aria-label="Уменьшить количество">−</button><span>${item.qty}</span><button type="button" data-cart-qty="${index}" data-delta="1" aria-label="Увеличить количество">+</button></div><button type="button" class="remove-item" data-cart-remove="${index}">Удалить</button></div></div></article>`;
+    }).join('');
+    foot.innerHTML=`<div class="cart-total"><span>Итого за товары</span><strong>${money(cartAmount())}</strong></div><button class="btn btn--dark btn--full" id="proceedCheckout" type="button">Оформить заказ <span aria-hidden="true">↗</span></button><button class="btn btn--outline btn--full" style="margin-top:9px" type="button" data-close>Продолжить выбор</button><p class="cart-footnote">Доставка оплачивается отдельно. Окончательная стоимость и наличие подтверждаются оператором.</p>`;
+    attachFallbacks(body);
+  }
+  function todayMoscow() {
+    const parts=new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Moscow',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    const get=key=>parts.find(p=>p.type===key)?.value||'';
+    return `${get('year')}-${get('month')}-${get('day')}`;
+  }
+  function populateSlots() {
+    const sel=$('#desiredTime');
+    for(let h=10;h<22;h++)for(let m=0;m<60;m+=15){const time=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;const opt=document.createElement('option');opt.value=time;opt.textContent=time;sel.appendChild(opt)}
+    $('#desiredDate').min=todayMoscow();
+  }
+  function renderCheckoutSummary() {
+    $('#checkoutSummary').innerHTML=`<span>Итого за товары · ${cartQty()} шт.</span><strong>${money(cartAmount())}</strong>`;
+  }
+  function openCheckout() {
+    if (!cart.length) {toast('Сначала добавьте товар в корзину');return}
+    renderCheckoutSummary();$('#checkoutForm').hidden=false;$('#preparedOrder').hidden=true;openDrawer('checkout');
+  }
+  function buildOrderText(form) {
+    const name=$('#customerName').value.trim();const phone=$('#customerPhone').value.trim();
+    const store=data.stores.find(x=>x.id===$('#storeChoice').value);
+    const delivery=form.querySelector('[name="receive"]:checked')?.value==='delivery';
+    const address=$('#deliveryAddress').value.trim();
+    const date=$('#desiredDate').value;const time=$('#desiredTime').value;
+    const comment=$('#customerNote').value.trim();
+    const linesOut=['Здравствуйте! Хочу уточнить и подтвердить заказ «Дели Берри».','','Товары:'];
+    cart.forEach((item,index)=>{
+      const pair=getVariant(item.variantId);if(!pair)return;
+      linesOut.push(`${index+1}. ${pair.product.title} — ${pair.variant.name} × ${item.qty} — ${money(itemAmount(item))}`);
+      const extra=item.addons.map(id=>data.addOns.find(a=>a.id===id)?.name).filter(Boolean);
+      if(extra.length)linesOut.push(`   Дополнения: ${extra.join(', ')}`);
+    });
+    linesOut.push('',`Итого за товары: ${money(cartAmount())}`,'',`Имя: ${name}`,`Телефон: ${phone}`,`Точка: ${store?.name||''} (${store?.city||''})`,`Получение: ${delivery?'Курьерская доставка':'Самовывоз'}`);
+    if(delivery)linesOut.push(`Адрес доставки: ${address}`,'Стоимость доставки — отдельно.');
+    if(date)linesOut.push(`Желаемая дата: ${date.split('-').reverse().join('.')}`);
+    if(time)linesOut.push(`Желаемое время: ${time} (московское)`);
+    if(comment)linesOut.push(`Пожелания: ${comment}`);
+    linesOut.push('','Подтвердите, пожалуйста, наличие, итоговую стоимость и возможное время получения.');
+    return linesOut.join('\n');
+  }
+  function submitCheckout(ev) {
+    ev.preventDefault();const form=$('#checkoutForm');
+    const name=$('#customerName').value.trim(),phone=$('#customerPhone').value.trim(),store=$('#storeChoice').value;
+    const delivery=form.querySelector('[name="receive"]:checked')?.value==='delivery';
+    const address=$('#deliveryAddress').value.trim(),date=$('#desiredDate').value;
+    if (name.length<2) {$('#customerName').focus();toast('Укажите ваше имя');return}
+    if (phone.replace(/\D/g,'').length<10 || phone.replace(/\D/g,'').length>15) {$('#customerPhone').focus();toast('Укажите корректный телефон');return}
+    if (!data.stores.some(x=>x.id===store)) {$('#storeChoice').focus();toast('Выберите точку');return}
+    if (delivery && address.length<6) {$('#deliveryAddress').focus();toast('Укажите адрес доставки');return}
+    if (date && date<todayMoscow()) {$('#desiredDate').focus();toast('Выберите актуальную дату');return}
+    $('#orderMessage').value=buildOrderText(form);
+    form.hidden=true;$('#preparedOrder').hidden=false;
+    $('#checkoutDrawer .drawer-scroll').scrollTop=0;
+    $('#copyOrder').focus({preventScroll:true});
+  }
+  async function copyOrderText() {
+    const text=$('#orderMessage').value;
+    try {
+      if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+      else {
+        const field=$('#orderMessage');field.focus();field.select();
+        if(!document.execCommand('copy'))throw new Error('copy failed');
+        field.setSelectionRange(0,0);
+      }
+      toast('Текст заказа скопирован. Свяжитесь с оператором для подтверждения.');
+    } catch { $('#orderMessage').focus();$('#orderMessage').select();toast('Выделите и скопируйте текст заказа вручную'); }
+  }
+  async function shareOrderText() {
+    const text=$('#orderMessage').value;
+    if (navigator.share) {try{await navigator.share({title:'Заказ «Дели Берри»',text})}catch(e){if(e?.name!=='AbortError')await copyOrderText()}}
+    else await copyOrderText();
+  }
+  let toastTimer;
+  function toast(message) {const t=$('#toast');t.textContent=message;t.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('visible'),3300)}
+
+  document.addEventListener('click',ev=>{
+    const open=ev.target.closest('[data-open-product]');if(open){openProduct(open.dataset.openProduct);return}
+    if(ev.target.closest('#openCart')){renderCart();openDrawer('cart');return}
+    if(ev.target.closest('[data-close]')||ev.target.id==='overlay'){closeDrawer();return}
+    if(ev.target.closest('#addToCart')){addToCart();return}
+    const tab=ev.target.closest('[data-category]');if(tab){state.category=tab.dataset.category;renderCatalog();return}
+    const line=ev.target.closest('[data-line]');if(line){state.line=line.dataset.line;renderCatalog();return}
+    if(ev.target.closest('#resetFilters')){state.category='all';state.line='all';state.query='';state.sort='default';$('#searchInput').value='';$('#sortSelect').value='default';renderCatalog();return}
+    const remove=ev.target.closest('[data-cart-remove]');if(remove){const i=Number(remove.dataset.cartRemove);if(Number.isInteger(i)&&i>=0&&i<cart.length){cart.splice(i,1);saveCart();updateCartCount();renderCart()}return}
+    const qty=ev.target.closest('[data-cart-qty]');if(qty){const i=Number(qty.dataset.cartQty),delta=Number(qty.dataset.delta);if(!cart[i]||![1,-1].includes(delta))return;cart[i].qty+=delta;if(cart[i].qty<1)cart.splice(i,1);if(cart[i]?.qty>99)cart[i].qty=99;saveCart();updateCartCount();renderCart();return}
+    if(ev.target.closest('#proceedCheckout')){openCheckout();return}
+    if(ev.target.closest('#copyOrder')){copyOrderText();return}
+    if(ev.target.closest('#shareOrder')){shareOrderText();return}
+    if(ev.target.closest('#editOrder')){$('#checkoutForm').hidden=false;$('#preparedOrder').hidden=true;return}
+  });
+  document.addEventListener('change',ev=>{
+    if(ev.target.name==='productVariant') {state.selectedVariant=ev.target.value;state.selectedAddons=[];const scroll=$('#productDrawerBody').scrollTop;renderProductDrawer();$('#productDrawerBody').scrollTop=scroll;return}
+    if(ev.target.matches('[data-addon]')) {
+      const id=ev.target.dataset.addon;
+      if(ev.target.checked){const a=data.addOns.find(x=>x.id===id);if(a?.group==='berries')state.selectedAddons=state.selectedAddons.filter(old=>data.addOns.find(x=>x.id===old)?.group!=='berries');state.selectedAddons.push(id)}
+      else state.selectedAddons=state.selectedAddons.filter(old=>old!==id);
+      const scroll=$('#productDrawerBody').scrollTop;renderProductDrawer();$('#productDrawerBody').scrollTop=scroll;return;
+    }
+    if(ev.target.name==='receive') {const delivery=$('#checkoutForm [name="receive"]:checked')?.value==='delivery';$('#deliveryAddressField').hidden=!delivery;$('#deliveryAddress').required=delivery}
+  });
+  document.addEventListener('keydown',ev=>{
+    if (ev.key==='Escape') closeDrawer();
+    if (ev.key==='Tab' && state.open){
+      const d=$(`#${state.open}Drawer`);
+      const elements=$$('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled])',d).filter(el=>el.getClientRects().length>0);
+      if(!elements.length)return;
+      const first=elements[0],last=elements[elements.length-1];
+      if(ev.shiftKey&&document.activeElement===first){last.focus();ev.preventDefault()}
+      else if(!ev.shiftKey&&document.activeElement===last){first.focus();ev.preventDefault()}
+    }
+  });
+  $('#searchInput').addEventListener('input',ev=>{state.query=ev.target.value.trim();renderCatalog()});
+  $('#sortSelect').addEventListener('change',ev=>{state.sort=ev.target.value;renderCatalog()});
+  $('#checkoutForm').addEventListener('submit',submitCheckout);
+  $('#year').textContent=String(new Date().getFullYear());
+  const heroImg=$('.hero-frame img');
+  if(heroImg){heroImg.addEventListener('error',()=>{heroImg.hidden=true;heroImg.closest('.hero-frame')?.classList.add('image-missing')},{once:true})}
+  populateSlots();renderCatalog();updateCartCount();
+})();
+
+</script>
+</body>
+</html>
